@@ -257,25 +257,37 @@ collections:
               - { name: "bild", label: "Bild", widget: "image" }
               - { name: "bild_alt", label: "Bildbeschreibung", widget: "string" }
 
-          - label: "Tickets"
+          - label: "Tickets & Preise"
             name: "tickets"
             widget: "object"
-            collapsed: true
-            hint: "Namen, Preise und TidyCal-Pfade stehen unter „Kontakt & Stammdaten“."
             fields:
               - { name: "kicker", label: "Kleine Zeile darüber", widget: "string" }
               - { name: "ueberschrift", label: "Überschrift", widget: "text" }
               - { name: "text", label: "Einleitungstext", widget: "markdown", minimal: true, buttons: ["bold", "italic", "link"], editor_components: [] }
               - { name: "einheit", label: "Zusatz unter dem Preis", widget: "string" }
-              - name: "beschreibungen"
-                label: "Beschreibungen (Reihenfolge wie bei den Preisen)"
+              - name: "liste"
+                label: "Tickets"
+                label_singular: "Ticket"
                 widget: "list"
-                min: 3
-                max: 3
+                min: 1
+                summary: "{{fields.name}} – {{fields.preis}}"
+                hint: "Jedes Ticket erscheint als Preiskarte und weiter unten als Buchungskalender."
                 fields:
+                  - { name: "name", label: "Name", widget: "string" }
+                  - { name: "preis", label: "Preis (z. B. „25 €“)", widget: "string" }
+                  - { name: "details", label: "Kurzinfo über dem Kalender", widget: "string" }
                   - { name: "text", label: "Beschreibung", widget: "markdown", minimal: true, buttons: ["bold", "italic", "link"], editor_components: [] }
                   - { name: "punkte", label: "Aufzählung", widget: "list", field: { name: "wert", label: "Punkt", widget: "string" } }
-              - { name: "hervorhebung", label: "Fähnchen auf der dritten Karte", widget: "string" }
+                  - name: "tidycal_path"
+                    label: "TidyCal-Pfad"
+                    widget: "string"
+                    hint: "Der Teil hinter tidycal.com/, z. B. wichtelkompass/sandstubchen-1jx0x68"
+                  - name: "hervorheben"
+                    label: "Karte hervorheben"
+                    widget: "boolean"
+                    default: false
+                    hint: "Zeigt das Fähnchen und die Akzentfarbe – gedacht für das Geburtstags-Ticket."
+              - { name: "hervorhebung", label: "Text auf dem Fähnchen", widget: "string" }
               - { name: "button", label: "Button auf allen Karten", widget: "string" }
               - { name: "tipp", label: "Tipp-Zeile darunter", widget: "markdown", minimal: true, buttons: ["bold", "italic", "link"], editor_components: [] }
 
@@ -724,22 +736,3 @@ collections:
                 hint: "Format „6.45–15.15 Uhr“ – der Bindestrich trennt die Zahlen-Kachel."
               - { name: "anerkennung", label: "Anerkennungs-Hinweis (Fußzeile)", widget: "string" }
               - { name: "wichtelkompass_url", label: "Wichtelkompass-Profil-URL", widget: "string" }
-
-          - label: "SandStube – Ticket-Optionen"
-            name: "sandstube"
-            widget: "object"
-            collapsed: true
-            fields:
-              - label: "Tickets"
-                name: "tickets"
-                widget: "list"
-                min: 3
-                max: 3
-                label_singular: "Ticket"
-                summary: "{{fields.name}} – {{fields.preis}}"
-                hint: "Reihenfolge und Anzahl bitte nicht ändern – sie gehören zu den Beschreibungen auf der SandStube-Seite."
-                fields:
-                  - { name: "name", label: "Ticket-Name", widget: "string" }
-                  - { name: "preis", label: "Preis (z. B. „25 €“)", widget: "string" }
-                  - { name: "details", label: "Kurzinfo (Personen etc.)", widget: "string" }
-                  - { name: "tidycal_path", label: "TidyCal-Pfad (data-path)", widget: "string" }

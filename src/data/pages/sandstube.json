@@ -62,30 +62,45 @@
     "ueberschrift": "Wählt euer Erlebnis",
     "text": "Jedes Ticket gilt für ein Zeitfenster von 3 Stunden. Entscheidet selbst, ob ihr den Raum teilt oder ganz für euch habt.",
     "einheit": "pro Zeitfenster · 3 Stunden",
-    "beschreibungen": [
+    "liste": [
       {
+        "name": "Halber Raum",
+        "preis": "25 €",
+        "details": "1–2 Erwachsene · max. 3 Kinder",
         "text": "Ihr teilt euch den Raum mit einer weiteren Gruppe – ideal zum unverbindlichen Ausprobieren und um neue Leute kennenzulernen.",
         "punkte": [
           "1–2 Erwachsene",
           "max. 3 Kinder",
           "Zwei Gruppen gleichzeitig im Raum"
-        ]
+        ],
+        "tidycal_path": "wichtelkompass/sandstubchen-1jx0x68",
+        "hervorheben": false
       },
       {
+        "name": "Ganzer Raum",
+        "preis": "50 €",
+        "details": "bis 4 Erwachsene · max. 8 Kinder",
         "text": "Der Raum gehört ganz euch. Die Gruppengröße bestimmt ihr selbst – perfekt, wenn die Kinder in Ruhe spielen wollen.",
         "punkte": [
           "bis zu 4 Erwachsene",
           "max. 8 Kinder",
           "Exklusive Nutzung"
-        ]
+        ],
+        "tidycal_path": "wichtelkompass/sandstubchen-mnlwxvx",
+        "hervorheben": false
       },
       {
+        "name": "Ganzer Raum · Entdecker",
+        "preis": "90 €",
+        "details": "inkl. Spiel-Station & Bastelmaterial · ideal für Geburtstage",
         "text": "Das Erlebnis-Paket: zusätzlich eine Spiel-Station und Material für selbst gestaltete Schlüsselanhänger zum Mitnehmen.",
         "punkte": [
           "Alle Inhalte von „Ganzer Raum“",
           "+ Spiel-Station",
           "+ Bastelmaterial für Schlüsselanhänger"
-        ]
+        ],
+        "tidycal_path": "wichtelkompass/geschwisterticket",
+        "hervorheben": true
       }
     ],
     "hervorhebung": "Für Geburtstage",

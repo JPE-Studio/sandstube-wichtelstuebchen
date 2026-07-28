@@ -22,13 +22,12 @@ const nav = [
 
 const { hero, saison, schritte, erlebnis, tickets, galerie, bedingungen, buchung, kontakt } = page;
 
-// Preise/Namen (site.json) mit Beschreibungen (sandstube.json) zusammenführen.
-// Die dritte Karte ist die hervorgehobene Geburtstags-Variante.
-const ticketKarten = site.sandstube.tickets.map((ticket, i) => ({
+// Name, Preis, Beschreibung und TidyCal-Pfad stehen pro Ticket beieinander.
+// „hervorheben“ steuert Fähnchen und Akzentfarbe der Geburtstags-Variante.
+const ticketKarten = tickets.liste.map((ticket, i) => ({
   ...ticket,
-  ...tickets.beschreibungen[i],
-  star: i === 2,
-  btn: ['btn btn--ghost', 'btn', 'btn btn--accent'][i],
+  star: ticket.hervorheben === true,
+  btn: ticket.hervorheben ? 'btn btn--accent' : i === 0 ? 'btn btn--ghost' : 'btn',
 }));
 ---
 <BaseLayout

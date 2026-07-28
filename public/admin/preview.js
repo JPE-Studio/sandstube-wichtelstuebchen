@@ -134,14 +134,16 @@
               nachDefinition(f.get('fields'), item, tiefe + 1));
           }));
         }
-        return feld(name, wert, tiefe);
+        return feld(name, wert, tiefe, f.get('label'));
       })
       .toArray();
   }
 
-  function feld(key, value, tiefe) {
+  function feld(key, value, tiefe, label) {
     if (value === null || value === undefined || has(VERSTECKT, key)) return null;
 
+    // Schalter mit dem echten Label aus config.yml beschriften – „anzeigen“
+    // und „hervorheben“ bedeuten Verschiedenes.
     if (typeof value === 'boolean') {
       return h(
         'p',
@@ -149,7 +151,7 @@
         h(
           'span',
           { className: value ? 'cms-flag' : 'cms-flag cms-flag--off' },
-          value ? 'wird auf der Seite angezeigt' : 'auf der Seite ausgeblendet'
+          (label || key) + ': ' + (value ? 'ja' : 'nein')
         )
       );
     }

@@ -13,27 +13,5 @@
     "zeiten": "6.45–15.15 Uhr",
     "anerkennung": "Kindertagespflege anerkannt nach §43 SGB VIII",
     "wichtelkompass_url": "https://wichtelkompass.de/anbieter/wichtelstubchen"
-  },
-  "sandstube": {
-    "tickets": [
-      {
-        "name": "Halber Raum",
-        "preis": "25 €",
-        "details": "1–2 Erwachsene · max. 3 Kinder",
-        "tidycal_path": "wichtelkompass/sandstubchen-1jx0x68"
-      },
-      {
-        "name": "Ganzer Raum",
-        "preis": "50 €",
-        "details": "bis 4 Erwachsene · max. 8 Kinder",
-        "tidycal_path": "wichtelkompass/sandstubchen-mnlwxvx"
-      },
-      {
-        "name": "Ganzer Raum · Entdecker",
-        "preis": "90 €",
-        "details": "inkl. Spiel-Station & Bastelmaterial · ideal für Geburtstage",
-        "tidycal_path": "wichtelkompass/geschwisterticket"
-      }
-    ]
   }
 }
