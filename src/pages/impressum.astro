@@ -1,0 +1,81 @@
+---
+/**
+ * Impressum – rechtliche Pflichtseite.
+ * Original: impressum.html (t-hub, noindex)
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import site from '../data/site.json';
+
+const nav = [
+  { href: '/', label: 'Übersicht' },
+  { href: '/sandstube', label: 'SandStube' },
+  { href: '/wichtelstuebchen', label: 'Wichtelstübchen' },
+  { href: '/team', label: 'Team' },
+];
+---
+<BaseLayout
+  title="Impressum – Maria Bretthauer"
+  description="Impressum von Maria Bretthauer – SandStube & Wichtelstübchen Siegen."
+  theme="hub"
+  nav={nav}
+  activeNav="/"
+  noindex
+  brand={{ type: 'svg', svg: 'hub', href: '/', label: 'Maria Bretthauer', sub: 'Siegen · zwei Angebote' }}
+>
+  <section class="hero band--tight">
+    <div class="wrap wrap--narrow center">
+      <span class="kicker">Rechtliches</span>
+      <h1>Impressum</h1>
+    </div>
+  </section>
+
+  <div class="edge" style="--from:var(--paper);--to:var(--paper-2)"></div>
+
+  <section class="band band--white">
+    <div class="wrap wrap--narrow legal">
+
+      <div class="warn">
+        <strong>⚠️ Platzhalter:</strong> Bitte füge hier die korrekten, vollständigen Angaben ein.
+        Die folgenden Inhalte sind nur Beispiele und ersetzen keine rechtliche Beratung.
+      </div>
+
+      <h2>Angaben gemäß § 5 TMG / § 5 DDG</h2>
+      <p>
+        {site.inhaberin}<br />
+        {site.kontakt.strasse}<br />
+        {site.kontakt.plz_ort}<br />
+        Deutschland
+      </p>
+
+      <h2>Kontakt</h2>
+      <p>
+        E-Mail: <a href={`mailto:${site.kontakt.email}`}>{site.kontakt.email}</a><br />
+        Telefon: [Telefonnummer ergänzen]
+      </p>
+
+      <h2>Umsatzsteuer-ID</h2>
+      <p>Umsatzsteuer-Identifikationsnummer gemäß § 27a Umsatzsteuergesetz:<br />[sofern vorhanden]</p>
+
+      <h2>Berufsbezeichnung &amp; berufsrechtliche Regelungen</h2>
+      <p>
+        Berufsbezeichnung: Kindertagespflegeperson<br />
+        Verliehen in: Bundesrepublik Deutschland<br />
+        Zuständige Erlaubnisbehörde: Stadt Siegen – Jugendamt ([Link/Kontakt ergänzen])
+      </p>
+      <p>Die Kindertagespflege ist gemäß § 43 SGB VIII von der Stadt Siegen anerkannt.</p>
+
+      <h2>Verbraucherstreitbeilegung / Universalschlichtungsstelle</h2>
+      <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+
+      <h2>Haftung für Inhalte</h2>
+      <p>Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG / DDG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG / DDG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen.</p>
+
+      <h2>Haftung für Links</h2>
+      <p>Unser Angebot enthält ggf. Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.</p>
+
+      <h2>Urheberrecht</h2>
+      <p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.</p>
+
+    </div>
+  </section>
+</BaseLayout>

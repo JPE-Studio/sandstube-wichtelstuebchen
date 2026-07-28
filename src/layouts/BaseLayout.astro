@@ -1,0 +1,97 @@
+---
+/**
+ * BaseLayout – gemeinsames HTML-Gerüst für alle Seiten.
+ *
+ * Ersetzt die duplizierte <head>/<header>/<footer>-Markup aus den 6
+ * ursprünglichen HTML-Dateien. Das Papierwelt-CSS bleibt 1:1 erhalten,
+ * nur die Struktur wird durch Komponenten aufgeräumt.
+ *
+ * Props:
+ *   title       – <title> der Seite
+ *   description – meta description
+ *   theme       – 'hub' | 'sand' | 'wichtel' (wählt die Farb-Welt)
+ *   nav         – Array der Hauptnav-Einträge {href, label, cta?}
+ *   brand       – {type:'svg'|'img', href, label, sub, ...}
+ *   activeNav   – href, der als aria-current markiert wird
+ *   noindex     – true für Impressum/Datenschutz
+ *   topstrip    – optionaler Hinweis-Strip (Schwester-Angebot)
+ *   footerNote  – zweiter foot-bottom-Text (markenspezifisch)
+ */
+import '../styles/paperworld.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import site from '../data/site.json';
+
+interface Props {
+  title: string;
+  description: string;
+  theme: 'hub' | 'sand' | 'wichtel';
+  nav: { href: string; label: string; cta?: boolean; accent?: boolean; ghost?: boolean }[];
+  brand: {
+    type: 'svg' | 'img';
+    href: string;
+    label: string;
+    sub: string;
+    svg?: string;
+    imgSrc?: string;
+    imgAlt?: string;
+  };
+  activeNav?: string;
+  noindex?: boolean;
+  topstrip?: { emphasis: string; text: string; link: { href: string; label: string } };
+  footerNote?: string;
+}
+
+const { title, description, theme, nav, brand, activeNav, noindex, topstrip, footerNote } = Astro.props;
+
+// Favicon pro Theme (aus den Original-HTML-Dateien übernommen)
+const favicons: Record<string, string> = {
+  hub: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23FBF1E3'/%3E%3Ccircle cx='13' cy='17' r='8' fill='%23DE9E31'/%3E%3Ccircle cx='20' cy='17' r='8' fill='%237C9E58' fill-opacity='.82'/%3E%3C/svg%3E",
+  sand: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23FDF2DE'/%3E%3Ccircle cx='23' cy='10' r='4.5' fill='%23DE9E31'/%3E%3Cpath d='M0 22c5-5 9-5 13 0s9 5 13 0 2-2 6-2v14H0z' fill='%238B5518'/%3E%3Cpath d='M0 26c5-4 9-4 13 0s9 4 13 0 2-1 6-2v10H0z' fill='%23EC6235'/%3E%3C/svg%3E",
+  wichtel: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23F2F6EA'/%3E%3Cpath d='M16 4l7 12H9z' fill='%23B94A69'/%3E%3Ccircle cx='16' cy='20' r='5' fill='%237C9E58'/%3E%3Cpath d='M0 27c5 0 7-3 11-3s5 3 10 3 6-2 11-2v7H0z' fill='%234F7034'/%3E%3C/svg%3E",
+};
+
+// Fußzeile – zweite Zeile (markenspezifisch oder Standard-Hinweis)
+const footBottomNote = footerNote ?? site.wichtelstuebchen.anerkennung;
+---
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  {noindex && <meta name="robots" content="noindex" />}
+  <link rel="icon" href={favicons[theme]} />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fraunces:opsz,wght,SOFT,WONK@9..144,400..700,0..100,0..1&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet" />
+</head>
+<body class={`t-${theme}`}>
+<a class="skip" href="#main">Zum Inhalt springen</a>
+
+{topstrip && (
+  <div class="topstrip">
+    <div class="wrap">
+      <em>{topstrip.emphasis}</em>
+      <span set:html={topstrip.text} />
+      <a href={topstrip.link.href}>{topstrip.link.label}</a>
+    </div>
+  </div>
+)}
+
+<Header nav={nav} brand={brand} activeNav={activeNav} />
+
+<main id="main">
+  <slot />
+</main>
+
+<Footer note={footBottomNote} />
+
+<script>
+  // Lädt das shared Client-Skript (Burger-Menu + Scroll-Reveal)
+  import '../scripts/app.js';
+</script>
+</body>
+</html>

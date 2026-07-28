@@ -1,0 +1,64 @@
+---
+/**
+ * Footer – <footer class="site-foot">, identisch auf allen Seiten.
+ * Ersetzt die 6-fach duplizierte Fußzeile aus den Original-HTML-Dateien.
+ * Zieht Adress-/Kontaktdaten aus src/data/site.json.
+ */
+import site from '../data/site.json';
+
+interface Props {
+  note?: string;
+}
+const { note } = Astro.props;
+const footNote = note ?? site.wichtelstuebchen.anerkennung;
+---
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brandline">
+          <img src="/images/header-wichtelstuebchen.webp" alt="" aria-hidden="true" />
+        </div>
+        <p>Zwei eigenständige Angebote von {site.inhaberin} an einer Adresse in Siegen – organisatorisch komplett getrennt.</p>
+      </div>
+
+      <div>
+        <span class="foot-tag foot-tag--sand">SandStube</span>
+        <h4>Erlebnisraum</h4>
+        <div class="foot-links">
+          <a href="/sandstube">Über die SandStube</a>
+          <a href="/sandstube#tickets">Preise &amp; Tickets</a>
+          <a href="/sandstube#buchen">Termin buchen</a>
+          <a href="/sandstube#galerie">Einblicke</a>
+        </div>
+      </div>
+
+      <div>
+        <span class="foot-tag foot-tag--wichtel">Wichtelstübchen</span>
+        <h4>Kindertagespflege</h4>
+        <div class="foot-links">
+          <a href="/wichtelstuebchen">Über das Wichtelstübchen</a>
+          <a href="/wichtelstuebchen#tagesablauf">Tagesablauf</a>
+          <a href="/wichtelstuebchen#kosten">Kosten</a>
+          <a href="/wichtelstuebchen#anfrage">Platz anfragen</a>
+        </div>
+      </div>
+
+      <div>
+        <h4>Kontakt &amp; Rechtliches</h4>
+        <div class="foot-links">
+          <a href="/team">Team</a>
+          <a href={`mailto:${site.kontakt.email}`}>{site.kontakt.email}</a>
+          <a href="/impressum">Impressum</a>
+          <a href="/datenschutz">Datenschutz</a>
+          <a href={site.wichtelstuebchen.wichtelkompass_url} target="_blank" rel="noopener">Profil auf Wichtelkompass ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      <span>© {site.jahr} {site.inhaberin} · {site.kontakt.strasse}, {site.kontakt.plz_ort}</span>
+      <span>{footNote}</span>
+    </div>
+  </div>
+</footer>

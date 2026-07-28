@@ -1,48 +1,27 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SandStube &amp; Wichtelstübchen Siegen – zwei Angebote von Maria Bretthauer</title>
-  <meta name="description" content="Zwei eigenständige Angebote in Siegen: die SandStube (Indoor-Sand-Erlebnisraum, online buchbar) und das Wichtelstübchen (Kindertagespflege, 0–3 Jahre). Von Maria Bretthauer." />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23FBF1E3'/%3E%3Ccircle cx='13' cy='17' r='8' fill='%23DE9E31'/%3E%3Ccircle cx='20' cy='17' r='8' fill='%237C9E58' fill-opacity='.82'/%3E%3C/svg%3E" />
+---
+/**
+ * Übersichts-Seite (Hub) – die neutrale Startseite, die beide Marken vorstellt.
+ * Original: index.html (t-hub)
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fraunces:opsz,wght,SOFT,WONK@9..144,400..700,0..100,0..1&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/style.css" />
-</head>
-<body class="t-hub">
-<a class="skip" href="#main">Zum Inhalt springen</a>
-
-<!-- ══════════════════════════════════════════════ KOPF ══ -->
-<header class="site-head">
-  <div class="wrap">
-    <a class="brand" href="index.html" aria-label="Startseite">
-      <span class="brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 48 48"><rect width="48" height="48" fill="#FBF1E3"/><circle cx="19" cy="25" r="12" fill="#DE9E31"/><circle cx="30" cy="25" r="12" fill="#7C9E58" fill-opacity=".82"/><circle cx="24" cy="25" r="4.2" fill="#FBF1E3" fill-opacity=".55"/></svg>
-      </span>
-      <span class="brand-text">
-        <b>Maria Bretthauer</b>
-        <span>Siegen · zwei Angebote</span>
-      </span>
-    </a>
-
-    <nav class="nav" id="nav" aria-label="Hauptnavigation">
-      <a href="index.html" aria-current="page">Übersicht</a>
-      <a href="sandstube.html">SandStube</a>
-      <a href="wichtelstuebchen.html">Wichtelstübchen</a>
-      <a href="team.html">Team</a>
-      <a href="#unterschied" class="btn btn--ghost">Was passt zu uns?</a>
-    </nav>
-
-    <button class="burger" aria-expanded="false" aria-controls="nav" aria-label="Menü öffnen"><span></span></button>
-  </div>
-</header>
-
-<main id="main">
-
-  <!-- ══════════════════════════════════════════════ HERO ══ -->
+const nav = [
+  { href: '/', label: 'Übersicht' },
+  { href: '/sandstube', label: 'SandStube' },
+  { href: '/wichtelstuebchen', label: 'Wichtelstübchen' },
+  { href: '/team', label: 'Team' },
+  { href: '#unterschied', label: 'Was passt zu uns?', cta: true, ghost: true },
+];
+---
+<BaseLayout
+  title="SandStube & Wichtelstübchen Siegen – zwei Angebote von Maria Bretthauer"
+  description="Zwei eigenständige Angebote in Siegen: die SandStube (Indoor-Sand-Erlebnisraum, online buchbar) und das Wichtelstübchen (Kindertagespflege, 0–3 Jahre). Von Maria Bretthauer."
+  theme="hub"
+  nav={nav}
+  activeNav="/"
+  brand={{ type: 'svg', svg: 'hub', href: '/', label: 'Maria Bretthauer', sub: 'Siegen · zwei Angebote' }}
+>
+  {/* ════════════════ HERO ══ */}
   <section class="hero">
     <div class="motes" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
     <div class="wrap">
@@ -57,13 +36,13 @@
             Zwei Angebote, die <strong>getrennt laufen</strong> und sich nur die Adresse teilen.
           </p>
           <div class="btn-row" data-reveal style="--d:280ms">
-            <a href="sandstube.html" class="btn btn--lg">Zur SandStube</a>
-            <a href="wichtelstuebchen.html" class="btn btn--ghost btn--lg">Zum Wichtelstübchen</a>
+            <a href="/sandstube" class="btn btn--lg">Zur SandStube</a>
+            <a href="/wichtelstuebchen" class="btn btn--ghost btn--lg">Zum Wichtelstübchen</a>
           </div>
         </div>
 
         <div class="frame frame--blob" data-reveal style="--d:220ms">
-          <img src="images/raum-titelbild.jpg" alt="Blick in die liebevoll eingerichteten Räume in Siegen" width="900" height="675" />
+          <img src="/images/raum-titelbild.jpg" alt="Blick in die liebevoll eingerichteten Räume in Siegen" width="900" height="675" />
         </div>
       </div>
     </div>
@@ -71,7 +50,7 @@
 
   <div class="edge" style="--from:var(--paper);--to:var(--b-50)"></div>
 
-  <!-- ══════════════════════════════════════════ ZWEI TÜREN ══ -->
+  {/* ════════════════ ZWEI TÜREN ══ */}
   <section class="band band--tint" id="angebote">
     <div class="wrap">
       <div class="head">
@@ -84,10 +63,10 @@
 
       <div class="doors">
 
-        <!-- ————— SandStube ————— -->
-        <a class="door t-sand" href="sandstube.html" data-reveal>
+        {/* ————— SandStube ————— */}
+        <a class="door t-sand" href="/sandstube" data-reveal>
           <div class="door-img">
-            <img src="images/sandstube-4.webp" alt="Kind spielt konzentriert mit bunten Glassteinen in der SandStube" loading="lazy" width="800" height="500" />
+            <img src="/images/sandstube-4.webp" alt="Kind spielt konzentriert mit bunten Glassteinen in der SandStube" loading="lazy" width="800" height="500" />
           </div>
           <div class="door-body">
             <span class="chip">Erlebnisraum · stundenweise</span>
@@ -104,10 +83,10 @@
           </div>
         </a>
 
-        <!-- ————— Wichtelstübchen ————— -->
-        <a class="door t-wichtel" href="wichtelstuebchen.html" data-reveal>
+        {/* ————— Wichtelstübchen ————— */}
+        <a class="door t-wichtel" href="/wichtelstuebchen" data-reveal>
           <div class="door-img">
-            <img src="images/raum-spielraum.jpg" alt="Heller Spielraum im Wichtelstübchen" loading="lazy" width="800" height="500" />
+            <img src="/images/raum-spielraum.jpg" alt="Heller Spielraum im Wichtelstübchen" loading="lazy" width="800" height="500" />
           </div>
           <div class="door-body">
             <span class="chip">Kindertagespflege · täglich</span>
@@ -129,7 +108,7 @@
 
   <div class="edge edge--flip" style="--from:var(--paper);--to:var(--b-50)"></div>
 
-  <!-- ══════════════════════════════════════════ UNTERSCHIED ══ -->
+  {/* ════════════════ UNTERSCHIED ══ */}
   <section class="band band--paper" id="unterschied">
     <div class="wrap wrap--mid">
       <div class="head">
@@ -159,7 +138,7 @@
             <div><dt>Kosten</dt><dd>25 € / 50 € / 90 € pro Zeitfenster</dd></div>
             <div><dt>Anmeldung</dt><dd>Direkt online über TidyCal – sofort buchbar</dd></div>
           </dl>
-          <a href="sandstube.html#buchen" class="btn btn--accent btn--full">Zeitfenster buchen</a>
+          <a href="/sandstube#buchen" class="btn btn--accent btn--full">Zeitfenster buchen</a>
         </article>
 
         <article class="card t-wichtel" data-reveal>
@@ -178,7 +157,7 @@
             <div><dt>Kosten</dt><dd>95 € Verpflegung / Monat + Beitrag nach Einkommen</dd></div>
             <div><dt>Anmeldung</dt><dd>Platzanfrage über das Wichtelkompass-Profil</dd></div>
           </dl>
-          <a href="wichtelstuebchen.html#anfrage" class="btn btn--full">Platz anfragen</a>
+          <a href="/wichtelstuebchen#anfrage" class="btn btn--full">Platz anfragen</a>
         </article>
 
       </div>
@@ -187,7 +166,7 @@
 
   <div class="edge" style="--from:var(--paper);--to:var(--paper-2)"></div>
 
-  <!-- ══════════════════════════════════════════ EINBLICKE ══ -->
+  {/* ════════════════ EINBLICKE ══ */}
   <section class="band band--white">
     <div class="wrap">
       <div class="head">
@@ -197,27 +176,27 @@
       </div>
 
       <div class="gal">
-        <figure data-reveal><img src="images/sandstube-4.webp" alt="Spielen mit Sand und Glassteinen in der SandStube" loading="lazy" /></figure>
-        <figure data-reveal><img src="images/raum-leseecke.jpg" alt="Gemütliche Leseecke im Wichtelstübchen" loading="lazy" /></figure>
-        <figure data-reveal><img src="images/garten-sandbereich.webp" alt="Garten mit Sandbereich" loading="lazy" /></figure>
-        <figure data-reveal><img src="images/raum-kueche-kreativ.jpg" alt="Küche und kreative Zone" loading="lazy" /></figure>
-        <figure data-reveal><img src="images/sandstube-main.webp" alt="Blick in den Raum der SandStube" loading="lazy" /></figure>
+        <figure data-reveal><img src="/images/sandstube-4.webp" alt="Spielen mit Sand und Glassteinen in der SandStube" loading="lazy" /></figure>
+        <figure data-reveal><img src="/images/raum-leseecke.jpg" alt="Gemütliche Leseecke im Wichtelstübchen" loading="lazy" /></figure>
+        <figure data-reveal><img src="/images/garten-sandbereich.webp" alt="Garten mit Sandbereich" loading="lazy" /></figure>
+        <figure data-reveal><img src="/images/raum-kueche-kreativ.jpg" alt="Küche und kreative Zone" loading="lazy" /></figure>
+        <figure data-reveal><img src="/images/sandstube-main.webp" alt="Blick in den Raum der SandStube" loading="lazy" /></figure>
       </div>
 
       <div class="center mt-l">
-        <a href="wichtelstuebchen.html#galerie" class="btn btn--ghost">Alle Räume ansehen</a>
+        <a href="/wichtelstuebchen#galerie" class="btn btn--ghost">Alle Räume ansehen</a>
       </div>
     </div>
   </section>
 
   <div class="edge" style="--from:var(--paper-2);--to:var(--b-50)"></div>
 
-  <!-- ══════════════════════════════════════════ MARIA ══ -->
+  {/* ════════════════ MARIA ══ */}
   <section class="band band--tint">
     <div class="wrap">
       <div class="split">
         <div class="split-media frame frame--blob" data-reveal>
-          <img src="images/team-maria.jpg" alt="Maria Bretthauer" loading="lazy" />
+          <img src="/images/team-maria.jpg" alt="Maria Bretthauer" loading="lazy" />
         </div>
         <div class="split-text" data-reveal style="--d:120ms">
           <span class="kicker">Hinter beiden Türen</span>
@@ -232,67 +211,10 @@
             „Gib deinem Kind Zeit zum Spielen – denn das Spiel ist die höchste Form des Forschens.“
           </p>
           <div class="btn-row mt-s">
-            <a href="team.html" class="btn">Das Team kennenlernen</a>
+            <a href="/team" class="btn">Das Team kennenlernen</a>
           </div>
         </div>
       </div>
     </div>
   </section>
-
-</main>
-
-<!-- ══════════════════════════════════════════════ FUSS ══ -->
-<footer class="site-foot">
-  <div class="wrap">
-    <div class="foot-grid">
-      <div>
-        <div class="foot-brandline">
-          <img src="images/header-wichtelstuebchen.webp" alt="" aria-hidden="true" />
-        </div>
-        <p>Zwei eigenständige Angebote von Maria Bretthauer an einer Adresse in Siegen – organisatorisch komplett getrennt.</p>
-      </div>
-
-      <div>
-        <span class="foot-tag foot-tag--sand">SandStube</span>
-        <h4>Erlebnisraum</h4>
-        <div class="foot-links">
-          <a href="sandstube.html">Über die SandStube</a>
-          <a href="sandstube.html#tickets">Preise &amp; Tickets</a>
-          <a href="sandstube.html#buchen">Termin buchen</a>
-          <a href="sandstube.html#galerie">Einblicke</a>
-        </div>
-      </div>
-
-      <div>
-        <span class="foot-tag foot-tag--wichtel">Wichtelstübchen</span>
-        <h4>Kindertagespflege</h4>
-        <div class="foot-links">
-          <a href="wichtelstuebchen.html">Über das Wichtelstübchen</a>
-          <a href="wichtelstuebchen.html#tagesablauf">Tagesablauf</a>
-          <a href="wichtelstuebchen.html#kosten">Kosten</a>
-          <a href="wichtelstuebchen.html#anfrage">Platz anfragen</a>
-        </div>
-      </div>
-
-      <div>
-        <h4>Kontakt &amp; Rechtliches</h4>
-        <div class="foot-links">
-          <a href="team.html">Team</a>
-          <a href="mailto:wichtelkompass@gmail.com">wichtelkompass@gmail.com</a>
-          <a href="impressum.html">Impressum</a>
-          <a href="datenschutz.html">Datenschutz</a>
-          <a href="https://wichtelkompass.de/anbieter/wichtelstubchen" target="_blank" rel="noopener">Profil auf Wichtelkompass ↗</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="foot-bottom">
-      <span>© 2026 Maria Bretthauer · Hambergstraße 12, 57074 Siegen</span>
-      <span>Kindertagespflege anerkannt nach §43 SGB VIII</span>
-    </div>
-  </div>
-</footer>
-
-<script src="assets/app.js" defer></script>
-</body>
-</html>
+</BaseLayout>

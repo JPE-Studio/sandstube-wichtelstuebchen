@@ -1,0 +1,104 @@
+---
+/**
+ * Team-Seite – stellt die Betreuer:innen vor.
+ * Original: team.html (t-wichtel)
+ *
+ * Die Personen-Daten kommen aus der `team` Content Collection
+ * (src/content/team/*.md) und sind über Decap CMS redaktionell pflegbar.
+ */
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const nav = [
+  { href: '/', label: 'Übersicht' },
+  { href: '/wichtelstuebchen', label: 'Wichtelstübchen' },
+  { href: '/sandstube', label: 'SandStube' },
+  { href: '/team', label: 'Team' },
+  { href: '/wichtelstuebchen#anfrage', label: 'Platz anfragen', cta: true },
+];
+
+// Teammitglieder nach Reihenfolge sortieren
+const team = (await getCollection('team')).sort(
+  (a, b) => a.data.reihenfolge - b.data.reihenfolge
+);
+---
+<BaseLayout
+  title="Team – Maria Bretthauer, Alexander Tewes, Zerina Muran | Wichtelstübchen Siegen"
+  description="Das Team des Wichtelstübchens: Maria Bretthauer, Alexander Tewes und Zerina Muran – betreuen mit Herz und Erfahrung Kinder in Siegen."
+  theme="wichtel"
+  nav={nav}
+  activeNav="/team"
+  brand={{
+    type: 'img',
+    imgSrc: '/images/header-wichtelstuebchen.webp',
+    href: '/wichtelstuebchen',
+    label: 'Wichtelstübchen',
+    sub: 'Kindertagespflege · Siegen',
+  }}
+>
+  {/* ════════════════ HERO ══ */}
+  <section class="hero">
+    <div class="motes" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="wrap wrap--narrow center">
+      <span class="kicker" data-reveal>Wer wir sind</span>
+      <h1 data-reveal style="--d:80ms">Drei Menschen mit Herz für <span class="mark">kleine Leute</span></h1>
+      <p class="lead mt-s" data-reveal style="--d:180ms">
+        Wir sind jeden Tag im Wichtelstübchen für Sicherheit, Freude und Entwicklung da –
+        und kennen jedes Wichtel-Lachen beim Namen.
+      </p>
+    </div>
+  </section>
+
+  <div class="edge" style="--from:var(--paper);--to:var(--paper-2)"></div>
+
+  {/* ════════════════ PERSONEN ══ */}
+  <section class="band band--white">
+    <div class="wrap">
+      <div class="team">
+        {team.map((person) => (
+          <article class="person" data-reveal>
+            <div class="person-photo">
+              <img src={person.data.foto} alt={person.data.name} loading="lazy" />
+            </div>
+            <div class="person-body">
+              <h3>{person.data.name}</h3>
+              <span class="person-role">{person.data.rolle}</span>
+              <p set:html={person.body}></p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <div class="edge" style="--from:var(--paper-2);--to:var(--b-50)"></div>
+
+  {/* ════════════════ ZWEI WEGE ══ */}
+  <section class="band band--tint">
+    <div class="wrap wrap--mid">
+      <div class="head">
+        <span class="kicker" data-reveal>Und jetzt?</span>
+        <h2 data-reveal style="--d:60ms">Zwei Angebote, zwei Wege</h2>
+        <p class="lead" data-reveal style="--d:140ms">
+          Je nachdem, was ihr sucht, geht es hier weiter – die beiden Angebote laufen getrennt.
+        </p>
+      </div>
+
+      <div class="cards cards--2">
+        <article class="card t-wichtel" data-reveal>
+          <span class="chip">Kindertagespflege</span>
+          <h3>Ein Betreuungsplatz</h3>
+          <p class="mt-s">Regelmäßige Betreuung für Kinder von 0–3 Jahren, Montag bis Freitag von 6.45 bis 15.15 Uhr. Die Anfrage läuft über den Wichtelkompass.</p>
+          <a href="/wichtelstuebchen#anfrage" class="btn btn--full mt-m">Platz anfragen</a>
+        </article>
+
+        <article class="card t-sand" data-reveal>
+          <span class="chip">Erlebnisraum</span>
+          <h3>Ein paar Stunden im Sand</h3>
+          <p class="mt-s">Ein Zeitfenster von drei Stunden für euch und euer Kind – ab 25 €, direkt online buchbar. Ideal für Kindergeburtstage.</p>
+          <a href="/sandstube#buchen" class="btn btn--accent btn--full mt-m">Termin buchen</a>
+        </article>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

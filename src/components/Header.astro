@@ -1,0 +1,73 @@
+---
+/**
+ * Header – <header class="site-head"> für alle Seiten.
+ *
+ * Die Brand-Visualisierung ist theme-spezifisch:
+ *   - hub     → farbiges SVG-Doppelkreis-Mark
+ *   - sand    → SVG mit Sonne & Dünen
+ *   - wichtel → Header-Bild (header-wichtelstuebchen.webp)
+ *
+ * Die Brand-SVGs werden direkt aus den Original-HTML-Dateien übernommen,
+ * damit die Papierwelt-Optik 1:1 erhalten bleibt.
+ */
+interface Props {
+  nav: { href: string; label: string; cta?: boolean; accent?: boolean; ghost?: boolean }[];
+  brand: {
+    type: 'svg' | 'img';
+    href: string;
+    label: string;
+    sub: string;
+    svg?: string;
+    imgSrc?: string;
+    imgAlt?: string;
+  };
+  activeNav?: string;
+}
+
+const { nav, brand, activeNav } = Astro.props;
+
+// Brand-SVGs pro Theme (aus den Original-HTML-Dateien übernommen)
+const brandSvgs: Record<string, string> = {
+  hub: `<svg viewBox="0 0 48 48"><rect width="48" height="48" fill="#FBF1E3"/><circle cx="19" cy="25" r="12" fill="#DE9E31"/><circle cx="30" cy="25" r="12" fill="#7C9E58" fill-opacity=".82"/><circle cx="24" cy="25" r="4.2" fill="#FBF1E3" fill-opacity=".55"/></svg>`,
+  sand: `<svg viewBox="0 0 48 48"><rect width="48" height="48" fill="#FDF2DE"/><circle cx="34" cy="14" r="6.5" fill="#DE9E31"/><path d="M0 33c7-8 13-8 20 0s13 8 20 0 4-3 8-4v19H0z" fill="#8B5518"/><path d="M0 39c7-6 13-6 20 0s13 6 20 0 4-2 8-3v12H0z" fill="#EC6235"/></svg>`,
+  wichtel: `<svg viewBox="0 0 48 48"><rect width="48" height="48" fill="#F2F6EA"/><path d="M24 6l11 18H13z" fill="#B94A69"/><circle cx="24" cy="30" r="7" fill="#7C9E58"/><path d="M0 40c8 0 10-5 16-5s8 5 16 5 10-4 16-4v12H0z" fill="#4F7034"/></svg>`,
+};
+---
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href={brand.href} aria-label={brand.label}>
+      {brand.type === 'img' && brand.imgSrc ? (
+        <>
+          <img src={brand.imgSrc} alt={brand.imgAlt ?? ''} width="120" height="54" />
+          <span class="brand-text">
+            <b>{brand.label}</b>
+            <span>{brand.sub}</span>
+          </span>
+        </>
+      ) : (
+        <>
+          <span class="brand-mark" aria-hidden="true" set:html={brandSvgs[brand.svg ?? 'hub']} />
+          <span class="brand-text">
+            <b>{brand.label}</b>
+            <span>{brand.sub}</span>
+          </span>
+        </>
+      )}
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Hauptnavigation">
+      {nav.map((item) => {
+        const isActive = activeNav && item.href === activeNav;
+        if (item.cta) {
+          const cls = ['btn'];
+          if (item.accent) cls.push('btn--accent');
+          if (item.ghost) cls.push('btn--ghost');
+          return <a href={item.href} class={cls.join(' ')}>{item.label}</a>;
+        }
+        return <a href={item.href} aria-current={isActive ? 'page' : undefined}>{item.label}</a>;
+      })}
+    </nav>
+
+    <button class="burger" aria-expanded="false" aria-controls="nav" aria-label="Menü öffnen"><span></span></button>
+  </div>
+</header>

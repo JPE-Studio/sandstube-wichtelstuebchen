@@ -1,0 +1,26 @@
+{
+  "name": "sandstube",
+  "version": "1.0.0",
+  "description": "SandStube & Wichtelstübchen Siegen – zwei Angebote von Maria Bretthauer. Statische Astro-Seite mit Decap CMS.",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JPE-Studio/sandstube-wichtelstuebchen.git"
+  },
+  "author": "JPE-Studio",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JPE-Studio/sandstube-wichtelstuebchen/issues"
+  },
+  "homepage": "https://github.com/JPE-Studio/sandstube-wichtelstuebchen#readme",
+  "dependencies": {
+    "astro": "^7.1.4"
+  }
+}

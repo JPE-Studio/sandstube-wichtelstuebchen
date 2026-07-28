@@ -1,58 +1,40 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SandStube Siegen – Indoor-Sand-Erlebnisraum &amp; Kindergeburtstag</title>
-  <meta name="description" content="Die SandStube in Siegen: ein Indoor-Sand-Erlebnisraum für Kinder (erste Schritte bis ca. 6 Jahre) & Eltern. SPÜREN–STAUNEN–SPIELEN. Drei Ticket-Optionen, ideal für Kindergeburtstage." />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23FDF2DE'/%3E%3Ccircle cx='23' cy='10' r='4.5' fill='%23DE9E31'/%3E%3Cpath d='M0 22c5-5 9-5 13 0s9 5 13 0 2-2 6-2v14H0z' fill='%238B5518'/%3E%3Cpath d='M0 26c5-4 9-4 13 0s9 4 13 0 2-1 6-2v10H0z' fill='%23EC6235'/%3E%3C/svg%3E" />
+---
+/**
+ * SandStube-Seite – Indoor-Sand-Erlebnisraum.
+ * Original: sandstube.html (t-sand)
+ *
+ * Die Ticket-Preise und TidyCal-Pfade werden aus src/data/site.json
+ * gezogen, damit Maria sie im CMS ändern kann.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import site from '../data/site.json';
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fraunces:opsz,wght,SOFT,WONK@9..144,400..700,0..100,0..1&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/style.css" />
-</head>
-<body class="t-sand">
-<a class="skip" href="#main">Zum Inhalt springen</a>
+const nav = [
+  { href: '/', label: 'Übersicht' },
+  { href: '/sandstube', label: 'SandStube' },
+  { href: '#tickets', label: 'Preise' },
+  { href: '#galerie', label: 'Einblicke' },
+  { href: '/wichtelstuebchen', label: 'Wichtelstübchen' },
+  { href: '#buchen', label: 'Termin buchen', cta: true, accent: true },
+];
 
-<!-- Verweis auf das getrennte Schwester-Angebot -->
-<div class="topstrip">
-  <div class="wrap">
-    <em>Nicht verwechseln:</em>
-    <span>Du suchst einen <strong>Betreuungsplatz</strong> für dein Kind?</span>
-    <a href="wichtelstuebchen.html">Hier geht es zum Wichtelstübchen →</a>
-  </div>
-</div>
-
-<!-- ══════════════════════════════════════════════ KOPF ══ -->
-<header class="site-head">
-  <div class="wrap">
-    <a class="brand" href="sandstube.html" aria-label="SandStube">
-      <span class="brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 48 48"><rect width="48" height="48" fill="#FDF2DE"/><circle cx="34" cy="14" r="6.5" fill="#DE9E31"/><path d="M0 33c7-8 13-8 20 0s13 8 20 0 4-3 8-4v19H0z" fill="#8B5518"/><path d="M0 39c7-6 13-6 20 0s13 6 20 0 4-2 8-3v12H0z" fill="#EC6235"/></svg>
-      </span>
-      <span class="brand-text">
-        <b>SandStube</b>
-        <span>Erlebnisraum · Siegen</span>
-      </span>
-    </a>
-
-    <nav class="nav" id="nav" aria-label="Hauptnavigation">
-      <a href="index.html">Übersicht</a>
-      <a href="sandstube.html" aria-current="page">SandStube</a>
-      <a href="#tickets">Preise</a>
-      <a href="#galerie">Einblicke</a>
-      <a href="wichtelstuebchen.html">Wichtelstübchen</a>
-      <a href="#buchen" class="btn btn--accent">Termin buchen</a>
-    </nav>
-
-    <button class="burger" aria-expanded="false" aria-controls="nav" aria-label="Menü öffnen"><span></span></button>
-  </div>
-</header>
-
-<main id="main">
-
-  <!-- ══════════════════════════════════════════════ HERO ══ -->
+const [ticketHalb, ticketGanz, ticketEntdecker] = site.sandstube.tickets;
+---
+<BaseLayout
+  title="SandStube Siegen – Indoor-Sand-Erlebnisraum & Kindergeburtstag"
+  description="Die SandStube in Siegen: ein Indoor-Sand-Erlebnisraum für Kinder (erste Schritte bis ca. 6 Jahre) & Eltern. SPÜREN–STAUNEN–SPIELEN. Drei Ticket-Optionen, ideal für Kindergeburtstage."
+  theme="sand"
+  nav={nav}
+  activeNav="/sandstube"
+  brand={{ type: 'svg', svg: 'sand', href: '/sandstube', label: 'SandStube', sub: 'Erlebnisraum · Siegen' }}
+  topstrip={{
+    emphasis: 'Nicht verwechseln:',
+    text: 'Du suchst einen <strong>Betreuungsplatz</strong> für dein Kind?',
+    link: { href: '/wichtelstuebchen', label: 'Hier geht es zum Wichtelstübchen →' },
+  }}
+  footerNote="SandStube – Indoor-Sand-Erlebnisraum"
+>
+  {/* ════════════════ HERO ══ */}
   <section class="hero">
     <div class="motes" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
     <div class="wrap">
@@ -72,7 +54,7 @@
         </div>
 
         <div class="frame frame--blob" data-reveal style="--d:240ms">
-          <img src="images/sandstube-4.webp" alt="Kind legt bunte Glassteine auf eine gebastelte Schildkröte in der SandStube" width="900" height="675" />
+          <img src="/images/sandstube-4.webp" alt="Kind legt bunte Glassteine auf eine gebastelte Schildkröte in der SandStube" width="900" height="675" />
         </div>
       </div>
 
@@ -84,7 +66,7 @@
 
   <div class="edge" style="--from:var(--paper);--to:var(--paper-2)"></div>
 
-  <!-- ══════════════════════════════════════════ SO LÄUFT'S ══ -->
+  {/* ════════════════ SO LÄUFT'S ══ */}
   <section class="band band--white">
     <div class="wrap">
       <div class="head">
@@ -114,12 +96,12 @@
 
   <div class="edge" style="--from:var(--paper-2);--to:var(--b-50)"></div>
 
-  <!-- ══════════════════════════════════════════ ERLEBNIS ══ -->
+  {/* ════════════════ ERLEBNIS ══ */}
   <section class="band band--tint">
     <div class="wrap">
       <div class="split split--flip">
         <div class="split-media frame" data-reveal>
-          <img src="images/sandstube-1.webp" alt="Spielfläche in der SandStube" loading="lazy" />
+          <img src="/images/sandstube-1.webp" alt="Spielfläche in der SandStube" loading="lazy" />
         </div>
         <div class="split-text" data-reveal style="--d:120ms">
           <span class="kicker">So viel mehr als „nur“ Sand</span>
@@ -144,7 +126,7 @@
 
   <div class="edge edge--flip" style="--from:var(--paper);--to:var(--b-50)"></div>
 
-  <!-- ══════════════════════════════════════════ TICKETS ══ -->
+  {/* ════════════════ TICKETS ══ */}
   <section class="band band--paper" id="tickets">
     <div class="wrap">
       <div class="head">
@@ -159,8 +141,8 @@
       <div class="cards cards--3">
 
         <article class="ticket" data-reveal>
-          <h3>Halber Raum</h3>
-          <div class="price">25 €<small>pro Zeitfenster · 3 Stunden</small></div>
+          <h3>{ticketHalb.name}</h3>
+          <div class="price">{ticketHalb.preis}<small>pro Zeitfenster · 3 Stunden</small></div>
           <p>Ihr teilt euch den Raum mit einer weiteren Gruppe – ideal zum unverbindlichen Ausprobieren und um neue Leute kennenzulernen.</p>
           <ul class="ticks">
             <li>1–2 Erwachsene</li>
@@ -171,8 +153,8 @@
         </article>
 
         <article class="ticket" data-reveal>
-          <h3>Ganzer Raum</h3>
-          <div class="price">50 €<small>pro Zeitfenster · 3 Stunden</small></div>
+          <h3>{ticketGanz.name}</h3>
+          <div class="price">{ticketGanz.preis}<small>pro Zeitfenster · 3 Stunden</small></div>
           <p>Der Raum gehört ganz euch. Die Gruppengröße bestimmt ihr selbst – perfekt, wenn die Kinder in Ruhe spielen wollen.</p>
           <ul class="ticks">
             <li>bis zu 4 Erwachsene</li>
@@ -184,8 +166,8 @@
 
         <article class="ticket ticket--star" data-reveal>
           <span class="ticket-flag">Für Geburtstage</span>
-          <h3>Ganzer Raum · Entdecker</h3>
-          <div class="price">90 €<small>pro Zeitfenster · 3 Stunden</small></div>
+          <h3>{ticketEntdecker.name}</h3>
+          <div class="price">{ticketEntdecker.preis}<small>pro Zeitfenster · 3 Stunden</small></div>
           <p>Das Erlebnis-Paket: zusätzlich eine Spiel-Station und Material für selbst gestaltete Schlüsselanhänger zum Mitnehmen.</p>
           <ul class="ticks ticks--star">
             <li>Alle Inhalte von „Ganzer Raum“</li>
@@ -205,7 +187,7 @@
 
   <div class="edge" style="--from:var(--paper);--to:var(--paper-2)"></div>
 
-  <!-- ══════════════════════════════════════════ GALERIE ══ -->
+  {/* ════════════════ GALERIE ══ */}
   <section class="band band--white" id="galerie">
     <div class="wrap">
       <div class="head">
@@ -213,18 +195,18 @@
         <h2 data-reveal style="--d:60ms">Schaut herein</h2>
       </div>
       <div class="gal">
-        <figure data-reveal><img src="images/sandstube-4.webp" alt="Kind spielt mit Glassteinen in der SandStube" loading="lazy" /></figure>
-        <figure data-reveal><img src="images/sandstube-main.webp" alt="Gemütlicher Raum der SandStube" loading="lazy" /></figure>
-        <figure data-reveal><img src="images/garten-sandbereich.webp" alt="Außenbereich mit Sand" loading="lazy" /></figure>
-        <figure data-reveal><img src="images/sandstube-3.webp" alt="Spielbereich in der SandStube" loading="lazy" /></figure>
-        <figure data-reveal><img src="images/sandstube-1.webp" alt="Spielfläche mit Material" loading="lazy" /></figure>
+        <figure data-reveal><img src="/images/sandstube-4.webp" alt="Kind spielt mit Glassteinen in der SandStube" loading="lazy" /></figure>
+        <figure data-reveal><img src="/images/sandstube-main.webp" alt="Gemütlicher Raum der SandStube" loading="lazy" /></figure>
+        <figure data-reveal><img src="/images/garten-sandbereich.webp" alt="Außenbereich mit Sand" loading="lazy" /></figure>
+        <figure data-reveal><img src="/images/sandstube-3.webp" alt="Spielbereich in der SandStube" loading="lazy" /></figure>
+        <figure data-reveal><img src="/images/sandstube-1.webp" alt="Spielfläche mit Material" loading="lazy" /></figure>
       </div>
     </div>
   </section>
 
   <div class="edge" style="--from:var(--paper-2);--to:var(--b-50)"></div>
 
-  <!-- ══════════════════════════════════════════ BEDINGUNGEN ══ -->
+  {/* ════════════════ BEDINGUNGEN ══ */}
   <section class="band band--tint">
     <div class="wrap wrap--mid">
       <div class="head">
@@ -255,7 +237,7 @@
 
   <div class="edge edge--flip" style="--from:var(--paper);--to:var(--b-50)"></div>
 
-  <!-- ══════════════════════════════════════════ BUCHUNG ══ -->
+  {/* ════════════════ BUCHUNG ══ */}
   <section class="band band--paper" id="buchen">
     <div class="wrap">
       <div class="head">
@@ -270,34 +252,34 @@
 
         <div class="slot" data-reveal>
           <div class="slot-head">
-            <h3>Halber Raum</h3>
-            <div class="p">25 €</div>
-            <div class="s">1–2 Erwachsene · max. 3 Kinder</div>
+            <h3>{ticketHalb.name}</h3>
+            <div class="p">{ticketHalb.preis}</div>
+            <div class="s">{ticketHalb.details}</div>
           </div>
           <div class="slot-body">
-            <div class="tidycal-embed" data-path="wichtelkompass/sandstubchen-1jx0x68"></div>
+            <div class="tidycal-embed" data-path={ticketHalb.tidycal_path}></div>
           </div>
         </div>
 
         <div class="slot" data-reveal>
           <div class="slot-head">
-            <h3>Ganzer Raum</h3>
-            <div class="p">50 €</div>
-            <div class="s">bis 4 Erwachsene · max. 8 Kinder</div>
+            <h3>{ticketGanz.name}</h3>
+            <div class="p">{ticketGanz.preis}</div>
+            <div class="s">{ticketGanz.details}</div>
           </div>
           <div class="slot-body">
-            <div class="tidycal-embed" data-path="wichtelkompass/sandstubchen-mnlwxvx"></div>
+            <div class="tidycal-embed" data-path={ticketGanz.tidycal_path}></div>
           </div>
         </div>
 
         <div class="slot" data-reveal>
           <div class="slot-head">
-            <h3>Ganzer Raum · Entdecker</h3>
-            <div class="p">90 €</div>
-            <div class="s">inkl. Spiel-Station &amp; Bastelmaterial · ideal für Geburtstage</div>
+            <h3>{ticketEntdecker.name}</h3>
+            <div class="p">{ticketEntdecker.preis}</div>
+            <div class="s">{ticketEntdecker.details}</div>
           </div>
           <div class="slot-body">
-            <div class="tidycal-embed" data-path="wichtelkompass/geschwisterticket"></div>
+            <div class="tidycal-embed" data-path={ticketEntdecker.tidycal_path}></div>
           </div>
         </div>
 
@@ -308,7 +290,7 @@
       <p class="center muted mt-m" style="max-width:660px;margin-inline:auto">
         Ihr seht die Kalender nicht? Stellt sicher, dass ihr online seid – die Widgets werden live von
         TidyCal geladen. Bei Fragen schreibt an
-        <a href="mailto:wichtelkompass@gmail.com" style="color:var(--b-800);text-decoration:underline;font-weight:800">wichtelkompass@gmail.com</a>.
+        <a href={`mailto:${site.kontakt.email}`} style="color:var(--b-800);text-decoration:underline;font-weight:800">{site.kontakt.email}</a>.
       </p>
 
       <div class="note mt-l" data-reveal>
@@ -317,13 +299,13 @@
           Die <strong>SandStube</strong> (Erlebnisraum, online buchbar) und das
           <strong>Wichtelstübchen</strong> (Kindertagespflege) sind komplett getrennte Angebote.
           Für einen Betreuungsplatz geht es bitte zum
-          <a href="wichtelstuebchen.html">Wichtelstübchen</a>.
+          <a href="/wichtelstuebchen">Wichtelstübchen</a>.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════════ KONTAKT ══ -->
+  {/* ════════════════ KONTAKT ══ */}
   <section class="band band--deep">
     <div class="wrap">
       <div class="head">
@@ -335,73 +317,16 @@
       <div class="contact">
         <div class="contact-card" data-reveal>
           <h3>📍 Adresse</h3>
-          <p>Hambergstraße 12</p>
-          <p>57074 Siegen</p>
-          <p class="mt-s"><a href="https://www.google.com/maps/search/?api=1&amp;query=Hambergstra%C3%9Fe+12,+57074+Siegen" target="_blank" rel="noopener">Auf Google Maps ansehen ↗</a></p>
+          <p>{site.kontakt.strasse}</p>
+          <p>{site.kontakt.plz_ort}</p>
+          <p class="mt-s"><a href={site.kontakt.maps_url} target="_blank" rel="noopener">Auf Google Maps ansehen ↗</a></p>
         </div>
         <div class="contact-card" data-reveal>
           <h3>✉️ Kontakt</h3>
           <p>Fragen zu Terminen oder Kindergeburtstagen?</p>
-          <p class="mt-s"><a href="mailto:wichtelkompass@gmail.com">wichtelkompass@gmail.com</a></p>
+          <p class="mt-s"><a href={`mailto:${site.kontakt.email}`}>{site.kontakt.email}</a></p>
         </div>
       </div>
     </div>
   </section>
-
-</main>
-
-<!-- ══════════════════════════════════════════════ FUSS ══ -->
-<footer class="site-foot">
-  <div class="wrap">
-    <div class="foot-grid">
-      <div>
-        <div class="foot-brandline">
-          <img src="images/header-wichtelstuebchen.webp" alt="" aria-hidden="true" />
-        </div>
-        <p>Zwei eigenständige Angebote von Maria Bretthauer an einer Adresse in Siegen – organisatorisch komplett getrennt.</p>
-      </div>
-
-      <div>
-        <span class="foot-tag foot-tag--sand">SandStube</span>
-        <h4>Erlebnisraum</h4>
-        <div class="foot-links">
-          <a href="sandstube.html">Über die SandStube</a>
-          <a href="sandstube.html#tickets">Preise &amp; Tickets</a>
-          <a href="sandstube.html#buchen">Termin buchen</a>
-          <a href="sandstube.html#galerie">Einblicke</a>
-        </div>
-      </div>
-
-      <div>
-        <span class="foot-tag foot-tag--wichtel">Wichtelstübchen</span>
-        <h4>Kindertagespflege</h4>
-        <div class="foot-links">
-          <a href="wichtelstuebchen.html">Über das Wichtelstübchen</a>
-          <a href="wichtelstuebchen.html#tagesablauf">Tagesablauf</a>
-          <a href="wichtelstuebchen.html#kosten">Kosten</a>
-          <a href="wichtelstuebchen.html#anfrage">Platz anfragen</a>
-        </div>
-      </div>
-
-      <div>
-        <h4>Kontakt &amp; Rechtliches</h4>
-        <div class="foot-links">
-          <a href="team.html">Team</a>
-          <a href="mailto:wichtelkompass@gmail.com">wichtelkompass@gmail.com</a>
-          <a href="impressum.html">Impressum</a>
-          <a href="datenschutz.html">Datenschutz</a>
-          <a href="https://wichtelkompass.de/anbieter/wichtelstubchen" target="_blank" rel="noopener">Profil auf Wichtelkompass ↗</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="foot-bottom">
-      <span>© 2026 Maria Bretthauer · Hambergstraße 12, 57074 Siegen</span>
-      <span>SandStube – Indoor-Sand-Erlebnisraum</span>
-    </div>
-  </div>
-</footer>
-
-<script src="assets/app.js" defer></script>
-</body>
-</html>
+</BaseLayout>

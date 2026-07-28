@@ -1,0 +1,122 @@
+# ═══════════════════════════════════════════════════════════════════════
+# Decap CMS Konfiguration – SandStube & Wichtelstübchen
+# ═══════════════════════════════════════════════════════════════════════
+# Dieses File definiert, was Maria unter /admin sehen und bearbeiten kann.
+# Es MUSS mit den Astro Content Collections (src/content.config.ts) und
+# der src/data/site.json übereinstimmen.
+#
+# ⚠️ VOR DEM ERSTEN LOGIN AUSFÜLLEN:
+#   1. repo:            euer GitHub-Repo (owner/name)
+#   2. base_url:        URL eures OAuth-Proxys (z. B. https://auth.euredomain.de)
+#   3. auth_type:       auf "pkce" setzen, falls ihr den Proxy mit PKCE nutzt
+# ═══════════════════════════════════════════════════════════════════════
+
+backend:
+  name: github
+  repo: JPE-Studio/sandstube-wichtelstuebchen   # ← euer Repo anpassen
+  branch: main
+  base_url: https://auth.sandstube-siegen.de     # ← OAuth-Proxy-URL anpassen
+  auth_endpoint: /auth
+
+# Lokaler Entwicklungs-Modus: `npx decap-server` parallel laufen lassen
+local_backend: true
+
+# Medien – Uploads landen in public/images/ und sind unter /images/... erreichbar
+media_folder: "public/images"
+public_folder: "/images"
+
+# Editor-UI auf Deutsch
+locale: de
+
+# ═══════════════════════════════════════════════════════════════════════
+# Sammlungen
+# ═══════════════════════════════════════════════════════════════════════
+collections:
+
+  # ─────────────────────────────────────────────────────────────────────
+  # TEAM – die Betreuer:innen (entspricht src/content/team/*.md)
+  # ─────────────────────────────────────────────────────────────────────
+  - name: "team"
+    label: "Team"
+    label_singular: "Teammitglied"
+    folder: "src/content/team"
+    create: true
+    delete: true
+    extension: "md"
+    format: "frontmatter"
+    summary: "{{name}} – {{rolle}}"
+    sortable_fields: ['reihenfolge', 'name']
+    fields:
+      - { name: "name", label: "Name", widget: "string" }
+      - { name: "rolle", label: "Rolle / Funktion", widget: "string" }
+      - name: "foto"
+        label: "Foto"
+        widget: "image"
+        hint: "Quadratisches Porträt funktioniert am besten."
+      - name: "reihenfolge"
+        label: "Reihenfolge auf der Team-Seite"
+        widget: "number"
+        default: 1
+        value_type: "int"
+        min: 1
+        max: 99
+      - { name: "body", label: "Beschreibungstext", widget: "markdown" }
+
+  # ─────────────────────────────────────────────────────────────────────
+  # ALLGEMEINE EINSTELLUNGEN – Kontakt, Zeiten, Preise
+  # (entspricht src/data/site.json – als "File Collection" gelistet,
+  #  damit Decap die JSON-Felder bearbeitbar macht)
+  # ─────────────────────────────────────────────────────────────────────
+  - name: "einstellungen"
+    label: "Einstellungen"
+    delete: false
+    create: false
+    editor:
+      preview: false
+    files:
+
+      # —— Kontaktdaten & Adress-Infos ——
+      - file: "src/data/site.json"
+        name: "site"
+        label: "Kontakt, Preise & Zeiten"
+        fields:
+          - label: "Kontakt"
+            name: "kontakt"
+            widget: "object"
+            fields:
+              - { name: "email", label: "E-Mail-Adresse", widget: "string" }
+              - { name: "strasse", label: "Straße & Hausnummer", widget: "string" }
+              - { name: "plz_ort", label: "PLZ & Ort", widget: "string" }
+              - { name: "maps_url", label: "Google-Maps-Link", widget: "string" }
+
+          - { name: "inhaberin", label: "Name der Inhaberin", widget: "string" }
+          - { name: "jahr", label: "Jahr (für Copyright)", widget: "string" }
+
+          - label: "Wichtelstübchen – Eckdaten"
+            name: "wichtelstuebchen"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { name: "kinder", label: "Anzahl Kinder", widget: "number", value_type: "int" }
+              - { name: "alter", label: "Altersspanne", widget: "string" }
+              - { name: "zeiten", label: "Betreuungszeiten", widget: "string" }
+              - { name: "anerkennung", label: "Anerkennungs-Hinweis (Fußzeile)", widget: "string" }
+              - { name: "wichtelkompass_url", label: "Wichtelkompass-Profil-URL", widget: "string" }
+
+          - label: "SandStube – Ticket-Optionen"
+            name: "sandstube"
+            widget: "object"
+            collapsed: true
+            fields:
+              - label: "Tickets"
+                name: "tickets"
+                widget: "list"
+                min: 3
+                max: 3
+                label_singular: "Ticket"
+                summary: "{{fields.name}} – {{fields.preis}}"
+                fields:
+                  - { name: "name", label: "Ticket-Name", widget: "string" }
+                  - { name: "preis", label: "Preis (z. B. „25 €“)", widget: "string" }
+                  - { name: "details", label: "Kurzinfo (Personen etc.)", widget: "string" }
+                  - { name: "tidycal_path", label: "TidyCal-Pfad (data-path)", widget: "string" }

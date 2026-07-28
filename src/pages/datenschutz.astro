@@ -1,0 +1,82 @@
+---
+/**
+ * Datenschutzerklärung – rechtliche Pflichtseite.
+ * Original: datenschutz.html (t-hub, noindex)
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import site from '../data/site.json';
+
+const nav = [
+  { href: '/', label: 'Übersicht' },
+  { href: '/sandstube', label: 'SandStube' },
+  { href: '/wichtelstuebchen', label: 'Wichtelstübchen' },
+  { href: '/team', label: 'Team' },
+];
+---
+<BaseLayout
+  title="Datenschutzerklärung – Maria Bretthauer"
+  description="Datenschutzerklärung für SandStube & Wichtelstübchen Siegen – Maria Bretthauer."
+  theme="hub"
+  nav={nav}
+  activeNav="/"
+  noindex
+  brand={{ type: 'svg', svg: 'hub', href: '/', label: 'Maria Bretthauer', sub: 'Siegen · zwei Angebote' }}
+>
+  <section class="hero band--tight">
+    <div class="wrap wrap--narrow center">
+      <span class="kicker">Rechtliches</span>
+      <h1>Datenschutz&shy;erklärung</h1>
+    </div>
+  </section>
+
+  <div class="edge" style="--from:var(--paper);--to:var(--paper-2)"></div>
+
+  <section class="band band--white">
+    <div class="wrap wrap--narrow legal">
+
+      <div class="warn">
+        <strong>⚠️ Platzhalter:</strong> Dies ist eine Vorlage und ersetzt keine individuelle,
+        rechtssichere Datenschutzerklärung. Bitte vor Veröffentlichung durch eine an den
+        tatsächlichen Einsatz (insb. TidyCal, Kontaktwege, ggf. Analyse-Tools) angepasste Version
+        ersetzen.
+      </div>
+
+      <h2>1. Datenschutz auf einen Blick</h2>
+      <p>Der Schutz deiner persönlichen Daten ist uns wichtig. Nachfolgend informieren wir über die Erhebung und Verarbeitung personenbezogener Daten bei einem Besuch dieser Webseite.</p>
+
+      <h2>2. Verantwortliche Stelle</h2>
+      <p>
+        Verantwortlich für die Datenverarbeitung auf dieser Webseite ist:<br />
+        {site.inhaberin}, {site.kontakt.strasse}, {site.kontakt.plz_ort}<br />
+        E-Mail: <a href={`mailto:${site.kontakt.email}`}>{site.kontakt.email}</a>
+      </p>
+
+      <h2>3. Hosting &amp; Server-Logfiles</h2>
+      <p>Beim Aufruf dieser Webseite werden automatisch technische Informationen (z. B. IP-Adresse, Datum und Uhrzeit des Zugriffs, abgerufene Dateien) vom Provider in sogenannten Server-Logfiles erfasst. Diese Daten sind nicht einer bestimmten Person zuzuordnen und dienen der technischen Bereitstellung und Sicherheit.</p>
+
+      <h2>4. Externe Dienste</h2>
+      <p><strong>TidyCal (Buchungs-Widget, nur SandStube):</strong> Für die Online-Buchung der SandStube nutzen wir TidyCal. Wenn du eine Buchung durchführst, werden deine eingegebenen Daten (z. B. Name, E-Mail-Adresse, Buchungsdetails) an den Anbieter von TidyCal übermittelt. Für diese Verarbeitung ist TidyCal eigener Verantwortlicher; es gelten dessen Datenschutzbestimmungen.</p>
+      <p><strong>Wichtelkompass (Platzanfrage Tagespflege):</strong> Die Anfrage eines Betreuungsplatzes erfolgt über das Profil auf wichtelkompass.de. Dort gelten die Datenschutzbestimmungen des Wichtelkompass-Betreibers.</p>
+      <p><strong>Schriftarten (Google Fonts):</strong> Diese Webseite bindet Schriften von Google Fonts ein. Dabei kann Google Kenntnis von deiner IP-Adresse erlangen. Näheres in der Datenschutzerklärung von Google.</p>
+
+      <h2>5. Kontakt zu uns</h2>
+      <p>Wenn du uns per E-Mail oder über verlinkte externe Dienste kontaktierst, werden die von dir übermittelten Daten zwecks Bearbeitung deiner Anfrage gespeichert.</p>
+
+      <h2>6. Deine Rechte</h2>
+      <p>Du hast jederzeit das Recht auf:</p>
+      <ul>
+        <li>Auskunft über deine gespeicherten Daten (Art. 15 DSGVO)</li>
+        <li>Berichtigung unrichtiger Daten (Art. 16 DSGVO)</li>
+        <li>Löschung deiner Daten (Art. 17 DSGVO)</li>
+        <li>Einschränkung der Verarbeitung (Art. 18 DSGVO)</li>
+        <li>Datenübertragbarkeit (Art. 20 DSGVO)</li>
+        <li>Widerspruch gegen die Verarbeitung (Art. 21 DSGVO)</li>
+      </ul>
+      <p>Zudem steht dir ein Beschwerderecht bei der zuständigen Aufsichtsbehörde zu.</p>
+
+      <h2>7. Speicherdauer</h2>
+      <p>Personenbezogene Daten werden gelöscht, sobald der Zweck der Speicherung entfällt oder gesetzliche Aufbewahrungsfristen ablaufen.</p>
+
+    </div>
+  </section>
+</BaseLayout>
