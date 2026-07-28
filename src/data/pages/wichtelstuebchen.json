@@ -1,0 +1,120 @@
+{
+  "seo": {
+    "titel": "Wichtelstübchen – Kindertagespflege Siegen | Maria Bretthauer"
+  },
+  "topstrip": {
+    "hinweis": "Nicht verwechseln:",
+    "text": "Du möchtest mit deinem Kind ein paar **Stunden im Sand** spielen?",
+    "link": "Hier geht es zur SandStube →"
+  },
+  "hero": {
+    "kicker": "Kindertagespflege in Siegen",
+    "ueberschrift": "Neun kleine Wichtel, ein großes **Zuhause**.",
+    "text": "Herzlich willkommen! Wir betreuen neun Kinder zwischen 0 und 3 Jahren in einer von der Stadt Siegen anerkannten Kindertagespflegestelle (§43 SGB VIII) – mit vertrautem Rhythmus, festen Bezugspersonen und viel Zeit zum Ankommen.",
+    "button_anfrage": "Platz anfragen",
+    "button_tag": "Unser Tag",
+    "bild": "/images/raum-spielraum.jpg",
+    "bild_alt": "Heller Spielraum im Wichtelstübchen"
+  },
+  "fakten": {
+    "kicker": "Auf einen Blick",
+    "ueberschrift": "Unsere Gruppe",
+    "hinweis": "Braucht ihr andere Zeiten? Sprecht uns gerne an – wir finden eine Lösung."
+  },
+  "raeume": {
+    "kicker": "Unsere Räume",
+    "ueberschrift": "Liebevoll eingerichtet",
+    "text": "Spielzimmer, Schlafzimmer, Küche, kreative Zone, Bad und Garten – vielfältige Orte zum Spielen, Entdecken und Ausruhen.",
+    "bilder": [
+      { "bild": "/images/raum-spielraum.jpg", "alt": "Spielzimmer" },
+      { "bild": "/images/raum-leseecke.jpg", "alt": "Leseecke und Spielbereich" },
+      { "bild": "/images/raum-kueche-kreativ.jpg", "alt": "Küche und kreative Zone" },
+      { "bild": "/images/raum-titelbild.jpg", "alt": "Raum im Wichtelstübchen" },
+      { "bild": "/images/raum-foto2.jpg", "alt": "Spielbereich" },
+      { "bild": "/images/garten-sandbereich.webp", "alt": "Garten mit Sandbereich" }
+    ]
+  },
+  "tagesablauf": {
+    "kicker": "Jeder Tag gefüllt mit Leben",
+    "ueberschrift": "Unser Tagesablauf",
+    "text": "Ein vertrauter Rhythmus gibt den Kindern Sicherheit und Geborgenheit.",
+    "zeilen": [
+      {
+        "von": "6.45",
+        "bis": "8.00",
+        "titel": "Ankunft der Wichtel",
+        "text": "Sanftes Ankommen, in Ruhe verabschieden und freies Spielen."
+      },
+      {
+        "von": "8.00",
+        "bis": "11.00",
+        "titel": "Vormittag",
+        "text": "Gemeinsames Frühstück, Morgenkreis, Freispiel, Gartenzeit und pädagogische Angebote."
+      },
+      {
+        "von": "11.00",
+        "bis": "14.15",
+        "titel": "Mittag",
+        "text": "Wir bereiten das Mittagessen gemeinsam zu und essen zusammen – danach Mittagsschlaf."
+      },
+      {
+        "von": "14.15",
+        "bis": "15.15",
+        "titel": "Nachmittag & Abholung",
+        "text": "Gemeinsamer Snack, Freispiel und Abholung."
+      }
+    ],
+    "zitat": "„Kleine Wichtel schlafen immer dann, wenn sie müde sind.“"
+  },
+  "eingewoehnung": {
+    "kicker": "Sanftes Ankommen",
+    "ueberschrift": "Die Eingewöhnung",
+    "text": "Eine gute Eingewöhnung verspricht viele schöne und glückliche Tage im Kreis neuer Freunde. Die Dauer gestalten wir individuell und immer in Rücksprache mit euch.",
+    "punkte": [
+      "Das Wohl eures Kindes steht im Vordergrund",
+      "Individuelle Dauer – gemeinsam mit euch bestimmt",
+      "Wenn möglich: zusätzliche Krabbelgruppe zum Kennenlernen",
+      "Neue Eltern und Wichtel lernen uns in Ruhe kennen"
+    ],
+    "bild": "/images/raum-leseecke.jpg",
+    "bild_alt": "Ruhiger Rückzugsort für die Eingewöhnung"
+  },
+  "kosten": {
+    "kicker": "Transparente Kosten",
+    "ueberschrift": "Was die Betreuung kostet",
+    "verpflegung": {
+      "titel": "Verpflegung",
+      "preis": "95 €",
+      "einheit": "pro Monat",
+      "text": "Für Frühstück, das gemeinsame Mittagessen und den Nachmittags-Snack – frisch zubereitet."
+    },
+    "beitrag": {
+      "titel": "Betreuungsbeitrag",
+      "preis": "nach Einkommen",
+      "einheit": "pauschalisierte Kostenbeteiligung",
+      "text": "Es gilt die pauschalisierte Kostenbeteiligung der Stadt Siegen – vergleichbar mit dem Kindergarten. Die Tabelle findet ihr auf der [Website der Stadt Siegen ↗](https://www.siegen.de/)."
+    },
+    "hinweis": {
+      "titel": "Ihr wohnt nicht in Siegen?",
+      "text": "Eure Arbeitsstelle ist in Siegen, aber euer Wohnort nicht? Wir arbeiten auch mit den nahe gelegenen Kreisen zusammen. Sprecht uns an – wir prüfen gemeinsam, ob wir euer Kind betreuen können."
+    }
+  },
+  "team": {
+    "kicker": "Wer betreut dein Kind?",
+    "ueberschrift": "Unser Team",
+    "text": "Maria Bretthauer, Alexander Tewes und Zerina Muran begleiten die kleinen Wichtel mit Erfahrung und Herz. Lernt die Menschen kennen, die jeden Tag für eure Kinder da sind.",
+    "button": "Alle Teammitglieder ansehen",
+    "bild": "/images/team-maria.jpg",
+    "bild_alt": "Maria Bretthauer"
+  },
+  "anfrage": {
+    "kicker": "Betreuungsplatz anfragen",
+    "ueberschrift": "Ein Platz im Wichtelstübchen",
+    "text": "Die Platzanfrage läuft separat über unser Profil beim Wichtelkompass. Klickt euch durch, meldet euch – wir freuen uns auf euch und euer Kind!",
+    "button": "Zum Wichtelkompass-Profil",
+    "hinweis": {
+      "titel": "Zwei Angebote, zwei Wege",
+      "text": "Wichtelstübchen (Kindertagespflege) und SandStube (Erlebnisraum für Kinder & Eltern) sind komplett getrennte Angebote. Für ein paar Stunden im Sand geht es bitte zur [SandStube-Buchung](/sandstube#buchen)."
+    }
+  }
+}

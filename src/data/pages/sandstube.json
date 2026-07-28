@@ -1,0 +1,162 @@
+{
+  "seo": {
+    "titel": "SandStube Siegen – Indoor-Sand-Erlebnisraum & Kindergeburtstag",
+    "beschreibung": "Die SandStube in Siegen: ein Indoor-Sand-Erlebnisraum für Kinder (erste Schritte bis ca. 6 Jahre) & Eltern. SPÜREN–STAUNEN–SPIELEN. Drei Ticket-Optionen, ideal für Kindergeburtstage."
+  },
+  "topstrip": {
+    "hinweis": "Nicht verwechseln:",
+    "text": "Du suchst einen **Betreuungsplatz** für dein Kind?",
+    "link": "Hier geht es zum Wichtelstübchen →"
+  },
+  "hero": {
+    "kicker": "Ein Indoor-Erlebnisraum in Siegen",
+    "ueberschrift": "Feiner Sand,\nder durch kleine **Hände** rieselt.",
+    "motto": "Spüren · Staunen · Spielen",
+    "text": "Ein Ort für Kinder ab den ersten Schritten bis ca. 6 Jahre und ihre Eltern. Ihr bucht ein Zeitfenster von drei Stunden – und dann gehört die SandStube ganz euch.",
+    "button_buchen": "Termin buchen",
+    "button_preise": "Preise ansehen",
+    "bild": "/images/sandstube-4.webp",
+    "bild_alt": "Kind legt bunte Glassteine auf eine gebastelte Schildkröte in der SandStube"
+  },
+  "saison": {
+    "anzeigen": true,
+    "text": "☀️&nbsp; Wir sind gerade in der **Sommerpause** – Anfragen für Kindergeburtstage nehmen wir trotzdem gerne entgegen."
+  },
+  "schritte": {
+    "kicker": "So läuft ein Besuch ab",
+    "ueberschrift": "Drei Stunden, drei Wörter",
+    "eintraege": [
+      {
+        "wort": "Spüren",
+        "titel": "Ankommen & barfuß los",
+        "text": "Eine kurze Begrüßung, dann gehört der Raum euch. Sand zwischen den Zehen, kühl und warm, grob und ganz fein."
+      },
+      {
+        "wort": "Staunen",
+        "titel": "Töpfe, Kellen, Glitzersteine",
+        "text": "Große Sandschüsseln, zahllose Gefäße und Alltagsgegenstände laden zum Schütten, Sieben und Vergleichen ein."
+      },
+      {
+        "wort": "Spielen",
+        "titel": "So lange, wie ihr mögt",
+        "text": "Die Kinder bestimmen selbst, wann sie genug haben – innerhalb ihres Zeitfensters. Ihr habt derweil Zeit zum Durchatmen."
+      }
+    ]
+  },
+  "erlebnis": {
+    "kicker": "So viel mehr als „nur“ Sand",
+    "ueberschrift": "Zeit zum Spielen – Zeit zum Forschen",
+    "text": "Kinder brauchen keine Anleitung, um zu lernen. Sie brauchen Material, Zeit und jemanden, der ihnen zuschaut. Genau dafür gibt es die SandStube.",
+    "punkte": [
+      "Kurze Begrüßung, danach gehört die SandStube euch",
+      "Zeit für Eltern, während die Kinder entdecken",
+      "Unser Sand ist ungiftig, wird regelmäßig gesiebt und bei Bedarf ausgetauscht",
+      "Zeitfenster von jeweils 3 Stunden"
+    ],
+    "zitat": "„Gib deinem Kind Zeit zum Spielen! Denn das Spiel ist die höchste Form des Forschens.“",
+    "bild": "/images/sandstube-1.webp",
+    "bild_alt": "Spielfläche in der SandStube"
+  },
+  "tickets": {
+    "kicker": "Drei Ticket-Optionen",
+    "ueberschrift": "Wählt euer Erlebnis",
+    "text": "Jedes Ticket gilt für ein Zeitfenster von 3 Stunden. Entscheidet selbst, ob ihr den Raum teilt oder ganz für euch habt.",
+    "einheit": "pro Zeitfenster · 3 Stunden",
+    "beschreibungen": [
+      {
+        "text": "Ihr teilt euch den Raum mit einer weiteren Gruppe – ideal zum unverbindlichen Ausprobieren und um neue Leute kennenzulernen.",
+        "punkte": [
+          "1–2 Erwachsene",
+          "max. 3 Kinder",
+          "Zwei Gruppen gleichzeitig im Raum"
+        ]
+      },
+      {
+        "text": "Der Raum gehört ganz euch. Die Gruppengröße bestimmt ihr selbst – perfekt, wenn die Kinder in Ruhe spielen wollen.",
+        "punkte": [
+          "bis zu 4 Erwachsene",
+          "max. 8 Kinder",
+          "Exklusive Nutzung"
+        ]
+      },
+      {
+        "text": "Das Erlebnis-Paket: zusätzlich eine Spiel-Station und Material für selbst gestaltete Schlüsselanhänger zum Mitnehmen.",
+        "punkte": [
+          "Alle Inhalte von „Ganzer Raum“",
+          "+ Spiel-Station",
+          "+ Bastelmaterial für Schlüsselanhänger"
+        ]
+      }
+    ],
+    "hervorhebung": "Für Geburtstage",
+    "button": "Buchen",
+    "tipp": "💡 Tipp: Wenn dein Kind empfindlich auf fremde Kinder reagiert, bucht lieber den ganzen Raum."
+  },
+  "galerie": {
+    "kicker": "Eindrücke",
+    "ueberschrift": "Schaut herein",
+    "bilder": [
+      {
+        "bild": "/images/sandstube-4.webp",
+        "alt": "Kind spielt mit Glassteinen in der SandStube"
+      },
+      {
+        "bild": "/images/sandstube-main.webp",
+        "alt": "Gemütlicher Raum der SandStube"
+      },
+      {
+        "bild": "/images/garten-sandbereich.webp",
+        "alt": "Außenbereich mit Sand"
+      },
+      {
+        "bild": "/images/sandstube-3.webp",
+        "alt": "Spielbereich in der SandStube"
+      },
+      {
+        "bild": "/images/sandstube-1.webp",
+        "alt": "Spielfläche mit Material"
+      }
+    ]
+  },
+  "bedingungen": {
+    "kicker": "Gut zu wissen",
+    "ueberschrift": "Buchungsbedingungen",
+    "karten": [
+      {
+        "titel": "Stornierung",
+        "text": "Absagen sind bis **mindestens 24 Stunden vorher** möglich – der Termin kann dann nachgeholt werden."
+      },
+      {
+        "titel": "Kurzfristige Absage",
+        "text": "Bei kürzerer Frist kann der Termin an Freunde abgetreten werden. Erstattung oder Umbuchung sind dann leider ausgeschlossen."
+      },
+      {
+        "titel": "Zeitfenster",
+        "text": "Jedes Ticket gilt für **3 Stunden**. Ihr entscheidet selbst, wann die Kinder genug haben."
+      },
+      {
+        "titel": "Alter",
+        "text": "Für Kinder **ab den ersten Schritten bis ca. 6 Jahre** – gemeinsam mit ihren Eltern."
+      }
+    ]
+  },
+  "buchung": {
+    "kicker": "Termin buchen",
+    "ueberschrift": "Sichert euch euer **Zeitfenster**",
+    "text": "Wählt direkt das passende Ticket und bucht euren Wunschtermin online. Jedes Zeitfenster beträgt 3 Stunden.",
+    "hinweis_technik": "Ihr seht die Kalender nicht? Stellt sicher, dass ihr online seid – die Widgets werden live von TidyCal geladen. Bei Fragen schreibt an",
+    "trennung": {
+      "titel": "Zwei Angebote, zwei Wege",
+      "text": "Die **SandStube** (Erlebnisraum, online buchbar) und das **Wichtelstübchen** (Kindertagespflege) sind komplett getrennte Angebote. Für einen Betreuungsplatz geht es bitte zum [Wichtelstübchen](/wichtelstuebchen)."
+    }
+  },
+  "kontakt": {
+    "kicker": "Anfahrt & Kontakt",
+    "ueberschrift": "Wo ihr uns findet",
+    "text": "Die SandStube befindet sich in Siegen.",
+    "adresse_titel": "📍 Adresse",
+    "adresse_link": "Auf Google Maps ansehen ↗",
+    "kontakt_titel": "✉️ Kontakt",
+    "kontakt_text": "Fragen zu Terminen oder Kindergeburtstagen?"
+  }
+}

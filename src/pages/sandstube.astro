@@ -1,13 +1,15 @@
 ---
 /**
  * SandStube-Seite – Indoor-Sand-Erlebnisraum.
- * Original: sandstube.html (t-sand)
  *
- * Die Ticket-Preise und TidyCal-Pfade werden aus src/data/site.json
- * gezogen, damit Maria sie im CMS ändern kann.
+ * Texte und Bilder kommen aus src/data/pages/sandstube.json,
+ * Ticketnamen, Preise und TidyCal-Pfade aus src/data/site.json –
+ * beides über Decap CMS pflegbar.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { heading, rich } from '../lib/text';
 import site from '../data/site.json';
+import page from '../data/pages/sandstube.json';
 
 const nav = [
   { href: '/', label: 'Übersicht' },
@@ -18,19 +20,28 @@ const nav = [
   { href: '#buchen', label: 'Termin buchen', cta: true, accent: true },
 ];
 
-const [ticketHalb, ticketGanz, ticketEntdecker] = site.sandstube.tickets;
+const { hero, saison, schritte, erlebnis, tickets, galerie, bedingungen, buchung, kontakt } = page;
+
+// Preise/Namen (site.json) mit Beschreibungen (sandstube.json) zusammenführen.
+// Die dritte Karte ist die hervorgehobene Geburtstags-Variante.
+const ticketKarten = site.sandstube.tickets.map((ticket, i) => ({
+  ...ticket,
+  ...tickets.beschreibungen[i],
+  star: i === 2,
+  btn: ['btn btn--ghost', 'btn', 'btn btn--accent'][i],
+}));
 ---
 <BaseLayout
-  title="SandStube Siegen – Indoor-Sand-Erlebnisraum & Kindergeburtstag"
-  description="Die SandStube in Siegen: ein Indoor-Sand-Erlebnisraum für Kinder (erste Schritte bis ca. 6 Jahre) & Eltern. SPÜREN–STAUNEN–SPIELEN. Drei Ticket-Optionen, ideal für Kindergeburtstage."
+  title={page.seo.titel}
+  description={page.seo.beschreibung}
   theme="sand"
   nav={nav}
   activeNav="/sandstube"
   brand={{ type: 'svg', svg: 'sand', href: '/sandstube', label: 'SandStube', sub: 'Erlebnisraum · Siegen' }}
   topstrip={{
-    emphasis: 'Nicht verwechseln:',
-    text: 'Du suchst einen <strong>Betreuungsplatz</strong> für dein Kind?',
-    link: { href: '/wichtelstuebchen', label: 'Hier geht es zum Wichtelstübchen →' },
+    emphasis: page.topstrip.hinweis,
+    text: rich(page.topstrip.text),
+    link: { href: '/wichtelstuebchen', label: page.topstrip.link },
   }}
   footerNote="SandStube – Indoor-Sand-Erlebnisraum"
 >
@@ -40,27 +51,26 @@ const [ticketHalb, ticketGanz, ticketEntdecker] = site.sandstube.tickets;
     <div class="wrap">
       <div class="hero-grid">
         <div>
-          <span class="kicker" data-reveal>Ein Indoor-Erlebnisraum in Siegen</span>
-          <h1 data-reveal style="--d:80ms">Feiner Sand,<br />der durch kleine <span class="mark">Hände</span> rieselt.</h1>
-          <p class="motto" data-reveal style="--d:150ms">Spüren · Staunen · Spielen</p>
-          <p class="lead" data-reveal style="--d:210ms">
-            Ein Ort für Kinder ab den ersten Schritten bis ca. 6 Jahre und ihre Eltern.
-            Ihr bucht ein Zeitfenster von drei Stunden – und dann gehört die SandStube ganz euch.
-          </p>
+          <span class="kicker" data-reveal>{hero.kicker}</span>
+          <h1 data-reveal style="--d:80ms" set:html={heading(hero.ueberschrift)} />
+          <p class="motto" data-reveal style="--d:150ms">{hero.motto}</p>
+          <p class="lead" data-reveal style="--d:210ms" set:html={rich(hero.text)} />
           <div class="btn-row" data-reveal style="--d:300ms">
-            <a href="#buchen" class="btn btn--accent btn--lg">Termin buchen</a>
-            <a href="#tickets" class="btn btn--ghost btn--lg">Preise ansehen</a>
+            <a href="#buchen" class="btn btn--accent btn--lg">{hero.button_buchen}</a>
+            <a href="#tickets" class="btn btn--ghost btn--lg">{hero.button_preise}</a>
           </div>
         </div>
 
         <div class="frame frame--blob" data-reveal style="--d:240ms">
-          <img src="/images/sandstube-4.webp" alt="Kind legt bunte Glassteine auf eine gebastelte Schildkröte in der SandStube" width="900" height="675" />
+          <img src={hero.bild} alt={hero.bild_alt} width="900" height="675" />
         </div>
       </div>
 
-      <div class="mt-l" data-reveal>
-        <p class="season">☀️&nbsp; Wir sind gerade in der <b>Sommerpause</b> – Anfragen für Kindergeburtstage nehmen wir trotzdem gerne entgegen.</p>
-      </div>
+      {saison.anzeigen && (
+        <div class="mt-l" data-reveal>
+          <p class="season" set:html={rich(saison.text)} />
+        </div>
+      )}
     </div>
   </section>
 
@@ -70,26 +80,18 @@ const [ticketHalb, ticketGanz, ticketEntdecker] = site.sandstube.tickets;
   <section class="band band--white">
     <div class="wrap">
       <div class="head">
-        <span class="kicker" data-reveal>So läuft ein Besuch ab</span>
-        <h2 data-reveal style="--d:60ms">Drei Stunden, drei Wörter</h2>
+        <span class="kicker" data-reveal>{schritte.kicker}</span>
+        <h2 data-reveal style="--d:60ms" set:html={heading(schritte.ueberschrift)} />
       </div>
 
       <div class="steps">
-        <article class="step" data-reveal>
-          <b>Spüren</b>
-          <h3>Ankommen &amp; barfuß los</h3>
-          <p>Eine kurze Begrüßung, dann gehört der Raum euch. Sand zwischen den Zehen, kühl und warm, grob und ganz fein.</p>
-        </article>
-        <article class="step" data-reveal>
-          <b>Staunen</b>
-          <h3>Töpfe, Kellen, Glitzersteine</h3>
-          <p>Große Sandschüsseln, zahllose Gefäße und Alltagsgegenstände laden zum Schütten, Sieben und Vergleichen ein.</p>
-        </article>
-        <article class="step" data-reveal>
-          <b>Spielen</b>
-          <h3>So lange, wie ihr mögt</h3>
-          <p>Die Kinder bestimmen selbst, wann sie genug haben – innerhalb ihres Zeitfensters. Ihr habt derweil Zeit zum Durchatmen.</p>
-        </article>
+        {schritte.eintraege.map((schritt) => (
+          <article class="step" data-reveal>
+            <b>{schritt.wort}</b>
+            <h3>{schritt.titel}</h3>
+            <p set:html={rich(schritt.text)} />
+          </article>
+        ))}
       </div>
     </div>
   </section>
@@ -101,23 +103,17 @@ const [ticketHalb, ticketGanz, ticketEntdecker] = site.sandstube.tickets;
     <div class="wrap">
       <div class="split split--flip">
         <div class="split-media frame" data-reveal>
-          <img src="/images/sandstube-1.webp" alt="Spielfläche in der SandStube" loading="lazy" />
+          <img src={erlebnis.bild} alt={erlebnis.bild_alt} loading="lazy" />
         </div>
         <div class="split-text" data-reveal style="--d:120ms">
-          <span class="kicker">So viel mehr als „nur“ Sand</span>
-          <h2>Zeit zum Spielen – Zeit zum Forschen</h2>
-          <p>
-            Kinder brauchen keine Anleitung, um zu lernen. Sie brauchen Material, Zeit und jemanden,
-            der ihnen zuschaut. Genau dafür gibt es die SandStube.
-          </p>
+          <span class="kicker">{erlebnis.kicker}</span>
+          <h2 set:html={heading(erlebnis.ueberschrift)} />
+          <p set:html={rich(erlebnis.text)} />
           <ul class="ticks">
-            <li>Kurze Begrüßung, danach gehört die SandStube euch</li>
-            <li>Zeit für Eltern, während die Kinder entdecken</li>
-            <li>Unser Sand ist ungiftig, wird regelmäßig gesiebt und bei Bedarf ausgetauscht</li>
-            <li>Zeitfenster von jeweils 3 Stunden</li>
+            {erlebnis.punkte.map((punkt) => <li set:html={rich(punkt)} />)}
           </ul>
           <p style="font-family:var(--font-hand);font-size:1.55rem;line-height:1.35;color:var(--accent)">
-            „Gib deinem Kind Zeit zum Spielen! Denn das Spiel ist die höchste Form des Forschens.“
+            {erlebnis.zitat}
           </p>
         </div>
       </div>
@@ -130,58 +126,27 @@ const [ticketHalb, ticketGanz, ticketEntdecker] = site.sandstube.tickets;
   <section class="band band--paper" id="tickets">
     <div class="wrap">
       <div class="head">
-        <span class="kicker" data-reveal>Drei Ticket-Optionen</span>
-        <h2 data-reveal style="--d:60ms">Wählt euer Erlebnis</h2>
-        <p class="lead" data-reveal style="--d:140ms">
-          Jedes Ticket gilt für ein Zeitfenster von 3 Stunden. Entscheidet selbst, ob ihr den Raum
-          teilt oder ganz für euch habt.
-        </p>
+        <span class="kicker" data-reveal>{tickets.kicker}</span>
+        <h2 data-reveal style="--d:60ms" set:html={heading(tickets.ueberschrift)} />
+        <p class="lead" data-reveal style="--d:140ms" set:html={rich(tickets.text)} />
       </div>
 
       <div class="cards cards--3">
-
-        <article class="ticket" data-reveal>
-          <h3>{ticketHalb.name}</h3>
-          <div class="price">{ticketHalb.preis}<small>pro Zeitfenster · 3 Stunden</small></div>
-          <p>Ihr teilt euch den Raum mit einer weiteren Gruppe – ideal zum unverbindlichen Ausprobieren und um neue Leute kennenzulernen.</p>
-          <ul class="ticks">
-            <li>1–2 Erwachsene</li>
-            <li>max. 3 Kinder</li>
-            <li>Zwei Gruppen gleichzeitig im Raum</li>
-          </ul>
-          <a href="#buchen" class="btn btn--ghost btn--full">Buchen</a>
-        </article>
-
-        <article class="ticket" data-reveal>
-          <h3>{ticketGanz.name}</h3>
-          <div class="price">{ticketGanz.preis}<small>pro Zeitfenster · 3 Stunden</small></div>
-          <p>Der Raum gehört ganz euch. Die Gruppengröße bestimmt ihr selbst – perfekt, wenn die Kinder in Ruhe spielen wollen.</p>
-          <ul class="ticks">
-            <li>bis zu 4 Erwachsene</li>
-            <li>max. 8 Kinder</li>
-            <li>Exklusive Nutzung</li>
-          </ul>
-          <a href="#buchen" class="btn btn--full">Buchen</a>
-        </article>
-
-        <article class="ticket ticket--star" data-reveal>
-          <span class="ticket-flag">Für Geburtstage</span>
-          <h3>{ticketEntdecker.name}</h3>
-          <div class="price">{ticketEntdecker.preis}<small>pro Zeitfenster · 3 Stunden</small></div>
-          <p>Das Erlebnis-Paket: zusätzlich eine Spiel-Station und Material für selbst gestaltete Schlüsselanhänger zum Mitnehmen.</p>
-          <ul class="ticks ticks--star">
-            <li>Alle Inhalte von „Ganzer Raum“</li>
-            <li>+ Spiel-Station</li>
-            <li>+ Bastelmaterial für Schlüsselanhänger</li>
-          </ul>
-          <a href="#buchen" class="btn btn--accent btn--full">Buchen</a>
-        </article>
-
+        {ticketKarten.map((karte) => (
+          <article class={karte.star ? 'ticket ticket--star' : 'ticket'} data-reveal>
+            {karte.star && <span class="ticket-flag">{tickets.hervorhebung}</span>}
+            <h3>{karte.name}</h3>
+            <div class="price">{karte.preis}<small>{tickets.einheit}</small></div>
+            <p set:html={rich(karte.text)} />
+            <ul class={karte.star ? 'ticks ticks--star' : 'ticks'}>
+              {karte.punkte.map((punkt) => <li set:html={rich(punkt)} />)}
+            </ul>
+            <a href="#buchen" class={`${karte.btn} btn--full`}>{tickets.button}</a>
+          </article>
+        ))}
       </div>
 
-      <p class="center muted mt-l" data-reveal>
-        💡 Tipp: Wenn dein Kind empfindlich auf fremde Kinder reagiert, bucht lieber den ganzen Raum.
-      </p>
+      <p class="center muted mt-l" data-reveal set:html={rich(tickets.tipp)} />
     </div>
   </section>
 
@@ -191,15 +156,13 @@ const [ticketHalb, ticketGanz, ticketEntdecker] = site.sandstube.tickets;
   <section class="band band--white" id="galerie">
     <div class="wrap">
       <div class="head">
-        <span class="kicker" data-reveal>Eindrücke</span>
-        <h2 data-reveal style="--d:60ms">Schaut herein</h2>
+        <span class="kicker" data-reveal>{galerie.kicker}</span>
+        <h2 data-reveal style="--d:60ms" set:html={heading(galerie.ueberschrift)} />
       </div>
       <div class="gal">
-        <figure data-reveal><img src="/images/sandstube-4.webp" alt="Kind spielt mit Glassteinen in der SandStube" loading="lazy" /></figure>
-        <figure data-reveal><img src="/images/sandstube-main.webp" alt="Gemütlicher Raum der SandStube" loading="lazy" /></figure>
-        <figure data-reveal><img src="/images/garten-sandbereich.webp" alt="Außenbereich mit Sand" loading="lazy" /></figure>
-        <figure data-reveal><img src="/images/sandstube-3.webp" alt="Spielbereich in der SandStube" loading="lazy" /></figure>
-        <figure data-reveal><img src="/images/sandstube-1.webp" alt="Spielfläche mit Material" loading="lazy" /></figure>
+        {galerie.bilder.map((eintrag) => (
+          <figure data-reveal><img src={eintrag.bild} alt={eintrag.alt} loading="lazy" /></figure>
+        ))}
       </div>
     </div>
   </section>
@@ -210,27 +173,17 @@ const [ticketHalb, ticketGanz, ticketEntdecker] = site.sandstube.tickets;
   <section class="band band--tint">
     <div class="wrap wrap--mid">
       <div class="head">
-        <span class="kicker" data-reveal>Gut zu wissen</span>
-        <h2 data-reveal style="--d:60ms">Buchungsbedingungen</h2>
+        <span class="kicker" data-reveal>{bedingungen.kicker}</span>
+        <h2 data-reveal style="--d:60ms" set:html={heading(bedingungen.ueberschrift)} />
       </div>
 
       <div class="cards cards--2">
-        <article class="card" data-reveal>
-          <h3>Stornierung</h3>
-          <p>Absagen sind bis <strong>mindestens 24 Stunden vorher</strong> möglich – der Termin kann dann nachgeholt werden.</p>
-        </article>
-        <article class="card" data-reveal>
-          <h3>Kurzfristige Absage</h3>
-          <p>Bei kürzerer Frist kann der Termin an Freunde abgetreten werden. Erstattung oder Umbuchung sind dann leider ausgeschlossen.</p>
-        </article>
-        <article class="card" data-reveal>
-          <h3>Zeitfenster</h3>
-          <p>Jedes Ticket gilt für <strong>3 Stunden</strong>. Ihr entscheidet selbst, wann die Kinder genug haben.</p>
-        </article>
-        <article class="card" data-reveal>
-          <h3>Alter</h3>
-          <p>Für Kinder <strong>ab den ersten Schritten bis ca. 6 Jahre</strong> – gemeinsam mit ihren Eltern.</p>
-        </article>
+        {bedingungen.karten.map((karte) => (
+          <article class="card" data-reveal>
+            <h3>{karte.titel}</h3>
+            <p set:html={rich(karte.text)} />
+          </article>
+        ))}
       </div>
     </div>
   </section>
@@ -241,66 +194,36 @@ const [ticketHalb, ticketGanz, ticketEntdecker] = site.sandstube.tickets;
   <section class="band band--paper" id="buchen">
     <div class="wrap">
       <div class="head">
-        <span class="kicker" data-reveal>Termin buchen</span>
-        <h2 data-reveal style="--d:60ms">Sichert euch euer <span class="mark">Zeitfenster</span></h2>
-        <p class="lead" data-reveal style="--d:140ms">
-          Wählt direkt das passende Ticket und bucht euren Wunschtermin online. Jedes Zeitfenster beträgt 3 Stunden.
-        </p>
+        <span class="kicker" data-reveal>{buchung.kicker}</span>
+        <h2 data-reveal style="--d:60ms" set:html={heading(buchung.ueberschrift)} />
+        <p class="lead" data-reveal style="--d:140ms" set:html={rich(buchung.text)} />
       </div>
 
       <div class="slots">
-
-        <div class="slot" data-reveal>
-          <div class="slot-head">
-            <h3>{ticketHalb.name}</h3>
-            <div class="p">{ticketHalb.preis}</div>
-            <div class="s">{ticketHalb.details}</div>
+        {ticketKarten.map((karte) => (
+          <div class="slot" data-reveal>
+            <div class="slot-head">
+              <h3>{karte.name}</h3>
+              <div class="p">{karte.preis}</div>
+              <div class="s">{karte.details}</div>
+            </div>
+            <div class="slot-body">
+              <div class="tidycal-embed" data-path={karte.tidycal_path}></div>
+            </div>
           </div>
-          <div class="slot-body">
-            <div class="tidycal-embed" data-path={ticketHalb.tidycal_path}></div>
-          </div>
-        </div>
-
-        <div class="slot" data-reveal>
-          <div class="slot-head">
-            <h3>{ticketGanz.name}</h3>
-            <div class="p">{ticketGanz.preis}</div>
-            <div class="s">{ticketGanz.details}</div>
-          </div>
-          <div class="slot-body">
-            <div class="tidycal-embed" data-path={ticketGanz.tidycal_path}></div>
-          </div>
-        </div>
-
-        <div class="slot" data-reveal>
-          <div class="slot-head">
-            <h3>{ticketEntdecker.name}</h3>
-            <div class="p">{ticketEntdecker.preis}</div>
-            <div class="s">{ticketEntdecker.details}</div>
-          </div>
-          <div class="slot-body">
-            <div class="tidycal-embed" data-path={ticketEntdecker.tidycal_path}></div>
-          </div>
-        </div>
-
+        ))}
       </div>
 
       <script src="https://asset-tidycal.b-cdn.net/js/embed.js" async></script>
 
       <p class="center muted mt-m" style="max-width:660px;margin-inline:auto">
-        Ihr seht die Kalender nicht? Stellt sicher, dass ihr online seid – die Widgets werden live von
-        TidyCal geladen. Bei Fragen schreibt an
-        <a href={`mailto:${site.kontakt.email}`} style="color:var(--b-800);text-decoration:underline;font-weight:800">{site.kontakt.email}</a>.
+        <Fragment set:html={rich(buchung.hinweis_technik)} />
+        <a href={`mailto:${site.kontakt.email}`}>{site.kontakt.email}</a>.
       </p>
 
       <div class="note mt-l" data-reveal>
-        <h3>Zwei Angebote, zwei Wege</h3>
-        <p>
-          Die <strong>SandStube</strong> (Erlebnisraum, online buchbar) und das
-          <strong>Wichtelstübchen</strong> (Kindertagespflege) sind komplett getrennte Angebote.
-          Für einen Betreuungsplatz geht es bitte zum
-          <a href="/wichtelstuebchen">Wichtelstübchen</a>.
-        </p>
+        <h3>{buchung.trennung.titel}</h3>
+        <p set:html={rich(buchung.trennung.text)} />
       </div>
     </div>
   </section>
@@ -309,21 +232,21 @@ const [ticketHalb, ticketGanz, ticketEntdecker] = site.sandstube.tickets;
   <section class="band band--deep">
     <div class="wrap">
       <div class="head">
-        <span class="kicker" data-reveal>Anfahrt &amp; Kontakt</span>
-        <h2 data-reveal style="--d:60ms">Wo ihr uns findet</h2>
-        <p class="lead" data-reveal style="--d:140ms">Die SandStube befindet sich in Siegen.</p>
+        <span class="kicker" data-reveal>{kontakt.kicker}</span>
+        <h2 data-reveal style="--d:60ms" set:html={heading(kontakt.ueberschrift)} />
+        <p class="lead" data-reveal style="--d:140ms" set:html={rich(kontakt.text)} />
       </div>
 
       <div class="contact">
         <div class="contact-card" data-reveal>
-          <h3>📍 Adresse</h3>
+          <h3>{kontakt.adresse_titel}</h3>
           <p>{site.kontakt.strasse}</p>
           <p>{site.kontakt.plz_ort}</p>
-          <p class="mt-s"><a href={site.kontakt.maps_url} target="_blank" rel="noopener">Auf Google Maps ansehen ↗</a></p>
+          <p class="mt-s"><a href={site.kontakt.maps_url} target="_blank" rel="noopener">{kontakt.adresse_link}</a></p>
         </div>
         <div class="contact-card" data-reveal>
-          <h3>✉️ Kontakt</h3>
-          <p>Fragen zu Terminen oder Kindergeburtstagen?</p>
+          <h3>{kontakt.kontakt_titel}</h3>
+          <p>{kontakt.kontakt_text}</p>
           <p class="mt-s"><a href={`mailto:${site.kontakt.email}`}>{site.kontakt.email}</a></p>
         </div>
       </div>

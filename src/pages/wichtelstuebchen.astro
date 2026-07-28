@@ -1,10 +1,13 @@
 ---
 /**
  * Wichtelstübchen-Seite – Kindertagespflege.
- * Original: wichtelstuebchen.html (t-wichtel)
+ * Alle Texte und Bilder kommen aus src/data/pages/wichtelstuebchen.json (Decap CMS),
+ * die Eckdaten (Kinderzahl, Alter, Zeiten) aus src/data/site.json.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { heading, rich } from '../lib/text';
 import site from '../data/site.json';
+import page from '../data/pages/wichtelstuebchen.json';
 
 const nav = [
   { href: '/', label: 'Übersicht' },
@@ -17,9 +20,13 @@ const nav = [
 ];
 
 const wk = site.wichtelstuebchen;
+const { hero, fakten, raeume, tagesablauf, eingewoehnung, kosten, team, anfrage } = page;
+
+// Betreuungszeiten „6.45–15.15 Uhr“ für die Zahlen-Kachel zerlegen
+const [zeit_von, zeit_bis] = wk.zeiten.replace(' Uhr', '').split('–');
 ---
 <BaseLayout
-  title="Wichtelstübchen – Kindertagespflege Siegen | Maria Bretthauer"
+  title={page.seo.titel}
   description={`Das Wichtelstübchen in Siegen: liebevolle Kindertagespflege für ${wk.kinder} Kinder (${wk.alter}), anerkannt nach §43 SGB VIII. Betreuung ${wk.zeiten}. Platzanfrage über Wichtelkompass.`}
   theme="wichtel"
   nav={nav}
@@ -32,9 +39,9 @@ const wk = site.wichtelstuebchen;
     sub: 'Kindertagespflege · Siegen',
   }}
   topstrip={{
-    emphasis: 'Nicht verwechseln:',
-    text: 'Du möchtest mit deinem Kind ein paar <strong>Stunden im Sand</strong> spielen?',
-    link: { href: '/sandstube', label: 'Hier geht es zur SandStube →' },
+    emphasis: page.topstrip.hinweis,
+    text: rich(page.topstrip.text),
+    link: { href: '/sandstube', label: page.topstrip.link },
   }}
 >
   {/* ════════════════ HERO ══ */}
@@ -43,21 +50,17 @@ const wk = site.wichtelstuebchen;
     <div class="wrap">
       <div class="hero-grid">
         <div>
-          <span class="kicker" data-reveal>Kindertagespflege in Siegen</span>
-          <h1 data-reveal style="--d:80ms">Neun kleine Wichtel, ein großes <span class="mark">Zuhause</span>.</h1>
-          <p class="lead" data-reveal style="--d:180ms">
-            Herzlich willkommen! Wir betreuen neun Kinder zwischen 0 und 3 Jahren in einer von der
-            Stadt Siegen anerkannten Kindertagespflegestelle (§43 SGB VIII) – mit vertrautem
-            Rhythmus, festen Bezugspersonen und viel Zeit zum Ankommen.
-          </p>
+          <span class="kicker" data-reveal>{hero.kicker}</span>
+          <h1 data-reveal style="--d:80ms" set:html={heading(hero.ueberschrift)} />
+          <p class="lead" data-reveal style="--d:180ms" set:html={rich(hero.text)} />
           <div class="btn-row" data-reveal style="--d:280ms">
-            <a href="#anfrage" class="btn btn--lg">Platz anfragen</a>
-            <a href="#tagesablauf" class="btn btn--ghost btn--lg">Unser Tag</a>
+            <a href="#anfrage" class="btn btn--lg">{hero.button_anfrage}</a>
+            <a href="#tagesablauf" class="btn btn--ghost btn--lg">{hero.button_tag}</a>
           </div>
         </div>
 
         <div class="frame frame--blob" data-reveal style="--d:220ms">
-          <img src="/images/raum-spielraum.jpg" alt="Heller Spielraum im Wichtelstübchen" width="900" height="675" />
+          <img src={hero.bild} alt={hero.bild_alt} width="900" height="675" />
         </div>
       </div>
     </div>
@@ -69,18 +72,18 @@ const wk = site.wichtelstuebchen;
   <section class="band band--white">
     <div class="wrap">
       <div class="head">
-        <span class="kicker" data-reveal>Auf einen Blick</span>
-        <h2 data-reveal style="--d:60ms">Unsere Gruppe</h2>
+        <span class="kicker" data-reveal>{fakten.kicker}</span>
+        <h2 data-reveal style="--d:60ms" set:html={heading(fakten.ueberschrift)} />
       </div>
 
       <div class="facts">
         <div class="fact" data-reveal><b>{wk.kinder}</b><span>kleine Wichtel</span></div>
         <div class="fact" data-reveal><b>{wk.alter.replace(' Jahre', '')}</b><span>Jahre</span></div>
-        <div class="fact" data-reveal><b>6.45<span style="font-size:1.4rem">–</span>15.15</b><span>Uhr Betreuung</span></div>
+        <div class="fact" data-reveal><b>{zeit_von}<span style="font-size:1.4rem">–</span>{zeit_bis}</b><span>Uhr Betreuung</span></div>
         <div class="fact" data-reveal><b>§43</b><span>Stadt Siegen anerkannt</span></div>
       </div>
 
-      <p class="center muted mt-m">Braucht ihr andere Zeiten? Sprecht uns gerne an – wir finden eine Lösung.</p>
+      <p class="center muted mt-m" set:html={rich(fakten.hinweis)} />
     </div>
   </section>
 
@@ -90,21 +93,15 @@ const wk = site.wichtelstuebchen;
   <section class="band band--tint" id="galerie">
     <div class="wrap">
       <div class="head">
-        <span class="kicker" data-reveal>Unsere Räume</span>
-        <h2 data-reveal style="--d:60ms">Liebevoll eingerichtet</h2>
-        <p class="lead" data-reveal style="--d:140ms">
-          Spielzimmer, Schlafzimmer, Küche, kreative Zone, Bad und Garten – vielfältige Orte zum
-          Spielen, Entdecken und Ausruhen.
-        </p>
+        <span class="kicker" data-reveal>{raeume.kicker}</span>
+        <h2 data-reveal style="--d:60ms" set:html={heading(raeume.ueberschrift)} />
+        <p class="lead" data-reveal style="--d:140ms" set:html={rich(raeume.text)} />
       </div>
 
       <div class="gal gal--even">
-        <figure data-reveal><img src="/images/raum-spielraum.jpg" alt="Spielzimmer" loading="lazy" /></figure>
-        <figure data-reveal><img src="/images/raum-leseecke.jpg" alt="Leseecke und Spielbereich" loading="lazy" /></figure>
-        <figure data-reveal><img src="/images/raum-kueche-kreativ.jpg" alt="Küche und kreative Zone" loading="lazy" /></figure>
-        <figure data-reveal><img src="/images/raum-titelbild.jpg" alt="Raum im Wichtelstübchen" loading="lazy" /></figure>
-        <figure data-reveal><img src="/images/raum-foto2.jpg" alt="Spielbereich" loading="lazy" /></figure>
-        <figure data-reveal><img src="/images/garten-sandbereich.webp" alt="Garten mit Sandbereich" loading="lazy" /></figure>
+        {raeume.bilder.map((eintrag) => (
+          <figure data-reveal><img src={eintrag.bild} alt={eintrag.alt} loading="lazy" /></figure>
+        ))}
       </div>
     </div>
   </section>
@@ -115,44 +112,25 @@ const wk = site.wichtelstuebchen;
   <section class="band band--paper" id="tagesablauf">
     <div class="wrap">
       <div class="head">
-        <span class="kicker" data-reveal>Jeder Tag gefüllt mit Leben</span>
-        <h2 data-reveal style="--d:60ms">Unser Tagesablauf</h2>
-        <p class="lead" data-reveal style="--d:140ms">Ein vertrauter Rhythmus gibt den Kindern Sicherheit und Geborgenheit.</p>
+        <span class="kicker" data-reveal>{tagesablauf.kicker}</span>
+        <h2 data-reveal style="--d:60ms" set:html={heading(tagesablauf.ueberschrift)} />
+        <p class="lead" data-reveal style="--d:140ms" set:html={rich(tagesablauf.text)} />
       </div>
 
       <div class="day">
-        <div class="day-row" data-reveal>
-          <div class="day-time">6.45<br />8.00</div>
-          <div class="day-body">
-            <h3>Ankunft der Wichtel</h3>
-            <p>Sanftes Ankommen, in Ruhe verabschieden und freies Spielen.</p>
+        {tagesablauf.zeilen.map((zeile) => (
+          <div class="day-row" data-reveal>
+            <div class="day-time">{zeile.von}<br />{zeile.bis}</div>
+            <div class="day-body">
+              <h3>{zeile.titel}</h3>
+              <p set:html={rich(zeile.text)} />
+            </div>
           </div>
-        </div>
-        <div class="day-row" data-reveal>
-          <div class="day-time">8.00<br />11.00</div>
-          <div class="day-body">
-            <h3>Vormittag</h3>
-            <p>Gemeinsames Frühstück, Morgenkreis, Freispiel, Gartenzeit und pädagogische Angebote.</p>
-          </div>
-        </div>
-        <div class="day-row" data-reveal>
-          <div class="day-time">11.00<br />14.15</div>
-          <div class="day-body">
-            <h3>Mittag</h3>
-            <p>Wir bereiten das Mittagessen gemeinsam zu und essen zusammen – danach Mittagsschlaf.</p>
-          </div>
-        </div>
-        <div class="day-row" data-reveal>
-          <div class="day-time">14.15<br />15.15</div>
-          <div class="day-body">
-            <h3>Nachmittag &amp; Abholung</h3>
-            <p>Gemeinsamer Snack, Freispiel und Abholung.</p>
-          </div>
-        </div>
+        ))}
       </div>
 
       <p class="center mt-l" style="font-family:var(--font-hand);font-size:1.75rem;color:var(--accent);line-height:1.35" data-reveal>
-        „Kleine Wichtel schlafen immer dann, wenn sie müde sind.“
+        {tagesablauf.zitat}
       </p>
     </div>
   </section>
@@ -164,20 +142,14 @@ const wk = site.wichtelstuebchen;
     <div class="wrap">
       <div class="split">
         <div class="split-media frame frame--blob" data-reveal>
-          <img src="/images/raum-leseecke.jpg" alt="Ruhiger Rückzugsort für die Eingewöhnung" loading="lazy" />
+          <img src={eingewoehnung.bild} alt={eingewoehnung.bild_alt} loading="lazy" />
         </div>
         <div class="split-text" data-reveal style="--d:120ms">
-          <span class="kicker">Sanftes Ankommen</span>
-          <h2>Die Eingewöhnung</h2>
-          <p>
-            Eine gute Eingewöhnung verspricht viele schöne und glückliche Tage im Kreis neuer
-            Freunde. Die Dauer gestalten wir individuell und immer in Rücksprache mit euch.
-          </p>
+          <span class="kicker">{eingewoehnung.kicker}</span>
+          <h2 set:html={heading(eingewoehnung.ueberschrift)} />
+          <p set:html={rich(eingewoehnung.text)} />
           <ul class="ticks">
-            <li>Das Wohl eures Kindes steht im Vordergrund</li>
-            <li>Individuelle Dauer – gemeinsam mit euch bestimmt</li>
-            <li>Wenn möglich: zusätzliche Krabbelgruppe zum Kennenlernen</li>
-            <li>Neue Eltern und Wichtel lernen uns in Ruhe kennen</li>
+            {eingewoehnung.punkte.map((punkt) => <li set:html={rich(punkt)} />)}
           </ul>
         </div>
       </div>
@@ -190,34 +162,26 @@ const wk = site.wichtelstuebchen;
   <section class="band band--tint" id="kosten">
     <div class="wrap wrap--mid">
       <div class="head">
-        <span class="kicker" data-reveal>Transparente Kosten</span>
-        <h2 data-reveal style="--d:60ms">Was die Betreuung kostet</h2>
+        <span class="kicker" data-reveal>{kosten.kicker}</span>
+        <h2 data-reveal style="--d:60ms" set:html={heading(kosten.ueberschrift)} />
       </div>
 
       <div class="cards cards--2">
         <article class="ticket" data-reveal>
-          <h3>Verpflegung</h3>
-          <div class="price">95 €<small>pro Monat</small></div>
-          <p>Für Frühstück, das gemeinsame Mittagessen und den Nachmittags-Snack – frisch zubereitet.</p>
+          <h3>{kosten.verpflegung.titel}</h3>
+          <div class="price">{kosten.verpflegung.preis}<small>{kosten.verpflegung.einheit}</small></div>
+          <p set:html={rich(kosten.verpflegung.text)} />
         </article>
         <article class="ticket" data-reveal>
-          <h3>Betreuungsbeitrag</h3>
-          <div class="price" style="font-size:clamp(1.7rem,3.2vw,2.2rem)">nach Einkommen<small>pauschalisierte Kostenbeteiligung</small></div>
-          <p>
-            Es gilt die pauschalisierte Kostenbeteiligung der Stadt Siegen – vergleichbar mit dem
-            Kindergarten. Die Tabelle findet ihr auf der
-            <a href="https://www.siegen.de/" target="_blank" rel="noopener" style="color:var(--b-800);text-decoration:underline;font-weight:800">Website der Stadt Siegen ↗</a>.
-          </p>
+          <h3>{kosten.beitrag.titel}</h3>
+          <div class="price" style="font-size:clamp(1.7rem,3.2vw,2.2rem)">{kosten.beitrag.preis}<small>{kosten.beitrag.einheit}</small></div>
+          <p set:html={rich(kosten.beitrag.text)} />
         </article>
       </div>
 
       <div class="note mt-l" data-reveal>
-        <h3>Ihr wohnt nicht in Siegen?</h3>
-        <p>
-          Eure Arbeitsstelle ist in Siegen, aber euer Wohnort nicht? Wir arbeiten auch mit den nahe
-          gelegenen Kreisen zusammen. Sprecht uns an – wir prüfen gemeinsam, ob wir euer Kind
-          betreuen können.
-        </p>
+        <h3>{kosten.hinweis.titel}</h3>
+        <p set:html={rich(kosten.hinweis.text)} />
       </div>
     </div>
   </section>
@@ -229,17 +193,14 @@ const wk = site.wichtelstuebchen;
     <div class="wrap">
       <div class="split split--flip">
         <div class="split-media frame" data-reveal>
-          <img src="/images/team-maria.jpg" alt="Maria Bretthauer" loading="lazy" />
+          <img src={team.bild} alt={team.bild_alt} loading="lazy" />
         </div>
         <div class="split-text" data-reveal style="--d:120ms">
-          <span class="kicker">Wer betreut dein Kind?</span>
-          <h2>Unser Team</h2>
-          <p>
-            Maria Bretthauer, Alexander Tewes und Zerina Muran begleiten die kleinen Wichtel mit
-            Erfahrung und Herz. Lernt die Menschen kennen, die jeden Tag für eure Kinder da sind.
-          </p>
+          <span class="kicker">{team.kicker}</span>
+          <h2 set:html={heading(team.ueberschrift)} />
+          <p set:html={rich(team.text)} />
           <div class="btn-row mt-s">
-            <a href="/team" class="btn">Alle Teammitglieder ansehen</a>
+            <a href="/team" class="btn">{team.button}</a>
           </div>
         </div>
       </div>
@@ -250,28 +211,21 @@ const wk = site.wichtelstuebchen;
   <section class="band band--deep" id="anfrage">
     <div class="wrap">
       <div class="head">
-        <span class="kicker" data-reveal>Betreuungsplatz anfragen</span>
-        <h2 data-reveal style="--d:60ms">Ein Platz im Wichtelstübchen</h2>
-        <p class="lead" data-reveal style="--d:140ms">
-          Die Platzanfrage läuft separat über unser Profil beim Wichtelkompass. Klickt euch durch,
-          meldet euch – wir freuen uns auf euch und euer Kind!
-        </p>
+        <span class="kicker" data-reveal>{anfrage.kicker}</span>
+        <h2 data-reveal style="--d:60ms" set:html={heading(anfrage.ueberschrift)} />
+        <p class="lead" data-reveal style="--d:140ms" set:html={rich(anfrage.text)} />
         <div class="btn-row mt-m" data-reveal style="--d:220ms">
           <a href={wk.wichtelkompass_url} target="_blank" rel="noopener" class="wk">
             <img src="/images/wichtelkompass-logo.svg" alt="Wichtelkompass" />
-            <span>Zum Wichtelkompass-Profil</span>
+            <span>{anfrage.button}</span>
             <span class="arw" aria-hidden="true">→</span>
           </a>
         </div>
       </div>
 
       <div class="note mt-l" data-reveal>
-        <h3>Zwei Angebote, zwei Wege</h3>
-        <p>
-          Wichtelstübchen (Kindertagespflege) und SandStube (Erlebnisraum für Kinder &amp; Eltern)
-          sind komplett getrennte Angebote. Für ein paar Stunden im Sand geht es bitte zur
-          <a href="/sandstube#buchen">SandStube-Buchung</a>.
-        </p>
+        <h3>{anfrage.hinweis.titel}</h3>
+        <p set:html={rich(anfrage.hinweis.text)} />
       </div>
     </div>
   </section>

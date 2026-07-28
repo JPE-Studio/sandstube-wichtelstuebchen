@@ -8,6 +8,8 @@
  */
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { heading, rich } from '../lib/text';
+import page from '../data/pages/team.json';
 
 const nav = [
   { href: '/', label: 'Übersicht' },
@@ -21,10 +23,16 @@ const nav = [
 const team = (await getCollection('team')).sort(
   (a, b) => a.data.reihenfolge - b.data.reihenfolge
 );
+
+const { hero, wege } = page;
+const wege_liste = [
+  { ...wege.wichtelstuebchen, theme: 't-wichtel', href: '/wichtelstuebchen#anfrage', btn: 'btn' },
+  { ...wege.sandstube, theme: 't-sand', href: '/sandstube#buchen', btn: 'btn btn--accent' },
+];
 ---
 <BaseLayout
-  title="Team – Maria Bretthauer, Alexander Tewes, Zerina Muran | Wichtelstübchen Siegen"
-  description="Das Team des Wichtelstübchens: Maria Bretthauer, Alexander Tewes und Zerina Muran – betreuen mit Herz und Erfahrung Kinder in Siegen."
+  title={page.seo.titel}
+  description={page.seo.beschreibung}
   theme="wichtel"
   nav={nav}
   activeNav="/team"
@@ -40,12 +48,9 @@ const team = (await getCollection('team')).sort(
   <section class="hero">
     <div class="motes" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
     <div class="wrap wrap--narrow center">
-      <span class="kicker" data-reveal>Wer wir sind</span>
-      <h1 data-reveal style="--d:80ms">Drei Menschen mit Herz für <span class="mark">kleine Leute</span></h1>
-      <p class="lead mt-s" data-reveal style="--d:180ms">
-        Wir sind jeden Tag im Wichtelstübchen für Sicherheit, Freude und Entwicklung da –
-        und kennen jedes Wichtel-Lachen beim Namen.
-      </p>
+      <span class="kicker" data-reveal>{hero.kicker}</span>
+      <h1 data-reveal style="--d:80ms" set:html={heading(hero.ueberschrift)} />
+      <p class="lead mt-s" data-reveal style="--d:180ms" set:html={rich(hero.text)} />
     </div>
   </section>
 
@@ -77,27 +82,20 @@ const team = (await getCollection('team')).sort(
   <section class="band band--tint">
     <div class="wrap wrap--mid">
       <div class="head">
-        <span class="kicker" data-reveal>Und jetzt?</span>
-        <h2 data-reveal style="--d:60ms">Zwei Angebote, zwei Wege</h2>
-        <p class="lead" data-reveal style="--d:140ms">
-          Je nachdem, was ihr sucht, geht es hier weiter – die beiden Angebote laufen getrennt.
-        </p>
+        <span class="kicker" data-reveal>{wege.kicker}</span>
+        <h2 data-reveal style="--d:60ms" set:html={heading(wege.ueberschrift)} />
+        <p class="lead" data-reveal style="--d:140ms" set:html={rich(wege.text)} />
       </div>
 
       <div class="cards cards--2">
-        <article class="card t-wichtel" data-reveal>
-          <span class="chip">Kindertagespflege</span>
-          <h3>Ein Betreuungsplatz</h3>
-          <p class="mt-s">Regelmäßige Betreuung für Kinder von 0–3 Jahren, Montag bis Freitag von 6.45 bis 15.15 Uhr. Die Anfrage läuft über den Wichtelkompass.</p>
-          <a href="/wichtelstuebchen#anfrage" class="btn btn--full mt-m">Platz anfragen</a>
-        </article>
-
-        <article class="card t-sand" data-reveal>
-          <span class="chip">Erlebnisraum</span>
-          <h3>Ein paar Stunden im Sand</h3>
-          <p class="mt-s">Ein Zeitfenster von drei Stunden für euch und euer Kind – ab 25 €, direkt online buchbar. Ideal für Kindergeburtstage.</p>
-          <a href="/sandstube#buchen" class="btn btn--accent btn--full mt-m">Termin buchen</a>
-        </article>
+        {wege_liste.map((weg) => (
+          <article class={`card ${weg.theme}`} data-reveal>
+            <span class="chip">{weg.chip}</span>
+            <h3>{weg.titel}</h3>
+            <p class="mt-s" set:html={rich(weg.text)} />
+            <a href={weg.href} class={`${weg.btn} btn--full mt-m`}>{weg.button}</a>
+          </article>
+        ))}
       </div>
     </div>
   </section>

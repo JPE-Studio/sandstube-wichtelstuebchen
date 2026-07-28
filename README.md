@@ -19,8 +19,32 @@ npm run preview  # gebauten Build lokal anschauen
 
 1. Gehe zu `https://eure-domain.de/admin`
 2. Mit GitHub einloggen (über den konfigurierten OAuth-Proxy)
-3. Teammitglieder, Preise, Zeiten, Kontaktdaten lassen sich dort ändern
-4. Nach „Veröffentlichen“ baut Coolify automatisch neu und die Änderung ist live
+3. Nach „Veröffentlichen“ baut Coolify automatisch neu und die Änderung ist live
+
+Bearbeitbar sind drei Bereiche:
+
+| Bereich | Inhalt |
+|---|---|
+| **Seiten** | Alle Texte und Bilder der sechs Seiten – Überschriften, Absätze, Aufzählungen, Buttons, Galerien, Impressum und Datenschutz |
+| **Team** | Personen anlegen, löschen und bearbeiten (Name, Rolle, Foto, Reihenfolge, Text) |
+| **Einstellungen** | Kontaktdaten, Adresse, Betreuungszeiten, Ticketpreise und TidyCal-Pfade |
+
+Nicht über das CMS änderbar sind Layout, Farben, Navigation und Fußzeile –
+das sind bewusst Entwickler-Themen.
+
+### Schreibweisen in den Textfeldern
+
+| Eingabe | Ergebnis |
+|---|---|
+| `**Wort**` in einer **Überschrift** | der handgemalte Schwung darunter |
+| `**Wort**` in einem **Fließtext** | fett |
+| `[Text](https://…)` | Link (externe Links öffnen automatisch in neuem Tab) |
+| Zeilenumbruch in einer Überschrift | neue Zeile |
+| `{{email}}`, `{{strasse}}`, `{{plz_ort}}`, `{{inhaberin}}` | wird in Impressum und Datenschutz automatisch aus den Einstellungen eingesetzt |
+
+Zwei Schalter sind praktisch: der **Saison-Hinweis** auf der SandStube-Seite
+(Sommerpause ein-/ausblenden) und die gelben **Warnkästen** in Impressum und
+Datenschutz – die abschalten, sobald die Texte geprüft sind.
 
 **Lokales CMS-Testen** (ohne GitHub): in einem zweiten Terminal `npx decap-server`
 starten, dann `http://localhost:4321/admin` öffnen. In `public/admin/config.yml`
@@ -73,11 +97,14 @@ volle Versionshistorie jeder Änderung, minimaler Ressourcenverbrauch.
 src/
 ├── components/     Header.astro, Footer.astro
 ├── content/team/   Teammitglieder als Markdown (CMS-pflegbar)
-├── data/site.json  Kontakt, Preise, Zeiten (CMS-pflegbar)
+├── data/
+│   ├── site.json   Kontakt, Preise, Zeiten (CMS-pflegbar)
+│   └── pages/      Texte + Bilder je Seite (CMS-pflegbar)
 ├── layouts/        BaseLayout.astro (HTML-Gerüst)
+├── lib/text.ts     Markdown → HTML, {{platzhalter}}, Überschriften-Schwung
 ├── pages/          6 Seiten: index, sandstube, wichtelstuebchen, team, impressum, datenschutz
 ├── scripts/app.js  Burger-Menu + Scroll-Reveal (vanilla JS)
-└── styles/paperworld.css  Papierwelt-Designsystem (unverändert übernommen)
+└── styles/paperworld.css  Papierwelt-Designsystem
 public/
 ├── admin/          Decap CMS (index.html + config.yml)
 └── images/         Alle Bilder

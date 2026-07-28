@@ -1,9 +1,11 @@
 ---
 /**
  * Übersichts-Seite (Hub) – die neutrale Startseite, die beide Marken vorstellt.
- * Original: index.html (t-hub)
+ * Alle Texte und Bilder kommen aus src/data/pages/index.json (Decap CMS).
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { heading, rich } from '../lib/text';
+import page from '../data/pages/index.json';
 
 const nav = [
   { href: '/', label: 'Übersicht' },
@@ -12,10 +14,19 @@ const nav = [
   { href: '/team', label: 'Team' },
   { href: '#unterschied', label: 'Was passt zu uns?', cta: true, ghost: true },
 ];
+
+const { hero, tueren, unterschied, einblicke, maria } = page;
+
+// Die beiden Türen und die beiden Vergleichskarten laufen durch dieselbe
+// Schleife – so bleiben sie garantiert strukturgleich.
+const tueren_liste = [
+  { ...tueren.sandstube, theme: 't-sand', href: '/sandstube' },
+  { ...tueren.wichtelstuebchen, theme: 't-wichtel', href: '/wichtelstuebchen' },
+];
 ---
 <BaseLayout
-  title="SandStube & Wichtelstübchen Siegen – zwei Angebote von Maria Bretthauer"
-  description="Zwei eigenständige Angebote in Siegen: die SandStube (Indoor-Sand-Erlebnisraum, online buchbar) und das Wichtelstübchen (Kindertagespflege, 0–3 Jahre). Von Maria Bretthauer."
+  title={page.seo.titel}
+  description={page.seo.beschreibung}
   theme="hub"
   nav={nav}
   activeNav="/"
@@ -27,22 +38,17 @@ const nav = [
     <div class="wrap">
       <div class="hero-grid">
         <div>
-          <span class="kicker" data-reveal>Herzlich willkommen in Siegen</span>
-          <h1 data-reveal style="--d:80ms">Ein Haus.<br />Zwei ganz eigene <span class="mark">Welten</span>.</h1>
-          <p class="lead" data-reveal style="--d:180ms">
-            In der <strong>SandStube</strong> rieselt feiner Sand durch kleine Hände – ein Erlebnisraum,
-            den ihr stundenweise online bucht. Im <strong>Wichtelstübchen</strong> wachsen neun kleine
-            Wichtel jeden Tag ein Stückchen – liebevolle Kindertagespflege für 0–3 Jahre.
-            Zwei Angebote, die <strong>getrennt laufen</strong> und sich nur die Adresse teilen.
-          </p>
+          <span class="kicker" data-reveal>{hero.kicker}</span>
+          <h1 data-reveal style="--d:80ms" set:html={heading(hero.ueberschrift)} />
+          <p class="lead" data-reveal style="--d:180ms" set:html={rich(hero.text)} />
           <div class="btn-row" data-reveal style="--d:280ms">
-            <a href="/sandstube" class="btn btn--lg">Zur SandStube</a>
-            <a href="/wichtelstuebchen" class="btn btn--ghost btn--lg">Zum Wichtelstübchen</a>
+            <a href="/sandstube" class="btn btn--lg">{hero.button_sandstube}</a>
+            <a href="/wichtelstuebchen" class="btn btn--ghost btn--lg">{hero.button_wichtelstuebchen}</a>
           </div>
         </div>
 
         <div class="frame frame--blob" data-reveal style="--d:220ms">
-          <img src="/images/raum-titelbild.jpg" alt="Blick in die liebevoll eingerichteten Räume in Siegen" width="900" height="675" />
+          <img src={hero.bild} alt={hero.bild_alt} width="900" height="675" />
         </div>
       </div>
     </div>
@@ -54,54 +60,28 @@ const nav = [
   <section class="band band--tint" id="angebote">
     <div class="wrap">
       <div class="head">
-        <span class="kicker" data-reveal>Wo möchtet ihr hin?</span>
-        <h2 data-reveal style="--d:60ms">Sucht euch eure Tür aus</h2>
-        <p class="lead" data-reveal style="--d:140ms">
-          Jedes Angebot hat seine eigene Farbe, seinen eigenen Rhythmus und seinen eigenen Weg der Anmeldung.
-        </p>
+        <span class="kicker" data-reveal>{tueren.kicker}</span>
+        <h2 data-reveal style="--d:60ms" set:html={heading(tueren.ueberschrift)} />
+        <p class="lead" data-reveal style="--d:140ms" set:html={rich(tueren.text)} />
       </div>
 
       <div class="doors">
-
-        {/* ————— SandStube ————— */}
-        <a class="door t-sand" href="/sandstube" data-reveal>
-          <div class="door-img">
-            <img src="/images/sandstube-4.webp" alt="Kind spielt konzentriert mit bunten Glassteinen in der SandStube" loading="lazy" width="800" height="500" />
-          </div>
-          <div class="door-body">
-            <span class="chip">Erlebnisraum · stundenweise</span>
-            <h3>Die SandStube</h3>
-            <p>
-              Spüren, staunen, spielen: große Sandschüsseln, Töpfe, Kellen und Zeit ohne Eile.
-              Für Kinder von den ersten Schritten bis ca. 6 Jahre – gemeinsam mit euch.
-              Ideal für Kindergeburtstage.
-            </p>
-            <div class="door-facts">
-              <span>ab 25 €</span><span>3-Stunden-Fenster</span><span>online buchbar</span>
+        {tueren_liste.map((tuer) => (
+          <a class={`door ${tuer.theme}`} href={tuer.href} data-reveal>
+            <div class="door-img">
+              <img src={tuer.bild} alt={tuer.bild_alt} loading="lazy" width="800" height="500" />
             </div>
-            <span class="btn btn--full">SandStube ansehen</span>
-          </div>
-        </a>
-
-        {/* ————— Wichtelstübchen ————— */}
-        <a class="door t-wichtel" href="/wichtelstuebchen" data-reveal>
-          <div class="door-img">
-            <img src="/images/raum-spielraum.jpg" alt="Heller Spielraum im Wichtelstübchen" loading="lazy" width="800" height="500" />
-          </div>
-          <div class="door-body">
-            <span class="chip">Kindertagespflege · täglich</span>
-            <h3>Das Wichtelstübchen</h3>
-            <p>
-              Ein vertrauter Tagesrhythmus, ein festes Team und viel Geborgenheit für neun kleine
-              Wichtel zwischen 0 und 3 Jahren. Von der Stadt Siegen anerkannt nach §43 SGB VIII.
-            </p>
-            <div class="door-facts">
-              <span>9 Kinder</span><span>0–3 Jahre</span><span>6.45–15.15 Uhr</span>
+            <div class="door-body">
+              <span class="chip">{tuer.chip}</span>
+              <h3>{tuer.titel}</h3>
+              <p set:html={rich(tuer.text)} />
+              <div class="door-facts">
+                {tuer.fakten.map((fakt) => <span>{fakt}</span>)}
+              </div>
+              <span class="btn btn--full">{tuer.button}</span>
             </div>
-            <span class="btn btn--full">Wichtelstübchen ansehen</span>
-          </div>
-        </a>
-
+          </a>
+        ))}
       </div>
     </div>
   </section>
@@ -112,12 +92,9 @@ const nav = [
   <section class="band band--paper" id="unterschied">
     <div class="wrap wrap--mid">
       <div class="head">
-        <span class="kicker" data-reveal>Damit nichts durcheinandergerät</span>
-        <h2 data-reveal style="--d:60ms">Der Unterschied auf einen Blick</h2>
-        <p class="lead" data-reveal style="--d:140ms">
-          SandStube und Wichtelstübchen sind organisatorisch <strong>vollständig getrennt</strong> –
-          eigene Zeiten, eigene Preise, eigener Anmeldeweg.
-        </p>
+        <span class="kicker" data-reveal>{unterschied.kicker}</span>
+        <h2 data-reveal style="--d:60ms" set:html={heading(unterschied.ueberschrift)} />
+        <p class="lead" data-reveal style="--d:140ms" set:html={rich(unterschied.text)} />
       </div>
 
       <div class="cards cards--2">
@@ -128,17 +105,16 @@ const nav = [
               <svg viewBox="0 0 48 48"><rect width="48" height="48" fill="#FDF2DE"/><circle cx="34" cy="14" r="6.5" fill="#DE9E31"/><path d="M0 33c7-8 13-8 20 0s13 8 20 0 4-3 8-4v19H0z" fill="#8B5518"/><path d="M0 39c7-6 13-6 20 0s13 6 20 0 4-2 8-3v12H0z" fill="#EC6235"/></svg>
             </span>
             <div>
-              <h3>SandStube</h3>
-              <p>Erlebnisraum</p>
+              <h3>{unterschied.sandstube.titel}</h3>
+              <p>{unterschied.sandstube.untertitel}</p>
             </div>
           </div>
           <dl class="cmp">
-            <div><dt>Für wen</dt><dd>Kinder <strong>gemeinsam mit ihren Eltern</strong>, erste Schritte bis ca. 6 Jahre</dd></div>
-            <div><dt>Wann</dt><dd>Einzelne Zeitfenster von 3 Stunden, frei wählbar</dd></div>
-            <div><dt>Kosten</dt><dd>25 € / 50 € / 90 € pro Zeitfenster</dd></div>
-            <div><dt>Anmeldung</dt><dd>Direkt online über TidyCal – sofort buchbar</dd></div>
+            {unterschied.sandstube.zeilen.map((zeile) => (
+              <div><dt>{zeile.label}</dt><dd set:html={rich(zeile.wert)} /></div>
+            ))}
           </dl>
-          <a href="/sandstube#buchen" class="btn btn--accent btn--full">Zeitfenster buchen</a>
+          <a href="/sandstube#buchen" class="btn btn--accent btn--full">{unterschied.sandstube.button}</a>
         </article>
 
         <article class="card t-wichtel" data-reveal>
@@ -147,17 +123,16 @@ const nav = [
               <svg viewBox="0 0 48 48"><rect width="48" height="48" fill="#F2F6EA"/><path d="M24 6l11 18H13z" fill="#B94A69"/><circle cx="24" cy="30" r="7" fill="#7C9E58"/><path d="M0 40c8 0 10-5 16-5s8 5 16 5 10-4 16-4v12H0z" fill="#4F7034"/></svg>
             </span>
             <div>
-              <h3>Wichtelstübchen</h3>
-              <p>Kindertagespflege</p>
+              <h3>{unterschied.wichtelstuebchen.titel}</h3>
+              <p>{unterschied.wichtelstuebchen.untertitel}</p>
             </div>
           </div>
           <dl class="cmp">
-            <div><dt>Für wen</dt><dd>Kinder von <strong>0 bis 3 Jahren</strong> – ohne Eltern, in fester Gruppe</dd></div>
-            <div><dt>Wann</dt><dd>Regelmäßig, Montag bis Freitag von 6.45 bis 15.15 Uhr</dd></div>
-            <div><dt>Kosten</dt><dd>95 € Verpflegung / Monat + Beitrag nach Einkommen</dd></div>
-            <div><dt>Anmeldung</dt><dd>Platzanfrage über das Wichtelkompass-Profil</dd></div>
+            {unterschied.wichtelstuebchen.zeilen.map((zeile) => (
+              <div><dt>{zeile.label}</dt><dd set:html={rich(zeile.wert)} /></div>
+            ))}
           </dl>
-          <a href="/wichtelstuebchen#anfrage" class="btn btn--full">Platz anfragen</a>
+          <a href="/wichtelstuebchen#anfrage" class="btn btn--full">{unterschied.wichtelstuebchen.button}</a>
         </article>
 
       </div>
@@ -170,21 +145,19 @@ const nav = [
   <section class="band band--white">
     <div class="wrap">
       <div class="head">
-        <span class="kicker" data-reveal>Erste Eindrücke</span>
-        <h2 data-reveal style="--d:60ms">Schaut einfach mal herein</h2>
-        <p class="lead" data-reveal style="--d:140ms">Kleine Momentaufnahmen aus beiden Welten.</p>
+        <span class="kicker" data-reveal>{einblicke.kicker}</span>
+        <h2 data-reveal style="--d:60ms" set:html={heading(einblicke.ueberschrift)} />
+        <p class="lead" data-reveal style="--d:140ms" set:html={rich(einblicke.text)} />
       </div>
 
       <div class="gal">
-        <figure data-reveal><img src="/images/sandstube-4.webp" alt="Spielen mit Sand und Glassteinen in der SandStube" loading="lazy" /></figure>
-        <figure data-reveal><img src="/images/raum-leseecke.jpg" alt="Gemütliche Leseecke im Wichtelstübchen" loading="lazy" /></figure>
-        <figure data-reveal><img src="/images/garten-sandbereich.webp" alt="Garten mit Sandbereich" loading="lazy" /></figure>
-        <figure data-reveal><img src="/images/raum-kueche-kreativ.jpg" alt="Küche und kreative Zone" loading="lazy" /></figure>
-        <figure data-reveal><img src="/images/sandstube-main.webp" alt="Blick in den Raum der SandStube" loading="lazy" /></figure>
+        {einblicke.bilder.map((eintrag) => (
+          <figure data-reveal><img src={eintrag.bild} alt={eintrag.alt} loading="lazy" /></figure>
+        ))}
       </div>
 
       <div class="center mt-l">
-        <a href="/wichtelstuebchen#galerie" class="btn btn--ghost">Alle Räume ansehen</a>
+        <a href="/wichtelstuebchen#galerie" class="btn btn--ghost">{einblicke.button}</a>
       </div>
     </div>
   </section>
@@ -196,22 +169,17 @@ const nav = [
     <div class="wrap">
       <div class="split">
         <div class="split-media frame frame--blob" data-reveal>
-          <img src="/images/team-maria.jpg" alt="Maria Bretthauer" loading="lazy" />
+          <img src={maria.bild} alt={maria.bild_alt} loading="lazy" />
         </div>
         <div class="split-text" data-reveal style="--d:120ms">
-          <span class="kicker">Hinter beiden Türen</span>
-          <h2>Maria Bretthauer</h2>
-          <p>
-            Maria führt das Wichtelstübchen und die SandStube – als zwei getrennte Angebote unter
-            einem Dach in Siegen. Gemeinsam mit Alexander und Zerina begleitet sie die kleinen
-            Wichtel durch den Tag; die SandStube öffnet sie für Familien, die einen ruhigen
-            Nachmittag oder einen besonderen Geburtstag suchen.
-          </p>
+          <span class="kicker">{maria.kicker}</span>
+          <h2 set:html={heading(maria.ueberschrift)} />
+          <p set:html={rich(maria.text)} />
           <p class="lead" style="font-family:var(--font-hand);font-size:1.5rem;color:var(--accent);line-height:1.4">
-            „Gib deinem Kind Zeit zum Spielen – denn das Spiel ist die höchste Form des Forschens.“
+            {maria.zitat}
           </p>
           <div class="btn-row mt-s">
-            <a href="/team" class="btn">Das Team kennenlernen</a>
+            <a href="/team" class="btn">{maria.button}</a>
           </div>
         </div>
       </div>

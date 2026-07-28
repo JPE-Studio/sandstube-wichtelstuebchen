@@ -1,0 +1,42 @@
+{
+  "seo": {
+    "titel": "Datenschutzerklärung – Maria Bretthauer",
+    "beschreibung": "Datenschutzerklärung für SandStube & Wichtelstübchen Siegen – Maria Bretthauer."
+  },
+  "kicker": "Rechtliches",
+  "ueberschrift": "Datenschutz­erklärung",
+  "warnung": {
+    "anzeigen": true,
+    "text": "**⚠️ Platzhalter:** Dies ist eine Vorlage und ersetzt keine individuelle, rechtssichere Datenschutzerklärung. Bitte vor Veröffentlichung durch eine an den tatsächlichen Einsatz (insb. TidyCal, Kontaktwege, ggf. Analyse-Tools) angepasste Version ersetzen."
+  },
+  "abschnitte": [
+    {
+      "ueberschrift": "1. Datenschutz auf einen Blick",
+      "text": "Der Schutz deiner persönlichen Daten ist uns wichtig. Nachfolgend informieren wir über die Erhebung und Verarbeitung personenbezogener Daten bei einem Besuch dieser Webseite."
+    },
+    {
+      "ueberschrift": "2. Verantwortliche Stelle",
+      "text": "Verantwortlich für die Datenverarbeitung auf dieser Webseite ist:\n{{inhaberin}}, {{strasse}}, {{plz_ort}}\nE-Mail: [{{email}}](mailto:{{email}})"
+    },
+    {
+      "ueberschrift": "3. Hosting & Server-Logfiles",
+      "text": "Beim Aufruf dieser Webseite werden automatisch technische Informationen (z. B. IP-Adresse, Datum und Uhrzeit des Zugriffs, abgerufene Dateien) vom Provider in sogenannten Server-Logfiles erfasst. Diese Daten sind nicht einer bestimmten Person zuzuordnen und dienen der technischen Bereitstellung und Sicherheit."
+    },
+    {
+      "ueberschrift": "4. Externe Dienste",
+      "text": "**TidyCal (Buchungs-Widget, nur SandStube):** Für die Online-Buchung der SandStube nutzen wir TidyCal. Wenn du eine Buchung durchführst, werden deine eingegebenen Daten (z. B. Name, E-Mail-Adresse, Buchungsdetails) an den Anbieter von TidyCal übermittelt. Für diese Verarbeitung ist TidyCal eigener Verantwortlicher; es gelten dessen Datenschutzbestimmungen.\n\n**Wichtelkompass (Platzanfrage Tagespflege):** Die Anfrage eines Betreuungsplatzes erfolgt über das Profil auf wichtelkompass.de. Dort gelten die Datenschutzbestimmungen des Wichtelkompass-Betreibers.\n\n**Schriftarten (Google Fonts):** Diese Webseite bindet Schriften von Google Fonts ein. Dabei kann Google Kenntnis von deiner IP-Adresse erlangen. Näheres in der Datenschutzerklärung von Google."
+    },
+    {
+      "ueberschrift": "5. Kontakt zu uns",
+      "text": "Wenn du uns per E-Mail oder über verlinkte externe Dienste kontaktierst, werden die von dir übermittelten Daten zwecks Bearbeitung deiner Anfrage gespeichert."
+    },
+    {
+      "ueberschrift": "6. Deine Rechte",
+      "text": "Du hast jederzeit das Recht auf:\n\n- Auskunft über deine gespeicherten Daten (Art. 15 DSGVO)\n- Berichtigung unrichtiger Daten (Art. 16 DSGVO)\n- Löschung deiner Daten (Art. 17 DSGVO)\n- Einschränkung der Verarbeitung (Art. 18 DSGVO)\n- Datenübertragbarkeit (Art. 20 DSGVO)\n- Widerspruch gegen die Verarbeitung (Art. 21 DSGVO)\n\nZudem steht dir ein Beschwerderecht bei der zuständigen Aufsichtsbehörde zu."
+    },
+    {
+      "ueberschrift": "7. Speicherdauer",
+      "text": "Personenbezogene Daten werden gelöscht, sobald der Zweck der Speicherung entfällt oder gesetzliche Aufbewahrungsfristen ablaufen."
+    }
+  ]
+}

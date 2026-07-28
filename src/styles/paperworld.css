@@ -354,6 +354,9 @@ strong{font-weight:800}
 .ticket h3{margin-bottom:.3em}
 .ticket p{color:var(--ink-soft);font-size:.97rem;margin:1rem 0 1.2rem}
 .ticket .btn{margin-top:auto}
+/* Links in redaktionellen Fließtexten (früher als Inline-Style gesetzt) */
+.ticket p a,.muted a{color:var(--b-800);text-decoration:underline;text-underline-offset:3px;font-weight:800}
+.ticket p a:hover,.muted a:hover{color:var(--pop)}
 
 /* Listen mit gemalten Haken */
 .ticks{display:grid;gap:.65rem;margin-bottom:1.5rem}
@@ -449,7 +452,7 @@ strong{font-weight:800}
   font-weight:700;font-size:.99rem;line-height:1.6;text-align:center;text-wrap:balance;
   box-shadow:0 3px 0 color-mix(in srgb,var(--accent) 18%,transparent);
 }
-.season b{font-weight:800}
+.season b,.season strong{font-weight:800}
 
 /* --------------------------------------------------------- 15. Buchung/TidyCal */
 .slots{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2.4vw,26px);align-items:start}

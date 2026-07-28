@@ -2,13 +2,17 @@
 # Decap CMS Konfiguration – SandStube & Wichtelstübchen
 # ═══════════════════════════════════════════════════════════════════════
 # Dieses File definiert, was Maria unter /admin sehen und bearbeiten kann.
-# Es MUSS mit den Astro Content Collections (src/content.config.ts) und
-# der src/data/site.json übereinstimmen.
+# Es MUSS mit den JSON-Dateien in src/data/ übereinstimmen.
 #
 # ⚠️ VOR DEM ERSTEN LOGIN AUSFÜLLEN:
-#   1. repo:            euer GitHub-Repo (owner/name)
-#   2. base_url:        URL eures OAuth-Proxys (z. B. https://auth.euredomain.de)
-#   3. auth_type:       auf "pkce" setzen, falls ihr den Proxy mit PKCE nutzt
+#   1. repo:      euer GitHub-Repo (owner/name)
+#   2. base_url:  URL eures OAuth-Proxys (z. B. https://auth.euredomain.de)
+#
+# Schreibweisen in den Textfeldern:
+#   **Wort**  in einer Überschrift  → der gemalte Schwung darunter
+#   **Wort**  in einem Fließtext    → fett
+#   {{email}}, {{strasse}}, {{plz_ort}}, {{inhaberin}}
+#             in den Rechtstexten   → automatisch aus „Kontakt & Stammdaten“
 # ═══════════════════════════════════════════════════════════════════════
 
 backend:
@@ -28,14 +32,608 @@ public_folder: "/images"
 # Editor-UI auf Deutsch
 locale: de
 
-# ═══════════════════════════════════════════════════════════════════════
-# Sammlungen
-# ═══════════════════════════════════════════════════════════════════════
 collections:
 
-  # ─────────────────────────────────────────────────────────────────────
+  # ═════════════════════════════════════════════════════════════════════
+  # SEITEN – alle Texte und Bilder der sechs Seiten
+  # ═════════════════════════════════════════════════════════════════════
+  - name: "seiten"
+    label: "Seiten"
+    delete: false
+    create: false
+    editor:
+      preview: false
+    files:
+
+      # ─────────────────────────────────────────────────────────────────
+      # Startseite
+      # ─────────────────────────────────────────────────────────────────
+      - file: "src/data/pages/index.json"
+        name: "startseite"
+        label: "Startseite"
+        fields:
+          - label: "Suchmaschine (SEO)"
+            name: "seo"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { name: "titel", label: "Seitentitel", widget: "string" }
+              - { name: "beschreibung", label: "Beschreibung", widget: "text" }
+
+          - label: "Kopfbereich"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { name: "kicker", label: "Kleine Zeile darüber", widget: "string" }
+              - name: "ueberschrift"
+                label: "Große Überschrift"
+                widget: "text"
+                hint: "Zeilenumbruch = neue Zeile. **Wort** malt den Schwung darunter."
+              - { name: "text", label: "Einleitungstext", widget: "markdown", minimal: true, buttons: ["bold", "italic", "link"], editor_components: [] }
+              - { name: "button_sandstube", label: "Button links", widget: "string" }
+              - { name: "button_wichtelstuebchen", label: "Button rechts", widget: "string" }
+              - { name: "bild", label: "Bild", widget: "image" }
+              - { name: "bild_alt", label: "Bildbeschreibung (für Screenreader)", widget: "string" }
+
+          - label: "Zwei Türen"
+            name: "tueren"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { name: "kicker", label: "Kleine Zeile darüber", widget: "string" }
+              - { name: "ueberschrift", label: "Überschrift", widget: "text" }
+              - { name: "text", label: "Einleitungstext", widget: "markdown", minimal: true, buttons: ["bold", "italic", "link"], editor_components: [] }
+              - label: "Karte SandStube"
+                name: "sandstube"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - { name: "chip", label: "Kleines Etikett", widget: "string" }
+                  - { name: "titel", label: "Titel", widget: "string" }
+                  - { name: "text", label: "Text", widget: "markdown", minimal: true, buttons: ["bold", "italic", "link"], editor_components: [] }
+                  - { name: "fakten", label: "Kurz-Fakten", widget: "list", field: { name: "wert", label: "Fakt", widget: "string" } }
+                  - { name: "button", label: "Button", widget: "string" }
+                  - { name: "bild", label: "Bild", widget: "image" }
+                  - { name: "bild_alt", label: "Bildbeschreibung", widget: "string" }
+              - label: "Karte Wichtelstübchen"
+                name: "wichtelstuebchen"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - { name: "chip", label: "Kleines Etikett", widget: "string" }
+                  - { name: "titel", label: "Titel", widget: "string" }
+                  - { name: "text", label: "Text", widget: "markdown", minimal: true, buttons: ["bold", "italic", "link"], editor_components: [] }
+                  - { name: "fakten", label: "Kurz-Fakten", widget: "list", field: { name: "wert", label: "Fakt", widget: "string" } }
+                  - { name: "button", label: "Button", widget: "string" }
+                  - { name: "bild", label: "Bild", widget: "image" }
+                  - { name: "bild_alt", label: "Bildbeschreibung", widget: "string" }
+
+          - label: "Der Unterschied"
+            name: "unterschied"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { name: "kicker", label: "Kleine Zeile darüber", widget: "string" }
+              - { name: "ueberschrift", label: "Überschrift", widget: "text" }
+              - { name: "text", label: "Einleitungstext", widget: "markdown", minimal: true, buttons: ["bold", "italic", "link"], editor_components: [] }
+              - label: "Vergleich SandStube"
+                name: "sandstube"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - { name: "titel", label: "Titel", widget: "string" }
+                  - { name: "untertitel", label: "Untertitel", widget: "string" }
+                  - name: "zeilen"
+                    label: "Vergleichszeilen"
+                    widget: "list"
+                    summary: "{{fields.label}}"
+                    fields:
+                      - { name: "label", label: "Bezeichnung", widget: "string" }
+                      - { name: "wert", label: "Inhalt", widget: "markdown", minimal: true, buttons: ["bold", "italic", "link"], editor_components: [] }
+                  - { name: "button", label: "Button", widget: "string" }
+              - label: "Vergleich Wichtelstübchen"
+                name: "wichtelstuebchen"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - { name: "titel", label: "Titel", widget: "string" }
+                  - { name: "untertitel", label: "Untertitel", widget: "string" }
+                  - name: "zeilen"
+                    label: "Vergleichszeilen"
+                    widget: "list"
+                    summary: "{{fields.label}}"
+                    fields:
+                      - { name: "label", label: "Bezeichnung", widget: "string" }
+                      - { name: "wert", label: "Inhalt", widget: "markdown", minimal: true, buttons: ["bold", "italic", "link"], editor_components: [] }
+                  - { name: "button", label: "Button", widget: "string" }
+
+          - label: "Einblicke (Bildergalerie)"
+            name: "einblicke"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { name: "kicker", label: "Kleine Zeile darüber", widget: "string" }
+              - { name: "ueberschrift", label: "Überschrift", widget: "text" }
+              - { name: "text", label: "Einleitungstext", widget: "markdown", minimal: true, buttons: ["bold", "italic", "link"], editor_components: [] }
+              - name: "bilder"
+                label: "Bilder"
+                widget: "list"
+                summary: "{{fields.alt}}"
+                fields:
+                  - { name: "bild", label: "Bild", widget: "image" }
+                  - { name: "alt", label: "Bildbeschreibung", widget: "string" }
+              - { name: "button", label: "Button", widget: "string" }
+
+          - label: "Abschnitt Maria"
+            name: "maria"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { name: "kicker", label: "Kleine Zeile darüber", widget: "string" }
+              - { name: "ueberschrift", label: "Überschrift", widget: "text" }
+              - { name: "text", label: "Text", widget: "markdown", minimal: true, buttons: ["bold", "italic", "link"], editor_components: [] }
+              - { name: "zitat", label: "Zitat (Handschrift)", widget: "text" }
+              - { name: "button", label: "Button", widget: "string" }
+              - { name: "bild", label: "Bild", widget: "image" }
+              - { name: "bild_alt", label: "Bildbeschreibung", widget: "string" }
+
+      # ─────────────────────────────────────────────────────────────────
+      # SandStube
+      # ─────────────────────────────────────────────────────────────────
+      - file: "src/data/pages/sandstube.json"
+        name: "sandstube"
+        label: "SandStube"
+        fields:
+          - label: "Suchmaschine (SEO)"
+            name: "seo"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { name: "titel", label: "Seitentitel", widget: "string" }
+              - { name: "beschreibung", label: "Beschreibung", widget: "text" }
+
+          - label: "Hinweisstreifen ganz oben"
+            name: "topstrip"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { name: "hinweis", label: "Handschrift-Einwurf", widget: "string" }
+              - { name: "text", label: "Text", widget: "markdown", minimal: true, buttons: ["bold", "italic"], editor_components: [] }
+              - { name: "link", label: "Link-Beschriftung", widget: "string" }
+
+          - label: "Kopfbereich"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { name: "kicker", label: "Kleine Zeile darüber", widget: "string" }
+              - name: "ueberschrift"
+                label: "Große Überschrift"
+                widget: "text"
+                hint: "Zeilenumbruch = neue Zeile. **Wort** malt den Schwung darunter."
+              - { name: "motto", label: "Motto", widget: "string" }
+              - { name: "text", label: "Einleitungstext", widget: "markdown", minimal: true, buttons: ["bold", "italic", "link"], editor_components: [] }
+              - { name: "button_buchen", label: "Button links", widget: "string" }
+              - { name: "button_preise", label: "Button rechts", widget: "string" }
+              - { name: "bild", label: "Bild", widget: "image" }
+              - { name: "bild_alt", label: "Bildbeschreibung", widget: "string" }
+
+          - label: "Saison-Hinweis"
+            name: "saison"
+            widget: "object"
+            fields:
+              - name: "anzeigen"
+                label: "Hinweis anzeigen"
+                widget: "boolean"
+                default: true
+                hint: "Ausschalten, wenn die Sommerpause vorbei ist."
+              - { name: "text", label: "Text", widget: "markdown", minimal: true, buttons: ["bold", "italic"], editor_components: [] }
+
+          - label: "Drei Schritte"
+            name: "schritte"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { name: "kicker", label: "Kleine Zeile darüber", widget: "string" }
+              - { name: "ueberschrift", label: "Überschrift", widget: "text" }
+              - name: "eintraege"
+                label: "Schritte"
+                widget: "list"
+                summary: "{{fields.wort}} – {{fields.titel}}"
+                fields:
+                  - { name: "wort", label: "Schlagwort (Handschrift)", widget: "string" }
+                  - { name: "titel", label: "Titel", widget: "string" }
+                  - { name: "text", label: "Text", widget: "markdown", minimal: true, buttons: ["bold", "italic", "link"], editor_components: [] }
+
+          - label: "Erlebnis-Abschnitt"
+            name: "erlebnis"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { name: "kicker", label: "Kleine Zeile darüber", widget: "string" }
+              - { name: "ueberschrift", label: "Überschrift", widget: "text" }
+              - { name: "text", label: "Text", widget: "markdown", minimal: true, buttons: ["bold", "italic", "link"], editor_components: [] }
+              - { name: "punkte", label: "Aufzählung", widget: "list", field: { name: "wert", label: "Punkt", widget: "string" } }
+              - { name: "zitat", label: "Zitat (Handschrift)", widget: "text" }
+              - { name: "bild", label: "Bild", widget: "image" }
+              - { name: "bild_alt", label: "Bildbeschreibung", widget: "string" }
+
+          - label: "Tickets"
+            name: "tickets"
+            widget: "object"
+            collapsed: true
+            hint: "Namen, Preise und TidyCal-Pfade stehen unter „Kontakt & Stammdaten“."
+            fields:
+              - { name: "kicker", label: "Kleine Zeile darüber", widget: "string" }
+              - { name: "ueberschrift", label: "Überschrift", widget: "text" }
+              - { name: "text", label: "Einleitungstext", widget: "markdown", minimal: true, buttons: ["bold", "italic", "link"], editor_components: [] }
+              - { name: "einheit", label: "Zusatz unter dem Preis", widget: "string" }
+              - name: "beschreibungen"
+                label: "Beschreibungen (Reihenfolge wie bei den Preisen)"
+                widget: "list"
+                min: 3
+                max: 3
+                fields:
+                  - { name: "text", label: "Beschreibung", widget: "markdown", minimal: true, buttons: ["bold", "italic", "link"], editor_components: [] }
+                  - { name: "punkte", label: "Aufzählung", widget: "list", field: { name: "wert", label: "Punkt", widget: "string" } }
+              - { name: "hervorhebung", label: "Fähnchen auf der dritten Karte", widget: "string" }
+              - { name: "button", label: "Button auf allen Karten", widget: "string" }
+              - { name: "tipp", label: "Tipp-Zeile darunter", widget: "markdown", minimal: true, buttons: ["bold", "italic", "link"], editor_components: [] }
+
+          - label: "Galerie"
+            name: "galerie"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { name: "kicker", label: "Kleine Zeile darüber", widget: "string" }
+              - { name: "ueberschrift", label: "Überschrift", widget: "text" }
+              - name: "bilder"
+                label: "Bilder"
+                widget: "list"
+                summary: "{{fields.alt}}"
+                fields:
+                  - { name: "bild", label: "Bild", widget: "image" }
+                  - { name: "alt", label: "Bildbeschreibung", widget: "string" }
+
+          - label: "Buchungsbedingungen"
+            name: "bedingungen"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { name: "kicker", label: "Kleine Zeile darüber", widget: "string" }
+              - { name: "ueberschrift", label: "Überschrift", widget: "text" }
+              - name: "karten"
+                label: "Karten"
+                widget: "list"
+                summary: "{{fields.titel}}"
+                fields:
+                  - { name: "titel", label: "Titel", widget: "string" }
+                  - { name: "text", label: "Text", widget: "markdown", minimal: true, buttons: ["bold", "italic", "link"], editor_components: [] }
+
+          - label: "Buchung"
+            name: "buchung"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { name: "kicker", label: "Kleine Zeile darüber", widget: "string" }
+              - name: "ueberschrift"
+                label: "Überschrift"
+                widget: "text"
+                hint: "**Wort** malt den Schwung darunter."
+              - { name: "text", label: "Einleitungstext", widget: "markdown", minimal: true, buttons: ["bold", "italic", "link"], editor_components: [] }
+              - name: "hinweis_technik"
+                label: "Hinweis unter den Kalendern"
+                widget: "markdown"
+                minimal: true
+                buttons: ["bold", "italic"]
+                editor_components: []
+                hint: "Die E-Mail-Adresse wird automatisch dahinter gesetzt."
+              - label: "Abgrenzungs-Kasten"
+                name: "trennung"
+                widget: "object"
+                fields:
+                  - { name: "titel", label: "Titel", widget: "string" }
+                  - { name: "text", label: "Text", widget: "markdown", minimal: true, buttons: ["bold", "italic", "link"], editor_components: [] }
+
+          - label: "Kontakt & Anfahrt"
+            name: "kontakt"
+            widget: "object"
+            collapsed: true
+            hint: "Adresse und E-Mail stehen unter „Kontakt & Stammdaten“."
+            fields:
+              - { name: "kicker", label: "Kleine Zeile darüber", widget: "string" }
+              - { name: "ueberschrift", label: "Überschrift", widget: "text" }
+              - { name: "text", label: "Einleitungstext", widget: "markdown", minimal: true, buttons: ["bold", "italic", "link"], editor_components: [] }
+              - { name: "adresse_titel", label: "Titel Adress-Kachel", widget: "string" }
+              - { name: "adresse_link", label: "Beschriftung Karten-Link", widget: "string" }
+              - { name: "kontakt_titel", label: "Titel Kontakt-Kachel", widget: "string" }
+              - { name: "kontakt_text", label: "Text Kontakt-Kachel", widget: "string" }
+
+      # ─────────────────────────────────────────────────────────────────
+      # Wichtelstübchen
+      # ─────────────────────────────────────────────────────────────────
+      - file: "src/data/pages/wichtelstuebchen.json"
+        name: "wichtelstuebchen"
+        label: "Wichtelstübchen"
+        fields:
+          - label: "Suchmaschine (SEO)"
+            name: "seo"
+            widget: "object"
+            collapsed: true
+            hint: "Die Beschreibung wird automatisch aus den Eckdaten erzeugt."
+            fields:
+              - { name: "titel", label: "Seitentitel", widget: "string" }
+
+          - label: "Hinweisstreifen ganz oben"
+            name: "topstrip"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { name: "hinweis", label: "Handschrift-Einwurf", widget: "string" }
+              - { name: "text", label: "Text", widget: "markdown", minimal: true, buttons: ["bold", "italic"], editor_components: [] }
+              - { name: "link", label: "Link-Beschriftung", widget: "string" }
+
+          - label: "Kopfbereich"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { name: "kicker", label: "Kleine Zeile darüber", widget: "string" }
+              - name: "ueberschrift"
+                label: "Große Überschrift"
+                widget: "text"
+                hint: "Zeilenumbruch = neue Zeile. **Wort** malt den Schwung darunter."
+              - { name: "text", label: "Einleitungstext", widget: "markdown", minimal: true, buttons: ["bold", "italic", "link"], editor_components: [] }
+              - { name: "button_anfrage", label: "Button links", widget: "string" }
+              - { name: "button_tag", label: "Button rechts", widget: "string" }
+              - { name: "bild", label: "Bild", widget: "image" }
+              - { name: "bild_alt", label: "Bildbeschreibung", widget: "string" }
+
+          - label: "Zahlen-Kacheln"
+            name: "fakten"
+            widget: "object"
+            collapsed: true
+            hint: "Die Zahlen selbst stehen unter „Kontakt & Stammdaten“."
+            fields:
+              - { name: "kicker", label: "Kleine Zeile darüber", widget: "string" }
+              - { name: "ueberschrift", label: "Überschrift", widget: "text" }
+              - { name: "hinweis", label: "Hinweis darunter", widget: "markdown", minimal: true, buttons: ["bold", "italic", "link"], editor_components: [] }
+
+          - label: "Räume (Bildergalerie)"
+            name: "raeume"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { name: "kicker", label: "Kleine Zeile darüber", widget: "string" }
+              - { name: "ueberschrift", label: "Überschrift", widget: "text" }
+              - { name: "text", label: "Einleitungstext", widget: "markdown", minimal: true, buttons: ["bold", "italic", "link"], editor_components: [] }
+              - name: "bilder"
+                label: "Bilder"
+                widget: "list"
+                summary: "{{fields.alt}}"
+                fields:
+                  - { name: "bild", label: "Bild", widget: "image" }
+                  - { name: "alt", label: "Bildbeschreibung", widget: "string" }
+
+          - label: "Tagesablauf"
+            name: "tagesablauf"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { name: "kicker", label: "Kleine Zeile darüber", widget: "string" }
+              - { name: "ueberschrift", label: "Überschrift", widget: "text" }
+              - { name: "text", label: "Einleitungstext", widget: "markdown", minimal: true, buttons: ["bold", "italic", "link"], editor_components: [] }
+              - name: "zeilen"
+                label: "Zeitblöcke"
+                widget: "list"
+                summary: "{{fields.von}}–{{fields.bis}} {{fields.titel}}"
+                fields:
+                  - { name: "von", label: "von", widget: "string" }
+                  - { name: "bis", label: "bis", widget: "string" }
+                  - { name: "titel", label: "Titel", widget: "string" }
+                  - { name: "text", label: "Text", widget: "markdown", minimal: true, buttons: ["bold", "italic", "link"], editor_components: [] }
+              - { name: "zitat", label: "Zitat (Handschrift)", widget: "text" }
+
+          - label: "Eingewöhnung"
+            name: "eingewoehnung"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { name: "kicker", label: "Kleine Zeile darüber", widget: "string" }
+              - { name: "ueberschrift", label: "Überschrift", widget: "text" }
+              - { name: "text", label: "Text", widget: "markdown", minimal: true, buttons: ["bold", "italic", "link"], editor_components: [] }
+              - { name: "punkte", label: "Aufzählung", widget: "list", field: { name: "wert", label: "Punkt", widget: "string" } }
+              - { name: "bild", label: "Bild", widget: "image" }
+              - { name: "bild_alt", label: "Bildbeschreibung", widget: "string" }
+
+          - label: "Kosten"
+            name: "kosten"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { name: "kicker", label: "Kleine Zeile darüber", widget: "string" }
+              - { name: "ueberschrift", label: "Überschrift", widget: "text" }
+              - label: "Karte Verpflegung"
+                name: "verpflegung"
+                widget: "object"
+                fields:
+                  - { name: "titel", label: "Titel", widget: "string" }
+                  - { name: "preis", label: "Preis", widget: "string" }
+                  - { name: "einheit", label: "Zusatz unter dem Preis", widget: "string" }
+                  - { name: "text", label: "Text", widget: "markdown", minimal: true, buttons: ["bold", "italic", "link"], editor_components: [] }
+              - label: "Karte Betreuungsbeitrag"
+                name: "beitrag"
+                widget: "object"
+                fields:
+                  - { name: "titel", label: "Titel", widget: "string" }
+                  - { name: "preis", label: "Preis", widget: "string" }
+                  - { name: "einheit", label: "Zusatz unter dem Preis", widget: "string" }
+                  - { name: "text", label: "Text", widget: "markdown", minimal: true, buttons: ["bold", "italic", "link"], editor_components: [] }
+              - label: "Hinweis-Kasten"
+                name: "hinweis"
+                widget: "object"
+                fields:
+                  - { name: "titel", label: "Titel", widget: "string" }
+                  - { name: "text", label: "Text", widget: "markdown", minimal: true, buttons: ["bold", "italic", "link"], editor_components: [] }
+
+          - label: "Team-Abschnitt"
+            name: "team"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { name: "kicker", label: "Kleine Zeile darüber", widget: "string" }
+              - { name: "ueberschrift", label: "Überschrift", widget: "text" }
+              - { name: "text", label: "Text", widget: "markdown", minimal: true, buttons: ["bold", "italic", "link"], editor_components: [] }
+              - { name: "button", label: "Button", widget: "string" }
+              - { name: "bild", label: "Bild", widget: "image" }
+              - { name: "bild_alt", label: "Bildbeschreibung", widget: "string" }
+
+          - label: "Platzanfrage"
+            name: "anfrage"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { name: "kicker", label: "Kleine Zeile darüber", widget: "string" }
+              - { name: "ueberschrift", label: "Überschrift", widget: "text" }
+              - { name: "text", label: "Einleitungstext", widget: "markdown", minimal: true, buttons: ["bold", "italic", "link"], editor_components: [] }
+              - { name: "button", label: "Beschriftung Wichtelkompass-Button", widget: "string" }
+              - label: "Abgrenzungs-Kasten"
+                name: "hinweis"
+                widget: "object"
+                fields:
+                  - { name: "titel", label: "Titel", widget: "string" }
+                  - { name: "text", label: "Text", widget: "markdown", minimal: true, buttons: ["bold", "italic", "link"], editor_components: [] }
+
+      # ─────────────────────────────────────────────────────────────────
+      # Team-Seite (die Personen selbst stehen unter „Team“)
+      # ─────────────────────────────────────────────────────────────────
+      - file: "src/data/pages/team.json"
+        name: "team_seite"
+        label: "Team-Seite"
+        fields:
+          - label: "Suchmaschine (SEO)"
+            name: "seo"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { name: "titel", label: "Seitentitel", widget: "string" }
+              - { name: "beschreibung", label: "Beschreibung", widget: "text" }
+
+          - label: "Kopfbereich"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { name: "kicker", label: "Kleine Zeile darüber", widget: "string" }
+              - name: "ueberschrift"
+                label: "Große Überschrift"
+                widget: "text"
+                hint: "Zeilenumbruch = neue Zeile. **Wort** malt den Schwung darunter."
+              - { name: "text", label: "Einleitungstext", widget: "markdown", minimal: true, buttons: ["bold", "italic", "link"], editor_components: [] }
+
+          - label: "Zwei Wege (unten)"
+            name: "wege"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { name: "kicker", label: "Kleine Zeile darüber", widget: "string" }
+              - { name: "ueberschrift", label: "Überschrift", widget: "text" }
+              - { name: "text", label: "Einleitungstext", widget: "markdown", minimal: true, buttons: ["bold", "italic", "link"], editor_components: [] }
+              - label: "Karte Wichtelstübchen"
+                name: "wichtelstuebchen"
+                widget: "object"
+                fields:
+                  - { name: "chip", label: "Kleines Etikett", widget: "string" }
+                  - { name: "titel", label: "Titel", widget: "string" }
+                  - { name: "text", label: "Text", widget: "markdown", minimal: true, buttons: ["bold", "italic", "link"], editor_components: [] }
+                  - { name: "button", label: "Button", widget: "string" }
+              - label: "Karte SandStube"
+                name: "sandstube"
+                widget: "object"
+                fields:
+                  - { name: "chip", label: "Kleines Etikett", widget: "string" }
+                  - { name: "titel", label: "Titel", widget: "string" }
+                  - { name: "text", label: "Text", widget: "markdown", minimal: true, buttons: ["bold", "italic", "link"], editor_components: [] }
+                  - { name: "button", label: "Button", widget: "string" }
+
+      # ─────────────────────────────────────────────────────────────────
+      # Impressum
+      # ─────────────────────────────────────────────────────────────────
+      - file: "src/data/pages/impressum.json"
+        name: "impressum"
+        label: "Impressum"
+        fields:
+          - label: "Suchmaschine (SEO)"
+            name: "seo"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { name: "titel", label: "Seitentitel", widget: "string" }
+              - { name: "beschreibung", label: "Beschreibung", widget: "text" }
+          - { name: "kicker", label: "Kleine Zeile über der Überschrift", widget: "string" }
+          - { name: "ueberschrift", label: "Überschrift", widget: "string" }
+          - label: "Gelber Warnkasten"
+            name: "warnung"
+            widget: "object"
+            fields:
+              - name: "anzeigen"
+                label: "Warnkasten anzeigen"
+                widget: "boolean"
+                default: true
+                hint: "Ausschalten, sobald die Angaben vollständig und geprüft sind."
+              - { name: "text", label: "Text", widget: "markdown", minimal: true, buttons: ["bold", "italic", "link"], editor_components: [] }
+          - name: "abschnitte"
+            label: "Abschnitte"
+            widget: "list"
+            summary: "{{fields.ueberschrift}}"
+            hint: "{{inhaberin}}, {{strasse}}, {{plz_ort}} und {{email}} werden automatisch eingesetzt."
+            fields:
+              - { name: "ueberschrift", label: "Zwischenüberschrift", widget: "string" }
+              - name: "text"
+                label: "Text"
+                widget: "markdown"
+                buttons: ["bold", "italic", "link", "bulleted-list"]
+                editor_components: []
+
+      # ─────────────────────────────────────────────────────────────────
+      # Datenschutz
+      # ─────────────────────────────────────────────────────────────────
+      - file: "src/data/pages/datenschutz.json"
+        name: "datenschutz"
+        label: "Datenschutzerklärung"
+        fields:
+          - label: "Suchmaschine (SEO)"
+            name: "seo"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { name: "titel", label: "Seitentitel", widget: "string" }
+              - { name: "beschreibung", label: "Beschreibung", widget: "text" }
+          - { name: "kicker", label: "Kleine Zeile über der Überschrift", widget: "string" }
+          - { name: "ueberschrift", label: "Überschrift", widget: "string" }
+          - label: "Gelber Warnkasten"
+            name: "warnung"
+            widget: "object"
+            fields:
+              - name: "anzeigen"
+                label: "Warnkasten anzeigen"
+                widget: "boolean"
+                default: true
+                hint: "Ausschalten, sobald die Erklärung geprüft ist."
+              - { name: "text", label: "Text", widget: "markdown", minimal: true, buttons: ["bold", "italic", "link"], editor_components: [] }
+          - name: "abschnitte"
+            label: "Abschnitte"
+            widget: "list"
+            summary: "{{fields.ueberschrift}}"
+            hint: "{{inhaberin}}, {{strasse}}, {{plz_ort}} und {{email}} werden automatisch eingesetzt."
+            fields:
+              - { name: "ueberschrift", label: "Zwischenüberschrift", widget: "string" }
+              - name: "text"
+                label: "Text"
+                widget: "markdown"
+                buttons: ["bold", "italic", "link", "bulleted-list"]
+                editor_components: []
+
+  # ═════════════════════════════════════════════════════════════════════
   # TEAM – die Betreuer:innen (entspricht src/content/team/*.md)
-  # ─────────────────────────────────────────────────────────────────────
+  # ═════════════════════════════════════════════════════════════════════
   - name: "team"
     label: "Team"
     label_singular: "Teammitglied"
@@ -62,11 +660,9 @@ collections:
         max: 99
       - { name: "body", label: "Beschreibungstext", widget: "markdown" }
 
-  # ─────────────────────────────────────────────────────────────────────
-  # ALLGEMEINE EINSTELLUNGEN – Kontakt, Zeiten, Preise
-  # (entspricht src/data/site.json – als "File Collection" gelistet,
-  #  damit Decap die JSON-Felder bearbeitbar macht)
-  # ─────────────────────────────────────────────────────────────────────
+  # ═════════════════════════════════════════════════════════════════════
+  # STAMMDATEN – Kontakt, Zeiten, Preise (seitenübergreifend)
+  # ═════════════════════════════════════════════════════════════════════
   - name: "einstellungen"
     label: "Einstellungen"
     delete: false
@@ -75,10 +671,9 @@ collections:
       preview: false
     files:
 
-      # —— Kontaktdaten & Adress-Infos ——
       - file: "src/data/site.json"
         name: "site"
-        label: "Kontakt, Preise & Zeiten"
+        label: "Kontakt & Stammdaten"
         fields:
           - label: "Kontakt"
             name: "kontakt"
@@ -99,7 +694,10 @@ collections:
             fields:
               - { name: "kinder", label: "Anzahl Kinder", widget: "number", value_type: "int" }
               - { name: "alter", label: "Altersspanne", widget: "string" }
-              - { name: "zeiten", label: "Betreuungszeiten", widget: "string" }
+              - name: "zeiten"
+                label: "Betreuungszeiten"
+                widget: "string"
+                hint: "Format „6.45–15.15 Uhr“ – der Bindestrich trennt die Zahlen-Kachel."
               - { name: "anerkennung", label: "Anerkennungs-Hinweis (Fußzeile)", widget: "string" }
               - { name: "wichtelkompass_url", label: "Wichtelkompass-Profil-URL", widget: "string" }
 
@@ -115,6 +713,7 @@ collections:
                 max: 3
                 label_singular: "Ticket"
                 summary: "{{fields.name}} – {{fields.preis}}"
+                hint: "Reihenfolge und Anzahl bitte nicht ändern – sie gehören zu den Beschreibungen auf der SandStube-Seite."
                 fields:
                   - { name: "name", label: "Ticket-Name", widget: "string" }
                   - { name: "preis", label: "Preis (z. B. „25 €“)", widget: "string" }

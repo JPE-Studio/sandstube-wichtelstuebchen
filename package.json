@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/JPE-Studio/sandstube-wichtelstuebchen#readme",
   "dependencies": {
-    "astro": "^7.1.4"
+    "astro": "^7.1.4",
+    "marked": "^16.4.2"
   }
 }
