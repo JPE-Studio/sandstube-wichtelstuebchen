@@ -6,3 +6,7 @@ node_modules/
 # Astro Build-Output (wird von Coolify/Docker neu erzeugt)
 dist/
 .astro/
+
+# Generiert von tools/copy-preview-css.mjs
+public/admin/preview.css
+public/admin/site.json

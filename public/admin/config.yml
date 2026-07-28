@@ -42,7 +42,7 @@ collections:
     delete: false
     create: false
     editor:
-      preview: false
+      preview: true
     files:
 
       # ─────────────────────────────────────────────────────────────────
@@ -631,6 +631,30 @@ collections:
                 buttons: ["bold", "italic", "link", "bulleted-list"]
                 editor_components: []
 
+      # ─────────────────────────────────────────────────────────────────
+      # Fehlerseite (erscheint bei unbekannten Adressen)
+      # ─────────────────────────────────────────────────────────────────
+      - file: "src/data/pages/404.json"
+        name: "fehlerseite"
+        label: "Fehlerseite (404)"
+        fields:
+          - label: "Suchmaschine (SEO)"
+            name: "seo"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { name: "titel", label: "Seitentitel", widget: "string" }
+              - { name: "beschreibung", label: "Beschreibung", widget: "text" }
+          - { name: "kicker", label: "Kleine Zeile darüber", widget: "string" }
+          - name: "ueberschrift"
+            label: "Große Überschrift"
+            widget: "text"
+            hint: "Zeilenumbruch = neue Zeile. **Wort** malt den Schwung darunter."
+          - { name: "text", label: "Text", widget: "markdown", minimal: true, buttons: ["bold", "italic", "link"], editor_components: [] }
+          - { name: "button_start", label: "Button 1", widget: "string" }
+          - { name: "button_sandstube", label: "Button 2", widget: "string" }
+          - { name: "button_wichtelstuebchen", label: "Button 3", widget: "string" }
+
   # ═════════════════════════════════════════════════════════════════════
   # TEAM – die Betreuer:innen (entspricht src/content/team/*.md)
   # ═════════════════════════════════════════════════════════════════════
@@ -668,7 +692,7 @@ collections:
     delete: false
     create: false
     editor:
-      preview: false
+      preview: true
     files:
 
       - file: "src/data/site.json"

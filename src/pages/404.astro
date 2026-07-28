@@ -1,0 +1,38 @@
+---
+/**
+ * Fehlerseite – wird von nginx bei unbekannten URLs mit Status 404
+ * ausgeliefert (siehe nginx.conf).
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { heading, rich } from '../lib/text';
+import page from '../data/pages/404.json';
+
+const nav = [
+  { href: '/', label: 'Übersicht' },
+  { href: '/sandstube', label: 'SandStube' },
+  { href: '/wichtelstuebchen', label: 'Wichtelstübchen' },
+  { href: '/team', label: 'Team' },
+];
+---
+<BaseLayout
+  title={page.seo.titel}
+  description={page.seo.beschreibung}
+  theme="hub"
+  nav={nav}
+  noindex
+  brand={{ type: 'svg', svg: 'hub', href: '/', label: 'Maria Bretthauer', sub: 'Siegen · zwei Angebote' }}
+>
+  <section class="hero">
+    <div class="motes" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="wrap wrap--narrow center">
+      <span class="kicker">{page.kicker}</span>
+      <h1 set:html={heading(page.ueberschrift)} />
+      <p class="lead mt-s" set:html={rich(page.text)} />
+      <div class="btn-row mt-m" style="justify-content:center">
+        <a href="/" class="btn btn--lg">{page.button_start}</a>
+        <a href="/sandstube" class="btn btn--ghost btn--lg">{page.button_sandstube}</a>
+        <a href="/wichtelstuebchen" class="btn btn--ghost btn--lg">{page.button_wichtelstuebchen}</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
