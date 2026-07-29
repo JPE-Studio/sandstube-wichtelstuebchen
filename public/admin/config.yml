@@ -4,9 +4,8 @@
 # Dieses File definiert, was Maria unter /admin sehen und bearbeiten kann.
 # Es MUSS mit den JSON-Dateien in src/data/ übereinstimmen.
 #
-# ⚠️ VOR DEM ERSTEN LOGIN AUSFÜLLEN:
-#   1. repo:      euer GitHub-Repo (owner/name)
-#   2. base_url:  URL eures OAuth-Proxys (z. B. https://auth.euredomain.de)
+# Der Login läuft über den OAuth-Vermittler aus docker-compose.oauth.yml.
+# Wenn dessen Domain sich ändert, muss `base_url` unten mitgeändert werden.
 #
 # Schreibweisen in den Textfeldern:
 #   **Wort**  in einer Überschrift  → der gemalte Schwung darunter
@@ -19,10 +18,12 @@
 
 backend:
   name: github
-  repo: JPE-Studio/sandstube-wichtelstuebchen   # ← euer Repo anpassen
+  repo: JPE-Studio/sandstube-wichtelstuebchen
   branch: main
-  base_url: https://auth.sandstube-siegen.de     # ← OAuth-Proxy-URL anpassen
-  auth_endpoint: /auth
+  # OAuth-Vermittler – wird über docker-compose.oauth.yml deployt.
+  # Muss exakt die Domain sein, unter der dieser Dienst in Coolify läuft.
+  base_url: https://sandstube-auth.jpe-studio.dev
+  auth_endpoint: auth
 
 # Lokaler Entwicklungs-Modus: `npx decap-server` parallel laufen lassen
 local_backend: true

@@ -1,0 +1,48 @@
+# ═══════════════════════════════════════════════════════════════════════
+# OAuth-Vermittler für den Admin-Bereich (Decap CMS)
+# ═══════════════════════════════════════════════════════════════════════
+# Eigener Mini-Dienst, getrennt von der Webseite. Er wird gebraucht, weil
+# GitHub beim Login ein Client-Secret verlangt – und das darf nicht in eine
+# statische Seite, die jeder im Browser lesen kann.
+#
+# Ablauf beim Login:
+#   /admin  →  dieser Dienst (/auth)  →  GitHub-Login  →  zurück (/callback)
+#
+# Maria bekommt davon nichts mit: Sie sieht nur die GitHub-Anmeldemaske,
+# tippt E-Mail + Passwort und ist im Editor.
+#
+# ─── Deployment in Coolify ─────────────────────────────────────────────
+#   1. New Resource → Docker Compose → dieses Repo
+#      Compose-Datei: /docker-compose.oauth.yml
+#   2. Domain setzen:      sandstube-auth.jpe-studio.dev
+#   3. Ports Exposes:      80          ← genau der Punkt, der bei der
+#                                        Webseite den 502 verursacht hat
+#   4. Environment Variables setzen (siehe unten), als Secret markieren
+#
+# Die volle Anleitung inkl. GitHub-OAuth-App steht in der README
+# unter „Admin-Bereich freischalten".
+# ═══════════════════════════════════════════════════════════════════════
+
+services:
+  cms-auth:
+    # amd64-Image – passt zum Coolify-Server (x86_64 Linux).
+    # Version bewusst festgenagelt, damit ein Neustart nicht plötzlich
+    # eine andere Version zieht.
+    image: ghcr.io/njfamirm/decap-cms-github-backend:1.2.5
+    restart: unless-stopped
+
+    environment:
+      # Beide Werte stammen aus der GitHub-OAuth-App.
+      # In Coolify unter „Environment Variables" eintragen und das Secret
+      # als „Is Secret" markieren – niemals hier ins Repo schreiben.
+      - OAUTH_GITHUB_CLIENT_ID=${OAUTH_GITHUB_CLIENT_ID}
+      - OAUTH_GITHUB_CLIENT_SECRET=${OAUTH_GITHUB_CLIENT_SECRET}
+
+      # `public_repo` reicht, weil das Repo öffentlich ist – der Token darf
+      # dann nur öffentliche Repos schreiben. Der Standard wäre `repo` und
+      # würde auch Zugriff auf alle privaten Repos gewähren.
+      - OAUTH_GITHUB_SCOPE=public_repo
+
+    # Der Dienst lauscht im Container auf Port 80.
+    expose:
+      - '80'
