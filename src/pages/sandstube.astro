@@ -10,15 +10,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { heading, rich } from '../lib/text';
 import site from '../data/site.json';
 import page from '../data/pages/sandstube.json';
+import ui from '../data/ui.json';
 
-const nav = [
-  { href: '/', label: 'Übersicht' },
-  { href: '/sandstube', label: 'SandStube' },
-  { href: '#tickets', label: 'Preise' },
-  { href: '#galerie', label: 'Einblicke' },
-  { href: '/wichtelstuebchen', label: 'Wichtelstübchen' },
-  { href: '#buchen', label: 'Termin buchen', cta: true, accent: true },
-];
+const nav = ui.nav.sandstube;
+const brand = ui.brand.sandstube;
 
 const { hero, saison, schritte, erlebnis, tickets, galerie, bedingungen, buchung, kontakt } = page;
 
@@ -36,13 +31,13 @@ const ticketKarten = tickets.liste.map((ticket, i) => ({
   theme="sand"
   nav={nav}
   activeNav="/sandstube"
-  brand={{ type: 'svg', svg: 'sand', href: '/sandstube', label: 'SandStube', sub: 'Erlebnisraum · Siegen' }}
+  brand={{ type: 'svg', svg: 'sand', href: '/sandstube', label: brand.label, sub: brand.sub }}
   topstrip={{
     emphasis: page.topstrip.hinweis,
     text: rich(page.topstrip.text),
     link: { href: '/wichtelstuebchen', label: page.topstrip.link },
   }}
-  footerNote="SandStube – Indoor-Sand-Erlebnisraum"
+  footerNote={brand.footernote}
 >
   {/* ════════════════ HERO ══ */}
   <section class="hero">

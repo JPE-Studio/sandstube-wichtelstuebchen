@@ -21,6 +21,7 @@ import '../styles/paperworld.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import site from '../data/site.json';
+import ui from '../data/ui.json';
 
 interface Props {
   title: string;
@@ -69,7 +70,7 @@ const footBottomNote = footerNote ?? site.wichtelstuebchen.anerkennung;
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fraunces:opsz,wght,SOFT,WONK@9..144,400..700,0..100,0..1&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet" />
 </head>
 <body class={`t-${theme}`}>
-<a class="skip" href="#main">Zum Inhalt springen</a>
+<a class="skip" href="#main">{ui.ui_strings.skip_link}</a>
 
 {topstrip && (
   <div class="topstrip">

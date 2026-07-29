@@ -6,14 +6,10 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { heading, rich } from '../lib/text';
 import page from '../data/pages/index.json';
+import ui from '../data/ui.json';
 
-const nav = [
-  { href: '/', label: 'Übersicht' },
-  { href: '/sandstube', label: 'SandStube' },
-  { href: '/wichtelstuebchen', label: 'Wichtelstübchen' },
-  { href: '/team', label: 'Team' },
-  { href: '#unterschied', label: 'Was passt zu uns?', cta: true, ghost: true },
-];
+const nav = ui.nav.hub;
+const brand = ui.brand.hub;
 
 const { hero, tueren, unterschied, einblicke, maria } = page;
 
@@ -30,7 +26,7 @@ const tueren_liste = [
   theme="hub"
   nav={nav}
   activeNav="/"
-  brand={{ type: 'svg', svg: 'hub', href: '/', label: 'Maria Bretthauer', sub: 'Siegen · zwei Angebote' }}
+  brand={{ type: 'svg', svg: 'hub', href: '/', label: brand.label, sub: brand.sub }}
 >
   {/* ════════════════ HERO ══ */}
   <section class="hero">

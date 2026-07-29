@@ -6,13 +6,10 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { heading, rich } from '../lib/text';
 import page from '../data/pages/404.json';
+import ui from '../data/ui.json';
 
-const nav = [
-  { href: '/', label: 'Übersicht' },
-  { href: '/sandstube', label: 'SandStube' },
-  { href: '/wichtelstuebchen', label: 'Wichtelstübchen' },
-  { href: '/team', label: 'Team' },
-];
+const nav = ui.nav.rechtsseiten;
+const brand = ui.brand.hub;
 ---
 <BaseLayout
   title={page.seo.titel}
@@ -20,7 +17,7 @@ const nav = [
   theme="hub"
   nav={nav}
   noindex
-  brand={{ type: 'svg', svg: 'hub', href: '/', label: 'Maria Bretthauer', sub: 'Siegen · zwei Angebote' }}
+  brand={{ type: 'svg', svg: 'hub', href: '/', label: brand.label, sub: brand.sub }}
 >
   <section class="hero">
     <div class="motes" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>

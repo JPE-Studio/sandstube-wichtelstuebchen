@@ -11,7 +11,7 @@
   "wege": {
     "kicker": "Und jetzt?",
     "ueberschrift": "Zwei Angebote, zwei Wege",
-    "text": "Je nachdem, was ihr sucht, geht es hier weiter – die beiden Angebote laufen getrennt.",
+    "text": "Je nachdem, was ihr sucht, geht es hier weiter – Betreuungsplatz und Sandstunden werden getrennt angefragt bzw. gebucht.",
     "wichtelstuebchen": {
       "chip": "Kindertagespflege",
       "titel": "Ein Betreuungsplatz",
@@ -21,7 +21,7 @@
     "sandstube": {
       "chip": "Erlebnisraum",
       "titel": "Ein paar Stunden im Sand",
-      "text": "Ein Zeitfenster von drei Stunden für euch und euer Kind – ab 25 €, direkt online buchbar. Ideal für Kindergeburtstage.",
+      "text": "Ein Zeitfenster von drei Stunden im Sandraum unseres Wichtelstübchens – nachmittags für euch geöffnet, ab 25 €, direkt online buchbar. Ideal für Kindergeburtstage.",
       "button": "Termin buchen"
     }
   }

@@ -2,62 +2,80 @@
 /**
  * Footer – <footer class="site-foot">, identisch auf allen Seiten.
  * Ersetzt die 6-fach duplizierte Fußzeile aus den Original-HTML-Dateien.
- * Zieht Adress-/Kontaktdaten aus src/data/site.json.
+ * Zieht alle Texte/Links aus src/data/ui.json, Adress-/Kontaktdaten
+ * aus src/data/site.json – beides über Decap CMS pflegbar.
  */
 import site from '../data/site.json';
+import ui from '../data/ui.json';
+import { rich, fill } from '../lib/text';
 
 interface Props {
   note?: string;
 }
 const { note } = Astro.props;
 const footNote = note ?? site.wichtelstuebchen.anerkennung;
+
+// Platzhalter für Footer-Texte ({{inhaberin}}, {{jahr}}, …)
+const p = {
+  inhaberin: site.inhaberin,
+  strasse: site.kontakt.strasse,
+  plz_ort: site.kontakt.plz_ort,
+  email: site.kontakt.email,
+  jahr: site.jahr,
+  wichtelkompass_url: site.wichtelstuebchen.wichtelkompass_url,
+};
+
+const f = ui.footer;
 ---
 <footer class="site-foot">
   <div class="wrap">
     <div class="foot-grid">
       <div>
         <div class="foot-brandline">
-          <img src="/images/header-wichtelstuebchen.webp" alt="" aria-hidden="true" />
+          <img src={f.logo} alt={ui.ui_strings.footer_logo_alt || undefined} aria-hidden={!ui.ui_strings.footer_logo_alt} />
         </div>
-        <p>Zwei eigenständige Angebote von {site.inhaberin} an einer Adresse in Siegen – organisatorisch komplett getrennt.</p>
+        <p set:html={rich(fill(f.einleitung, p))} />
       </div>
 
       <div>
-        <span class="foot-tag foot-tag--sand">SandStube</span>
-        <h4>Erlebnisraum</h4>
+        <span class="foot-tag foot-tag--sand">{f.spalte_sandstube.tag}</span>
+        <h4>{f.spalte_sandstube.titel}</h4>
         <div class="foot-links">
-          <a href="/sandstube">Über die SandStube</a>
-          <a href="/sandstube#tickets">Preise &amp; Tickets</a>
-          <a href="/sandstube#buchen">Termin buchen</a>
-          <a href="/sandstube#galerie">Einblicke</a>
-        </div>
-      </div>
-
-      <div>
-        <span class="foot-tag foot-tag--wichtel">Wichtelstübchen</span>
-        <h4>Kindertagespflege</h4>
-        <div class="foot-links">
-          <a href="/wichtelstuebchen">Über das Wichtelstübchen</a>
-          <a href="/wichtelstuebchen#tagesablauf">Tagesablauf</a>
-          <a href="/wichtelstuebchen#kosten">Kosten</a>
-          <a href="/wichtelstuebchen#anfrage">Platz anfragen</a>
+          {f.spalte_sandstube.links.map((l) => (
+            <a href={l.href}>{l.label}</a>
+          ))}
         </div>
       </div>
 
       <div>
-        <h4>Kontakt &amp; Rechtliches</h4>
+        <span class="foot-tag foot-tag--wichtel">{f.spalte_wichtelstuebchen.tag}</span>
+        <h4>{f.spalte_wichtelstuebchen.titel}</h4>
         <div class="foot-links">
-          <a href="/team">Team</a>
-          <a href={`mailto:${site.kontakt.email}`}>{site.kontakt.email}</a>
-          <a href="/impressum">Impressum</a>
-          <a href="/datenschutz">Datenschutz</a>
-          <a href={site.wichtelstuebchen.wichtelkompass_url} target="_blank" rel="noopener">Profil auf Wichtelkompass ↗</a>
+          {f.spalte_wichtelstuebchen.links.map((l) => (
+            <a href={l.href}>{l.label}</a>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <h4>{f.spalte_kontakt.titel}</h4>
+        <div class="foot-links">
+          {f.spalte_kontakt.links.map((l) => {
+            // {{platzhalter}} in Label & href einsetzen; externe Links öffnen im neuen Tab
+            return (
+              <a
+                href={fill(l.href, p)}
+                target={l.extern ? '_blank' : undefined}
+                rel={l.extern ? 'noopener' : undefined}
+              >{fill(l.label, p)}</a>
+            );
+          })}
         </div>
       </div>
     </div>
 
     <div class="foot-bottom">
-      <span>© {site.jahr} {site.inhaberin} · {site.kontakt.strasse}, {site.kontakt.plz_ort}</span>
+      <span set:html={rich(fill(f.copyright, p))} />
       <span>{footNote}</span>
     </div>
   </div>

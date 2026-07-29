@@ -11,8 +11,10 @@
 # Schreibweisen in den Textfeldern:
 #   **Wort**  in einer Überschrift  → der gemalte Schwung darunter
 #   **Wort**  in einem Fließtext    → fett
-#   {{email}}, {{strasse}}, {{plz_ort}}, {{inhaberin}}
-#             in den Rechtstexten   → automatisch aus „Kontakt & Stammdaten“
+#   {{email}}, {{strasse}}, {{plz_ort}}, {{inhaberin}}, {{jahr}}
+#             in Rechtstexten, Footer & Copyright
+#                                   → automatisch aus „Kontakt & Stammdaten“
+#   wichtelkompass_url              → in einem Footer-Link mit „extern: ja“
 # ═══════════════════════════════════════════════════════════════════════
 
 backend:
@@ -666,6 +668,213 @@ collections:
           - { name: "button_start", label: "Button 1", widget: "string" }
           - { name: "button_sandstube", label: "Button 2", widget: "string" }
           - { name: "button_wichtelstuebchen", label: "Button 3", widget: "string" }
+
+  # ═════════════════════════════════════════════════════════════════════
+  # NAVIGATION & LAYOUT – Menüs, Header-Marken, Fußzeile, Logos
+  # (entspricht src/data/ui.json)
+  # ═════════════════════════════════════════════════════════════════════
+  - name: "layout"
+    label: "Navigation & Layout"
+    delete: false
+    create: false
+    editor:
+      preview: true
+    files:
+
+      - file: "src/data/ui.json"
+        name: "ui"
+        label: "Navigation, Marken & Fußzeile"
+        fields:
+
+          # ─── Hauptnavigationen ───
+          # Wiederkehrende Felder für einen Navigations-Eintrag
+          - label: "Hauptnavigationen"
+            name: "nav"
+            widget: "object"
+            collapsed: true
+            hint: "Die Menü-Einträge oben. Jede Seite kann ihre eigene Zusammenstellung haben."
+            fields:
+              - label: "Übersichts-Seite (Hub)"
+                name: "hub"
+                widget: "list"
+                min: 1
+                summary: "{{fields.label}}"
+                fields:
+                  - { name: "label", label: "Beschriftung", widget: "string" }
+                  - { name: "href", label: "Link-Ziel", widget: "string" }
+                  - { name: "cta", label: "Als Button", widget: "boolean", default: false }
+                  - { name: "ghost", label: "Button: nur Kontur", widget: "boolean", default: false }
+                  - { name: "accent", label: "Button: Akzentfarbe", widget: "boolean", default: false }
+              - label: "SandStube-Seite"
+                name: "sandstube"
+                widget: "list"
+                min: 1
+                summary: "{{fields.label}}"
+                fields:
+                  - { name: "label", label: "Beschriftung", widget: "string" }
+                  - { name: "href", label: "Link-Ziel", widget: "string" }
+                  - { name: "cta", label: "Als Button", widget: "boolean", default: false }
+                  - { name: "ghost", label: "Button: nur Kontur", widget: "boolean", default: false }
+                  - { name: "accent", label: "Button: Akzentfarbe", widget: "boolean", default: false }
+              - label: "Wichtelstübchen-Seite"
+                name: "wichtelstuebchen"
+                widget: "list"
+                min: 1
+                summary: "{{fields.label}}"
+                fields:
+                  - { name: "label", label: "Beschriftung", widget: "string" }
+                  - { name: "href", label: "Link-Ziel", widget: "string" }
+                  - { name: "cta", label: "Als Button", widget: "boolean", default: false }
+                  - { name: "ghost", label: "Button: nur Kontur", widget: "boolean", default: false }
+                  - { name: "accent", label: "Button: Akzentfarbe", widget: "boolean", default: false }
+              - label: "Team-Seite"
+                name: "team"
+                widget: "list"
+                min: 1
+                summary: "{{fields.label}}"
+                fields:
+                  - { name: "label", label: "Beschriftung", widget: "string" }
+                  - { name: "href", label: "Link-Ziel", widget: "string" }
+                  - { name: "cta", label: "Als Button", widget: "boolean", default: false }
+                  - { name: "ghost", label: "Button: nur Kontur", widget: "boolean", default: false }
+                  - { name: "accent", label: "Button: Akzentfarbe", widget: "boolean", default: false }
+              - label: "Rechts-Seiten (Impressum, Datenschutz, 404)"
+                name: "rechtsseiten"
+                widget: "list"
+                min: 1
+                summary: "{{fields.label}}"
+                fields:
+                  - { name: "label", label: "Beschriftung", widget: "string" }
+                  - { name: "href", label: "Link-Ziel", widget: "string" }
+                  - { name: "cta", label: "Als Button", widget: "boolean", default: false }
+                  - { name: "ghost", label: "Button: nur Kontur", widget: "boolean", default: false }
+                  - { name: "accent", label: "Button: Akzentfarbe", widget: "boolean", default: false }
+
+          # ─── Marken im Header ───
+          - label: "Marken (Header)"
+            name: "brand"
+            widget: "object"
+            collapsed: true
+            fields:
+              - label: "Hub / Übersicht"
+                name: "hub"
+                widget: "object"
+                fields:
+                  - { name: "label", label: "Markenname", widget: "string" }
+                  - { name: "sub", label: "Untertitel", widget: "string" }
+              - label: "SandStube"
+                name: "sandstube"
+                widget: "object"
+                fields:
+                  - { name: "label", label: "Markenname", widget: "string" }
+                  - { name: "sub", label: "Untertitel", widget: "string" }
+                  - { name: "footernote", label: "Zweite Fußzeile (markenspezifisch)", widget: "string", hint: "Erscheint unten rechts statt des Standard-Hinweises." }
+              - label: "Wichtelstübchen"
+                name: "wichtelstuebchen"
+                widget: "object"
+                fields:
+                  - { name: "label", label: "Markenname", widget: "string" }
+                  - { name: "sub", label: "Untertitel", widget: "string" }
+                  - { name: "logo", label: "Header-Logo", widget: "image", hint: "Bild statt SVG-Mark im Header." }
+
+          # ─── Fußzeile ───
+          - label: "Fußzeile"
+            name: "footer"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { name: "logo", label: "Logo oben links", widget: "image" }
+              - name: "einleitung"
+                label: "Einleitungstext"
+                widget: "markdown"
+                minimal: true
+                buttons: ["bold", "italic"]
+                editor_components: []
+                hint: "{{inhaberin}} wird automatisch eingesetzt."
+              - label: "Spalte SandStube"
+                name: "spalte_sandstube"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - { name: "tag", label: "Kleines Etikett", widget: "string" }
+                  - { name: "titel", label: "Überschrift", widget: "string" }
+                  - name: "links"
+                    label: "Links"
+                    widget: "list"
+                    min: 1
+                    summary: "{{fields.label}}"
+                    fields:
+                      - { name: "label", label: "Beschriftung", widget: "string" }
+                      - { name: "href", label: "Link-Ziel", widget: "string" }
+              - label: "Spalte Wichtelstübchen"
+                name: "spalte_wichtelstuebchen"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - { name: "tag", label: "Kleines Etikett", widget: "string" }
+                  - { name: "titel", label: "Überschrift", widget: "string" }
+                  - name: "links"
+                    label: "Links"
+                    widget: "list"
+                    min: 1
+                    summary: "{{fields.label}}"
+                    fields:
+                      - { name: "label", label: "Beschriftung", widget: "string" }
+                      - { name: "href", label: "Link-Ziel", widget: "string" }
+              - label: "Spalte Kontakt & Rechtliches"
+                name: "spalte_kontakt"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - { name: "titel", label: "Überschrift", widget: "string" }
+                  - name: "links"
+                    label: "Links"
+                    widget: "list"
+                    min: 1
+                    summary: "{{fields.label}}"
+                    hint: "Bei „extern: ja“ öffnet sich ein neuer Tab. Statt einer URL/Adresse kann auch {{email}} (für mailto-Link) oder {{wichtelkompass_url}} eingetragen werden – wird aus den Stammdaten eingesetzt."
+                    fields:
+                      - { name: "label", label: "Beschriftung", widget: "string" }
+                      - { name: "href", label: "Link-Ziel", widget: "string" }
+                      - { name: "extern", label: "Externer Link (neuer Tab)", widget: "boolean", default: false }
+              - name: "copyright"
+                label: "Copyright-Zeile"
+                widget: "string"
+                hint: "{{jahr}}, {{inhaberin}}, {{strasse}}, {{plz_ort}} werden automatisch eingesetzt."
+
+          # ─── Zahlen-Kacheln Wichtelstübchen ───
+          - label: "Wichtelstübchen – Zahlen-Kacheln"
+            name: "wichtel_fakten"
+            widget: "object"
+            collapsed: true
+            hint: "Die kleinen Beschriftungen unter den Zahlen. Die Zahlen selbst stehen unter „Kontakt & Stammdaten“."
+            fields:
+              - { name: "kinder_label", label: "Text unter Kinderzahl", widget: "string" }
+              - { name: "alter_label", label: "Text unter Alter", widget: "string" }
+              - { name: "zeiten_label", label: "Text unter Betreuungszeit", widget: "string" }
+              - { name: "anerkennung_kuerzel", label: "Großer Wert Anerkennung", widget: "string" }
+              - { name: "anerkennung_label", label: "Text unter Anerkennung", widget: "string" }
+
+          # ─── Wichtelkompass-Logo ───
+          - label: "Wichtelkompass-Logo"
+            name: "wichtelkompass"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { name: "logo", label: "Logo", widget: "image" }
+              - { name: "logo_alt", label: "Bildbeschreibung (Alt-Text)", widget: "string" }
+
+          # ─── Technik-Texte (Barrierefreiheit) ───
+          - label: "Technik-Texte"
+            name: "ui_strings"
+            widget: "object"
+            collapsed: true
+            hint: "Kleine Hilfstexte für Screenreader und Tastatur-Nutzer."
+            fields:
+              - { name: "skip_link", label: "Sprunglink zum Inhalt", widget: "string" }
+              - { name: "nav_aria", label: "Beschriftung Hauptnavigation", widget: "string" }
+              - { name: "menu_aria", label: "Beschriftung Menü-Button", widget: "string" }
+              - { name: "footer_logo_alt", label: "Alt-Text Fußzeilen-Logo (leer = dekorativ)", widget: "string" }
 
   # ═════════════════════════════════════════════════════════════════════
   # TEAM – die Betreuer:innen (entspricht src/content/team/*.md)

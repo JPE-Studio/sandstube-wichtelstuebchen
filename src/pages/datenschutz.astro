@@ -10,13 +10,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { heading, rich, blocks, fill } from '../lib/text';
 import site from '../data/site.json';
 import page from '../data/pages/datenschutz.json';
+import ui from '../data/ui.json';
 
-const nav = [
-  { href: '/', label: 'Übersicht' },
-  { href: '/sandstube', label: 'SandStube' },
-  { href: '/wichtelstuebchen', label: 'Wichtelstübchen' },
-  { href: '/team', label: 'Team' },
-];
+const nav = ui.nav.rechtsseiten;
+const brand = ui.brand.hub;
 
 const platzhalter = {
   inhaberin: site.inhaberin,
@@ -32,7 +29,7 @@ const platzhalter = {
   nav={nav}
   activeNav="/"
   noindex
-  brand={{ type: 'svg', svg: 'hub', href: '/', label: 'Maria Bretthauer', sub: 'Siegen · zwei Angebote' }}
+  brand={{ type: 'svg', svg: 'hub', href: '/', label: brand.label, sub: brand.sub }}
 >
   <section class="hero band--tight">
     <div class="wrap wrap--narrow center">

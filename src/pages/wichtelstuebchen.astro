@@ -8,16 +8,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { heading, rich } from '../lib/text';
 import site from '../data/site.json';
 import page from '../data/pages/wichtelstuebchen.json';
+import ui from '../data/ui.json';
 
-const nav = [
-  { href: '/', label: 'Übersicht' },
-  { href: '/wichtelstuebchen', label: 'Wichtelstübchen' },
-  { href: '#tagesablauf', label: 'Tagesablauf' },
-  { href: '#kosten', label: 'Kosten' },
-  { href: '/team', label: 'Team' },
-  { href: '/sandstube', label: 'SandStube' },
-  { href: '#anfrage', label: 'Platz anfragen', cta: true },
-];
+const nav = ui.nav.wichtelstuebchen;
+const brand = ui.brand.wichtelstuebchen;
+const faktenUi = ui.wichtel_fakten;
+const wichtelkompass = ui.wichtelkompass;
 
 const wk = site.wichtelstuebchen;
 const { hero, fakten, raeume, tagesablauf, eingewoehnung, kosten, team, anfrage } = page;
@@ -33,10 +29,10 @@ const [zeit_von, zeit_bis] = wk.zeiten.replace(' Uhr', '').split('–');
   activeNav="/wichtelstuebchen"
   brand={{
     type: 'img',
-    imgSrc: '/images/header-wichtelstuebchen.webp',
+    imgSrc: brand.logo,
     href: '/wichtelstuebchen',
-    label: 'Wichtelstübchen',
-    sub: 'Kindertagespflege · Siegen',
+    label: brand.label,
+    sub: brand.sub,
   }}
   topstrip={{
     emphasis: page.topstrip.hinweis,
@@ -77,10 +73,10 @@ const [zeit_von, zeit_bis] = wk.zeiten.replace(' Uhr', '').split('–');
       </div>
 
       <div class="facts">
-        <div class="fact" data-reveal><b>{wk.kinder}</b><span>kleine Wichtel</span></div>
-        <div class="fact" data-reveal><b>{wk.alter.replace(' Jahre', '')}</b><span>Jahre</span></div>
-        <div class="fact" data-reveal><b>{zeit_von}<span style="font-size:1.4rem">–</span>{zeit_bis}</b><span>Uhr Betreuung</span></div>
-        <div class="fact" data-reveal><b>§43</b><span>Stadt Siegen anerkannt</span></div>
+        <div class="fact" data-reveal><b>{wk.kinder}</b><span>{faktenUi.kinder_label}</span></div>
+        <div class="fact" data-reveal><b>{wk.alter.replace(' Jahre', '')}</b><span>{faktenUi.alter_label}</span></div>
+        <div class="fact" data-reveal><b>{zeit_von}<span style="font-size:1.4rem">–</span>{zeit_bis}</b><span>{faktenUi.zeiten_label}</span></div>
+        <div class="fact" data-reveal><b>{faktenUi.anerkennung_kuerzel}</b><span>{faktenUi.anerkennung_label}</span></div>
       </div>
 
       <p class="center muted mt-m" set:html={rich(fakten.hinweis)} />
@@ -216,7 +212,7 @@ const [zeit_von, zeit_bis] = wk.zeiten.replace(' Uhr', '').split('–');
         <p class="lead" data-reveal style="--d:140ms" set:html={rich(anfrage.text)} />
         <div class="btn-row mt-m" data-reveal style="--d:220ms">
           <a href={wk.wichtelkompass_url} target="_blank" rel="noopener" class="wk">
-            <img src="/images/wichtelkompass-logo.svg" alt="Wichtelkompass" />
+            <img src={wichtelkompass.logo} alt={wichtelkompass.logo_alt} />
             <span>{anfrage.button}</span>
             <span class="arw" aria-hidden="true">→</span>
           </a>

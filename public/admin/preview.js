@@ -48,6 +48,8 @@
       strasse: stammdaten.kontakt.strasse,
       plz_ort: stammdaten.kontakt.plz_ort,
       email: stammdaten.kontakt.email,
+      jahr: stammdaten.jahr,
+      wichtelkompass_url: stammdaten.wichtelstuebchen.wichtelkompass_url,
     };
     return String(value).replace(/\{\{\s*(\w+)\s*\}\}/g, function (m, k) {
       return werte[k] !== undefined ? werte[k] : m;
@@ -290,4 +292,6 @@
     CMS.registerPreviewTemplate(name, seitenVorschau(seiten[name]));
   });
   CMS.registerPreviewTemplate('team', teamVorschau);
+  // Layout (ui.json) – gleiche strukturierte Vorschau wie die Seiten
+  CMS.registerPreviewTemplate('ui', seitenVorschau('hub'));
 })();

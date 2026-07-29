@@ -10,14 +10,10 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { heading, rich } from '../lib/text';
 import page from '../data/pages/team.json';
+import ui from '../data/ui.json';
 
-const nav = [
-  { href: '/', label: 'Übersicht' },
-  { href: '/wichtelstuebchen', label: 'Wichtelstübchen' },
-  { href: '/sandstube', label: 'SandStube' },
-  { href: '/team', label: 'Team' },
-  { href: '/wichtelstuebchen#anfrage', label: 'Platz anfragen', cta: true },
-];
+const nav = ui.nav.team;
+const brand = ui.brand.wichtelstuebchen;
 
 // Teammitglieder nach Reihenfolge sortieren
 const team = (await getCollection('team')).sort(
@@ -38,10 +34,10 @@ const wege_liste = [
   activeNav="/team"
   brand={{
     type: 'img',
-    imgSrc: '/images/header-wichtelstuebchen.webp',
+    imgSrc: brand.logo,
     href: '/wichtelstuebchen',
-    label: 'Wichtelstübchen',
-    sub: 'Kindertagespflege · Siegen',
+    label: brand.label,
+    sub: brand.sub,
   }}
 >
   {/* ════════════════ HERO ══ */}

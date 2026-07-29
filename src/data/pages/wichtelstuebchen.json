@@ -3,8 +3,8 @@
     "titel": "Wichtelstübchen – Kindertagespflege Siegen | Maria Bretthauer"
   },
   "topstrip": {
-    "hinweis": "Nicht verwechseln:",
-    "text": "Du möchtest mit deinem Kind ein paar **Stunden im Sand** spielen?",
+    "hinweis": "Übrigens:",
+    "text": "Unsere **SandStube** ist nachmittags auch für Familien von außerhalb stundenweise buchbar.",
     "link": "Hier geht es zur SandStube →"
   },
   "hero": {
@@ -24,7 +24,7 @@
   "raeume": {
     "kicker": "Unsere Räume",
     "ueberschrift": "Liebevoll eingerichtet",
-    "text": "Spielzimmer, Schlafzimmer, Küche, kreative Zone, Bad und Garten – vielfältige Orte zum Spielen, Entdecken und Ausruhen.",
+    "text": "Spielzimmer, Schlafzimmer, Küche, kreative Zone, Bad und Garten – und unsere SandStube, in der die Wichtel jeden Tag schütten, sieben und matschen dürfen. Vielfältige Orte zum Spielen, Entdecken und Ausruhen.",
     "bilder": [
       { "bild": "/images/raum-spielraum.jpg", "alt": "Spielzimmer" },
       { "bild": "/images/raum-leseecke.jpg", "alt": "Leseecke und Spielbereich" },
@@ -49,7 +49,7 @@
         "von": "8.00",
         "bis": "11.00",
         "titel": "Vormittag",
-        "text": "Gemeinsames Frühstück, Morgenkreis, Freispiel, Gartenzeit und pädagogische Angebote."
+        "text": "Gemeinsames Frühstück, Morgenkreis, Freispiel, Zeit in der SandStube, Gartenzeit und pädagogische Angebote."
       },
       {
         "von": "11.00",
@@ -113,8 +113,8 @@
     "text": "Die Platzanfrage läuft separat über unser Profil beim Wichtelkompass. Klickt euch durch, meldet euch – wir freuen uns auf euch und euer Kind!",
     "button": "Zum Wichtelkompass-Profil",
     "hinweis": {
-      "titel": "Zwei Angebote, zwei Wege",
-      "text": "Wichtelstübchen (Kindertagespflege) und SandStube (Erlebnisraum für Kinder & Eltern) sind komplett getrennte Angebote. Für ein paar Stunden im Sand geht es bitte zur [SandStube-Buchung](/sandstube#buchen)."
+      "titel": "Ein Raum, zwei Angebote",
+      "text": "Die **SandStube** gehört zum Wichtelstübchen – euer Kind spielt dort jeden Tag. Nachmittags öffnen wir diesen Raum zusätzlich für Familien von außerhalb; Zeiten, Preise und Buchung laufen dafür getrennt. Für ein paar Stunden im Sand geht es bitte zur [SandStube-Buchung](/sandstube#buchen)."
     }
   }
 }

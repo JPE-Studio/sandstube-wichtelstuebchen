@@ -1,12 +1,12 @@
 {
   "seo": {
     "titel": "SandStube & Wichtelstübchen Siegen – zwei Angebote von Maria Bretthauer",
-    "beschreibung": "Zwei eigenständige Angebote in Siegen: die SandStube (Indoor-Sand-Erlebnisraum, online buchbar) und das Wichtelstübchen (Kindertagespflege, 0–3 Jahre). Von Maria Bretthauer."
+    "beschreibung": "Zwei Angebote von Maria Bretthauer in Siegen: das Wichtelstübchen (Kindertagespflege, 0–3 Jahre) und die SandStube – der Sandraum des Wichtelstübchens, der nachmittags für alle Familien online buchbar ist."
   },
   "hero": {
     "kicker": "Herzlich willkommen in Siegen",
-    "ueberschrift": "Ein Haus.\nZwei ganz eigene **Welten**.",
-    "text": "In der **SandStube** rieselt feiner Sand durch kleine Hände – ein Erlebnisraum, den ihr stundenweise online bucht. Im **Wichtelstübchen** wachsen neun kleine Wichtel jeden Tag ein Stückchen – liebevolle Kindertagespflege für 0–3 Jahre. Zwei Angebote, die **getrennt laufen** und sich nur die Adresse teilen.",
+    "ueberschrift": "Ein Haus.\nZwei Angebote, ein **Sandraum**.",
+    "text": "Im **Wichtelstübchen** wachsen neun kleine Wichtel jeden Tag ein Stückchen – liebevolle Kindertagespflege für 0–3 Jahre. Zu ihren Räumen gehört die **SandStube**: Hier rieselt jeden Tag feiner Sand durch kleine Hände. Nachmittags öffnet dieser Raum für alle Familien – stundenweise online buchbar. Zwei Angebote mit eigenen Zeiten, eigenen Preisen und eigenem Anmeldeweg.",
     "button_sandstube": "Zur SandStube",
     "button_wichtelstuebchen": "Zum Wichtelstübchen",
     "bild": "/images/raum-titelbild.jpg",
@@ -15,11 +15,11 @@
   "tueren": {
     "kicker": "Wo möchtet ihr hin?",
     "ueberschrift": "Sucht euch eure Tür aus",
-    "text": "Jedes Angebot hat seine eigene Farbe, seinen eigenen Rhythmus und seinen eigenen Weg der Anmeldung.",
+    "text": "Jedes Angebot hat seine eigene Farbe, seinen eigenen Rhythmus und seinen eigenen Weg der Anmeldung – auch wenn beide sich denselben Sandraum teilen.",
     "sandstube": {
       "chip": "Erlebnisraum · stundenweise",
       "titel": "Die SandStube",
-      "text": "Spüren, staunen, spielen: große Sandschüsseln, Töpfe, Kellen und Zeit ohne Eile. Für Kinder von den ersten Schritten bis ca. 6 Jahre – gemeinsam mit euch. Ideal für Kindergeburtstage.",
+      "text": "Spüren, staunen, spielen: große Sandschüsseln, Töpfe, Kellen und Zeit ohne Eile. Vormittags spielen hier unsere Wichtel, nachmittags gehört der Raum euch – für Kinder von den ersten Schritten bis ca. 6 Jahre, gemeinsam mit euch. Ideal für Kindergeburtstage.",
       "fakten": ["ab 25 €", "3-Stunden-Fenster", "online buchbar"],
       "button": "SandStube ansehen",
       "bild": "/images/sandstube-4.webp",
@@ -28,7 +28,7 @@
     "wichtelstuebchen": {
       "chip": "Kindertagespflege · täglich",
       "titel": "Das Wichtelstübchen",
-      "text": "Ein vertrauter Tagesrhythmus, ein festes Team und viel Geborgenheit für neun kleine Wichtel zwischen 0 und 3 Jahren. Von der Stadt Siegen anerkannt nach §43 SGB VIII.",
+      "text": "Ein vertrauter Tagesrhythmus, ein festes Team und viel Geborgenheit für neun kleine Wichtel zwischen 0 und 3 Jahren – inklusive täglicher Spielzeit in der SandStube. Von der Stadt Siegen anerkannt nach §43 SGB VIII.",
       "fakten": ["9 Kinder", "0–3 Jahre", "6.45–15.15 Uhr"],
       "button": "Wichtelstübchen ansehen",
       "bild": "/images/raum-spielraum.jpg",
@@ -38,13 +38,14 @@
   "unterschied": {
     "kicker": "Damit nichts durcheinandergerät",
     "ueberschrift": "Der Unterschied auf einen Blick",
-    "text": "SandStube und Wichtelstübchen sind organisatorisch **vollständig getrennt** – eigene Zeiten, eigene Preise, eigener Anmeldeweg.",
+    "text": "Die SandStube ist ein **Raum des Wichtelstübchens** – dort spielen unsere Wichtel jeden Tag. Als Angebote laufen die beiden aber getrennt: eigene Zeiten, eigene Preise, eigener Anmeldeweg.",
     "sandstube": {
       "titel": "SandStube",
       "untertitel": "Erlebnisraum",
       "zeilen": [
         { "label": "Für wen", "wert": "Kinder **gemeinsam mit ihren Eltern**, erste Schritte bis ca. 6 Jahre" },
-        { "label": "Wann", "wert": "Einzelne Zeitfenster von 3 Stunden, frei wählbar" },
+        { "label": "Wann", "wert": "Einzelne Zeitfenster von 3 Stunden, unter der Woche **am Nachmittag**" },
+        { "label": "Der Raum", "wert": "Der Sandraum des Wichtelstübchens – nachmittags für euch geöffnet" },
         { "label": "Kosten", "wert": "25 € / 50 € / 90 € pro Zeitfenster" },
         { "label": "Anmeldung", "wert": "Direkt online über TidyCal – sofort buchbar" }
       ],
@@ -56,6 +57,7 @@
       "zeilen": [
         { "label": "Für wen", "wert": "Kinder von **0 bis 3 Jahren** – ohne Eltern, in fester Gruppe" },
         { "label": "Wann", "wert": "Regelmäßig, Montag bis Freitag von 6.45 bis 15.15 Uhr" },
+        { "label": "Der Raum", "wert": "Alle Räume inklusive **SandStube** – dort spielen die Wichtel täglich" },
         { "label": "Kosten", "wert": "95 € Verpflegung / Monat + Beitrag nach Einkommen" },
         { "label": "Anmeldung", "wert": "Platzanfrage über das Wichtelkompass-Profil" }
       ],
@@ -65,7 +67,7 @@
   "einblicke": {
     "kicker": "Erste Eindrücke",
     "ueberschrift": "Schaut einfach mal herein",
-    "text": "Kleine Momentaufnahmen aus beiden Welten.",
+    "text": "Kleine Momentaufnahmen aus dem Wichtelstübchen und der SandStube.",
     "bilder": [
       { "bild": "/images/sandstube-4.webp", "alt": "Spielen mit Sand und Glassteinen in der SandStube" },
       { "bild": "/images/raum-leseecke.jpg", "alt": "Gemütliche Leseecke im Wichtelstübchen" },
@@ -78,7 +80,7 @@
   "maria": {
     "kicker": "Hinter beiden Türen",
     "ueberschrift": "Maria Bretthauer",
-    "text": "Maria führt das Wichtelstübchen und die SandStube – als zwei getrennte Angebote unter einem Dach in Siegen. Gemeinsam mit Alexander und Zerina begleitet sie die kleinen Wichtel durch den Tag; die SandStube öffnet sie für Familien, die einen ruhigen Nachmittag oder einen besonderen Geburtstag suchen.",
+    "text": "Maria führt das Wichtelstübchen und die SandStube in Siegen. Gemeinsam mit Alexander und Zerina begleitet sie die kleinen Wichtel durch den Tag – mittendrin die SandStube, in der die Wichtel täglich spielen. Nachmittags öffnet sie diesen Raum für Familien, die einen ruhigen Nachmittag oder einen besonderen Geburtstag suchen.",
     "zitat": "„Gib deinem Kind Zeit zum Spielen – denn das Spiel ist die höchste Form des Forschens.“",
     "button": "Das Team kennenlernen",
     "bild": "/images/team-maria.jpg",

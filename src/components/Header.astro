@@ -10,6 +10,8 @@
  * Die Brand-SVGs werden direkt aus den Original-HTML-Dateien übernommen,
  * damit die Papierwelt-Optik 1:1 erhalten bleibt.
  */
+import ui from '../data/ui.json';
+
 interface Props {
   nav: { href: string; label: string; cta?: boolean; accent?: boolean; ghost?: boolean }[];
   brand: {
@@ -25,6 +27,7 @@ interface Props {
 }
 
 const { nav, brand, activeNav } = Astro.props;
+const { nav_aria, menu_aria } = ui.ui_strings;
 
 // Brand-SVGs pro Theme (aus den Original-HTML-Dateien übernommen)
 const brandSvgs: Record<string, string> = {
@@ -55,7 +58,7 @@ const brandSvgs: Record<string, string> = {
       )}
     </a>
 
-    <nav class="nav" id="nav" aria-label="Hauptnavigation">
+    <nav class="nav" id="nav" aria-label={nav_aria}>
       {nav.map((item) => {
         const isActive = activeNav && item.href === activeNav;
         if (item.cta) {
@@ -68,6 +71,6 @@ const brandSvgs: Record<string, string> = {
       })}
     </nav>
 
-    <button class="burger" aria-expanded="false" aria-controls="nav" aria-label="Menü öffnen"><span></span></button>
+    <button class="burger" aria-expanded="false" aria-controls="nav" aria-label={menu_aria}><span></span></button>
   </div>
 </header>

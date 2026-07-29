@@ -1,0 +1,109 @@
+{
+  "nav": {
+    "hub": [
+      { "label": "Übersicht", "href": "/", "cta": false, "ghost": false, "accent": false },
+      { "label": "SandStube", "href": "/sandstube", "cta": false, "ghost": false, "accent": false },
+      { "label": "Wichtelstübchen", "href": "/wichtelstuebchen", "cta": false, "ghost": false, "accent": false },
+      { "label": "Team", "href": "/team", "cta": false, "ghost": false, "accent": false },
+      { "label": "Was passt zu uns?", "href": "#unterschied", "cta": true, "ghost": true, "accent": false }
+    ],
+    "sandstube": [
+      { "label": "Übersicht", "href": "/", "cta": false, "ghost": false, "accent": false },
+      { "label": "SandStube", "href": "/sandstube", "cta": false, "ghost": false, "accent": false },
+      { "label": "Preise", "href": "#tickets", "cta": false, "ghost": false, "accent": false },
+      { "label": "Einblicke", "href": "#galerie", "cta": false, "ghost": false, "accent": false },
+      { "label": "Wichtelstübchen", "href": "/wichtelstuebchen", "cta": false, "ghost": false, "accent": false },
+      { "label": "Termin buchen", "href": "#buchen", "cta": true, "ghost": false, "accent": true }
+    ],
+    "wichtelstuebchen": [
+      { "label": "Übersicht", "href": "/", "cta": false, "ghost": false, "accent": false },
+      { "label": "Wichtelstübchen", "href": "/wichtelstuebchen", "cta": false, "ghost": false, "accent": false },
+      { "label": "Tagesablauf", "href": "#tagesablauf", "cta": false, "ghost": false, "accent": false },
+      { "label": "Kosten", "href": "#kosten", "cta": false, "ghost": false, "accent": false },
+      { "label": "Team", "href": "/team", "cta": false, "ghost": false, "accent": false },
+      { "label": "SandStube", "href": "/sandstube", "cta": false, "ghost": false, "accent": false },
+      { "label": "Platz anfragen", "href": "#anfrage", "cta": true, "ghost": false, "accent": false }
+    ],
+    "team": [
+      { "label": "Übersicht", "href": "/", "cta": false, "ghost": false, "accent": false },
+      { "label": "Wichtelstübchen", "href": "/wichtelstuebchen", "cta": false, "ghost": false, "accent": false },
+      { "label": "SandStube", "href": "/sandstube", "cta": false, "ghost": false, "accent": false },
+      { "label": "Team", "href": "/team", "cta": false, "ghost": false, "accent": false },
+      { "label": "Platz anfragen", "href": "/wichtelstuebchen#anfrage", "cta": true, "ghost": false, "accent": false }
+    ],
+    "rechtsseiten": [
+      { "label": "Übersicht", "href": "/", "cta": false, "ghost": false, "accent": false },
+      { "label": "SandStube", "href": "/sandstube", "cta": false, "ghost": false, "accent": false },
+      { "label": "Wichtelstübchen", "href": "/wichtelstuebchen", "cta": false, "ghost": false, "accent": false },
+      { "label": "Team", "href": "/team", "cta": false, "ghost": false, "accent": false }
+    ]
+  },
+  "brand": {
+    "hub": {
+      "label": "Maria Bretthauer",
+      "sub": "Siegen · zwei Angebote"
+    },
+    "sandstube": {
+      "label": "SandStube",
+      "sub": "Erlebnisraum · Siegen",
+      "footernote": "SandStube – Indoor-Sand-Erlebnisraum"
+    },
+    "wichtelstuebchen": {
+      "label": "Wichtelstübchen",
+      "sub": "Kindertagespflege · Siegen",
+      "logo": "/images/header-wichtelstuebchen.webp"
+    }
+  },
+  "footer": {
+    "logo": "/images/header-wichtelstuebchen.webp",
+    "einleitung": "Zwei Angebote von {{inhaberin}} unter einem Dach in Siegen: Kindertagespflege im Wichtelstübchen – und die dazugehörige SandStube, die nachmittags für alle Familien buchbar ist.",
+    "spalte_sandstube": {
+      "tag": "SandStube",
+      "titel": "Erlebnisraum",
+      "links": [
+        { "label": "Über die SandStube", "href": "/sandstube" },
+        { "label": "Preise & Tickets", "href": "/sandstube#tickets" },
+        { "label": "Termin buchen", "href": "/sandstube#buchen" },
+        { "label": "Einblicke", "href": "/sandstube#galerie" }
+      ]
+    },
+    "spalte_wichtelstuebchen": {
+      "tag": "Wichtelstübchen",
+      "titel": "Kindertagespflege",
+      "links": [
+        { "label": "Über das Wichtelstübchen", "href": "/wichtelstuebchen" },
+        { "label": "Tagesablauf", "href": "/wichtelstuebchen#tagesablauf" },
+        { "label": "Kosten", "href": "/wichtelstuebchen#kosten" },
+        { "label": "Platz anfragen", "href": "/wichtelstuebchen#anfrage" }
+      ]
+    },
+    "spalte_kontakt": {
+      "titel": "Kontakt & Rechtliches",
+      "links": [
+        { "label": "Team", "href": "/team", "extern": false },
+        { "label": "{{email}}", "href": "mailto:{{email}}", "extern": false },
+        { "label": "Impressum", "href": "/impressum", "extern": false },
+        { "label": "Datenschutz", "href": "/datenschutz", "extern": false },
+        { "label": "Profil auf Wichtelkompass ↗", "href": "{{wichtelkompass_url}}", "extern": true }
+      ]
+    },
+    "copyright": "© {{jahr}} {{inhaberin}} · {{strasse}}, {{plz_ort}}"
+  },
+  "wichtel_fakten": {
+    "kinder_label": "kleine Wichtel",
+    "alter_label": "Jahre",
+    "zeiten_label": "Uhr Betreuung",
+    "anerkennung_kuerzel": "§43",
+    "anerkennung_label": "Stadt Siegen anerkannt"
+  },
+  "wichtelkompass": {
+    "logo": "/images/wichtelkompass-logo.svg",
+    "logo_alt": "Wichtelkompass"
+  },
+  "ui_strings": {
+    "skip_link": "Zum Inhalt springen",
+    "nav_aria": "Hauptnavigation",
+    "menu_aria": "Menü öffnen",
+    "footer_logo_alt": ""
+  }
+}

@@ -10,3 +10,4 @@ dist/
 # Generiert von tools/copy-preview-css.mjs
 public/admin/preview.css
 public/admin/site.json
+public/admin/ui.json
