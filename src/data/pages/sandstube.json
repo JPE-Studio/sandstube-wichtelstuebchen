@@ -75,7 +75,7 @@
           "Zwei Gruppen gleichzeitig im Raum"
         ],
         "tidycal_path": "wichtelkompass/sandstubchen-1jx0x68",
-        "hervorheben": false
+        "hervorheben": true
       },
       {
         "name": "Ganzer Raum",
@@ -88,7 +88,7 @@
           "Exklusive Nutzung"
         ],
         "tidycal_path": "wichtelkompass/sandstubchen-mnlwxvx",
-        "hervorheben": false
+        "hervorheben": true
       },
       {
         "name": "Ganzer Raum · Entdecker",
