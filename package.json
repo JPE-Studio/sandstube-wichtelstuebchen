@@ -1,7 +1,7 @@
 {
   "name": "sandstube",
   "version": "1.0.0",
-  "description": "SandStube & Wichtelstübchen Siegen – zwei Angebote von Maria Bretthauer. Statische Astro-Seite mit Decap CMS.",
+  "description": "SandStube & Wichtelstübchen Siegen – zwei Angebote von Maria Bretthauer. Statische Astro-Seite mit Sveltia CMS.",
   "type": "module",
   "scripts": {
     "dev": "astro dev",
@@ -9,8 +9,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "prebuild": "node tools/copy-preview-css.mjs",
-    "predev": "node tools/copy-preview-css.mjs"
+    "prebuild": "node tools/copy-admin-assets.mjs",
+    "predev": "node tools/copy-admin-assets.mjs"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/JPE-Studio/sandstube-wichtelstuebchen#readme",
   "dependencies": {
+    "@sveltia/cms": "^0.181.1",
     "astro": "^7.1.4",
     "marked": "^16.4.2"
   }

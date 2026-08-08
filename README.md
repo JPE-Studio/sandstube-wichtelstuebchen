@@ -1,9 +1,9 @@
 # SandStube & Wichtelstübchen Siegen
 
-Statische Webseite (Astro) mit Decap CMS für redaktionelle Pflege, deploybar auf Coolify.
+Statische Webseite (Astro) mit Sveltia CMS für redaktionelle Pflege, deploybar auf Coolify.
 
 - **Frontend:** Astro (Static Site Generator) — Papierwelt-Designsystem aus 6 handgeschriebenen HTML-Seiten 1:1 übernommen
-- **CMS:** [Decap CMS](https://decapcms.org/) unter `/admin` — Inhalte liegen als Markdown/JSON im Repo (Git-basiert)
+- **CMS:** [Sveltia CMS](https://sveltia.dev/) unter `/admin` — Inhalte liegen als Markdown/JSON im Repo (Git-basiert). Sveltia ist der moderne, Drop-in-Nachfolger von Decap CMS und nutzt dieselbe `config.yml`.
 - **Hosting:** [Coolify](https://coolify.io/) via Dockerfile (Nginx + statische Dateien, ~10–20 MB RAM)
 
 ## Lokale Entwicklung
@@ -46,9 +46,9 @@ Zwei Schalter sind praktisch: der **Saison-Hinweis** auf der SandStube-Seite
 (Sommerpause ein-/ausblenden) und die gelben **Warnkästen** in Impressum und
 Datenschutz – die abschalten, sobald die Texte geprüft sind.
 
-**Lokales CMS-Testen** (ohne GitHub): in einem zweiten Terminal `npx decap-server`
-starten, dann `http://localhost:4321/admin` öffnen. In `public/admin/config.yml`
-ist `local_backend: true` dafür aktiviert.
+**Lokales CMS-Testen:** Sveltia CMS unterstützt keinen lokalen Proxy-Server
+(`decap-server`/`local_backend` wird ignoriert). Zum Testen der Redaktion die
+Seite deployen und `/admin` dort öffnen, oder gegen einen Test-Branch arbeiten.
 
 ## Deployment auf Coolify
 
@@ -64,17 +64,17 @@ Aktuell live unter **https://sandstube.jpe-studio.dev**
 
 ### 2. Auto-Deploy
 Läuft bereits über die **GitHub-App-Integration** von Coolify: Jeder Push auf
-`main` startet automatisch einen Rebuild – auch die Commits, die Decap beim
+`main` startet automatisch einen Rebuild – auch die Commits, die Sveltia beim
 Veröffentlichen aus `/admin` heraus erzeugt. Ein zusätzlicher Repo-Webhook ist
 dafür **nicht** nötig.
 
 ### 3. Admin-Bereich freischalten (einmalig)
 
-**Warum überhaupt ein Extra-Dienst?** Decap speichert Änderungen als Git-Commits
+**Warum überhaupt ein Extra-Dienst?** Sveltia speichert Änderungen als Git-Commits
 auf GitHub. GitHub verlangt beim Login zwingend ein *Client-Secret* – und das
 darf nicht in einer statischen Seite stehen, die jeder im Browser auslesen kann.
 Deshalb übernimmt ein winziger Vermittler-Dienst diesen Austausch. Ein reines
-Passwort-Feld ohne GitHub ist im Decap-GitHub-Backend nicht vorgesehen.
+Passwort-Feld ohne GitHub ist im GitHub-Backend nicht vorgesehen.
 
 **Was Maria davon merkt:** nichts. Sie öffnet `/admin`, klickt einmal auf
 „Login with GitHub", tippt E-Mail + Passwort ihres GitHub-Kontos – fertig.
@@ -122,11 +122,11 @@ Danach `https://sandstube.jpe-studio.dev/admin` öffnen und einloggen.
 ## Architektur
 
 ```
-Maria → /admin (Decap UI) → OAuth-Vermittler → GitHub-Repo (Markdown + JSON + Bilder)
-        sandstube.jpe-       sandstube-auth.              ↓ (GitHub-App-Integration)
-        studio.dev           jpe-studio.dev         Coolify-Build (Dockerfile)
-                             (compose.oauth)              ↓
-                                                  Nginx serviert dist/ auf Port 80
+Maria → /admin (Sveltia UI) → OAuth-Vermittler → GitHub-Repo (Markdown + JSON + Bilder)
+        sandstube.jpe-        sandstube-auth.              ↓ (GitHub-App-Integration)
+        studio.dev            jpe-studio.dev         Coolify-Build (Dockerfile)
+                              (compose.oauth)              ↓
+                                                   Nginx serviert dist/ auf Port 80
 ```
 
 Zwei getrennte Coolify-Resources: die Webseite (dieses `Dockerfile`) und der
@@ -150,6 +150,6 @@ src/
 ├── scripts/app.js  Burger-Menu + Scroll-Reveal (vanilla JS)
 └── styles/paperworld.css  Papierwelt-Designsystem
 public/
-├── admin/          Decap CMS (index.html + config.yml)
+├── admin/          Sveltia CMS (index.html + config.yml + generiertes Bundle)
 └── images/         Alle Bilder
 ```

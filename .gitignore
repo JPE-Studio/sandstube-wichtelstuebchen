@@ -7,7 +7,5 @@ node_modules/
 dist/
 .astro/
 
-# Generiert von tools/copy-preview-css.mjs
-public/admin/preview.css
-public/admin/site.json
-public/admin/ui.json
+# Generiert von tools/copy-admin-assets.mjs
+public/admin/sveltia-cms.js
