@@ -19,7 +19,7 @@
     "sandstube": {
       "chip": "Erlebnisraum · stundenweise",
       "titel": "Die SandStube",
-      "text": "Spüren, staunen, spielen: große Sandschüsseln, Töpfe, Kellen und vieles mehr. Vormittags spielen hier unsere Wichtel, nachmittags gehört der Raum euch – für Kinder von den ersten Schritten bis ca. 6 Jahre, gemeinsam mit euch. Auch für Kindergeburtstage.",
+      "text": "Spüren, staunen, spielen: große Sandschüsseln, Töpfe, Kellen und vieles mehr. Vormittags spielen hier unsere Wichtel, nachmittags gehört der Raum euch - für Kinder von den ersten Schritten bis ca. 6 Jahre, gemeinsam mit euch. Auch für Kindergeburtstage.",
       "fakten": [
         "ab 25 €",
         "3-Stunden-Fenster",
@@ -32,7 +32,7 @@
     "wichtelstuebchen": {
       "chip": "Kindertagespflege · täglich",
       "titel": "Das Wichtelstübchen",
-      "text": "Ein vertrauter Tagesrhythmus, ein festes Team und viel Geborgenheit für neun kleine Wichtel zwischen 0 und 3 Jahren – inklusive täglicher Spielzeit in der SandStube. Von der Stadt Siegen anerkannt nach §43 SGB VIII.",
+      "text": "Ein vertrauter Tagesrhythmus, ein festes Team und viel Geborgenheit für neun kleine Wichtel zwischen 0 und 3 Jahren - inklusive täglicher Spielzeit in der SandStube. Von der Stadt Siegen anerkannt nach §43 SGB VIII.",
       "fakten": [
         "9 Kinder",
         "0–3 Jahre",
@@ -46,7 +46,7 @@
   "unterschied": {
     "kicker": "Damit nichts durcheinandergerät",
     "ueberschrift": "Der Unterschied auf einen Blick",
-    "text": "Die SandStube ist ein **Raum des Wichtelstübchens** – dort spielen unsere Wichtel jeden Tag. Als Angebote laufen die beiden aber getrennt: eigene Zeiten, eigene Preise, eigener Anmeldeweg.",
+    "text": "Die SandStube ist ein **Raum des Wichtelstübchens -** dort spielen unsere Wichtel jeden Tag. Als Angebote laufen die beiden aber getrennt: eigene Zeiten, eigene Preise, eigener Anmeldeweg.",
     "sandstube": {
       "titel": "SandStube",
       "untertitel": "Erlebnisraum",
@@ -61,7 +61,7 @@
         },
         {
           "label": "Der Raum",
-          "wert": "Die Sandstube des Wichtelstübchens – für euch geöffnet"
+          "wert": "Die Sandstube des Wichtelstübchens - für euch geöffnet"
         },
         {
           "label": "Kosten",
