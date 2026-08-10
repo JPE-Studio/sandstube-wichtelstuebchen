@@ -12,11 +12,11 @@
     "kicker": "Ein Indoor-Erlebnisraum in Siegen",
     "ueberschrift": "Feiner Sand,\nder durch kleine **Hände** rieselt.",
     "motto": "Spüren · Staunen · Spielen",
-    "text": "Ein Ort für Kinder ab den ersten Schritten bis ca. 6 Jahre und ihre Eltern. Vormittags spielen hier die Kinder unserer Kindertagespflege – nachmittags bucht ihr ein Zeitfenster von drei Stunden, und dann gehört die SandStube ganz euch.",
+    "text": "Ein Ort für Kinder ab den ersten Schritten bis ca. 6 Jahre und ihre Eltern. Vormittags spielen hier die Kinder unserer Kindertagespflege - nachmittags bucht ihr ein Zeitfenster von drei Stunden, und dann gehört die SandStube ganz euch.",
     "button_buchen": "Termin buchen",
     "button_preise": "Preise ansehen",
-    "bild": "/images/sandstube-4.webp",
-    "bild_alt": "Kind legt bunte Glassteine auf eine gebastelte Schildkröte in der SandStube"
+    "bild": "/images/sandstube-main.webp",
+    "bild_alt": "SandStube"
   },
   "saison": {
     "anzeigen": true,
@@ -29,33 +29,33 @@
       {
         "wort": "Spüren",
         "titel": "Ankommen & barfuß los",
-        "text": "Eine kurze Begrüßung, dann gehört der Raum euch. Sand zwischen den Zehen, kühl und warm, grob und ganz fein."
+        "text": "Eine kurze Begrüßung, dann gehört der Raum euch. Feiner Sand, der sanft durch die Hände rieselt und auf den Boden fallen darf."
       },
       {
         "wort": "Staunen",
         "titel": "Töpfe, Kellen, Glitzersteine",
-        "text": "Große Sandschüsseln, zahllose Gefäße und Alltagsgegenstände laden zum Schütten, Sieben und Vergleichen ein."
+        "text": "Die liebevoll gestaltete Umgebung lädt dazu ein, ins freie Spiel einzutauchen, die kindliche Neugier zu entfalten und die sensorische Wahrnehmung zu stärken. Alltagsgegenstände bilden die Basis für ein intensives Sinneserlebnis deines Kindes."
       },
       {
         "wort": "Spielen",
         "titel": "So lange, wie ihr mögt",
-        "text": "Die Kinder bestimmen selbst, wann sie genug haben – innerhalb ihres Zeitfensters. Ihr habt derweil Zeit zum Durchatmen."
+        "text": "Die Kinder bestimmen selbst, wann sie genug haben - innerhalb ihres Zeitfensters. Ihr habt derweil Zeit zum Durchatmen."
       }
     ]
   },
   "erlebnis": {
     "kicker": "So viel mehr als „nur“ Sand",
     "ueberschrift": "Zeit zum Spielen – Zeit zum Forschen",
-    "text": "Kinder brauchen keine Anleitung, um zu lernen. Sie brauchen Material, Zeit und jemanden, der ihnen zuschaut. Genau dafür gibt es die SandStube.",
+    "text": "Kinder brauchen keine Anleitung, um zu lernen. Sie brauchen Material und Zeit. Genau dafür gibt es die SandStube.",
     "punkte": [
-      "Vormittags der Spielraum unserer Wichtel – nachmittags gehört er euch",
-      "Kurze Begrüßung, danach gehört die SandStube euch",
+      "Vormittags der Spielraum unserer Wichtel - nachmittags gehört er euch",
+      "Kurze Begrüßung, danach seid ihr allein",
       "Zeit für Eltern, während die Kinder entdecken",
       "Unser Sand ist ungiftig, wird regelmäßig gesiebt und bei Bedarf ausgetauscht",
-      "Zeitfenster von jeweils 3 Stunden"
+      "Zeitfenster von bis zu 3 Stunden"
     ],
     "zitat": "„Gib deinem Kind Zeit zum Spielen! Denn das Spiel ist die höchste Form des Forschens.“",
-    "bild": "/images/sandstube-1.webp",
+    "bild": "/images/sandstube-main.webp",
     "bild_alt": "Spielfläche in der SandStube"
   },
   "tickets": {
@@ -67,12 +67,12 @@
       {
         "name": "Halber Raum",
         "preis": "25 €",
-        "details": "1–2 Erwachsene · max. 3 Kinder",
-        "text": "Ihr teilt euch den Raum mit einer weiteren Gruppe – ideal zum unverbindlichen Ausprobieren und um neue Leute kennenzulernen.",
+        "details": "1 Erwachsener · max. 2 Kinder",
+        "text": "Ihr teilt euch den Raum mit anderen – ideal zum unverbindlichen Ausprobieren und um neue Leute kennenzulernen.",
         "punkte": [
-          "1–2 Erwachsene",
-          "max. 3 Kinder",
-          "Zwei Gruppen gleichzeitig im Raum"
+          "1 Erwachsener",
+          "max. 2 Kinder",
+          "Bis zu 3 Gruppen gleichzeitig im Raum"
         ],
         "tidycal_path": "wichtelkompass/sandstubchen-1jx0x68",
         "hervorheben": false
@@ -113,7 +113,7 @@
     "ueberschrift": "Schaut herein",
     "bilder": [
       {
-        "bild": "/images/sandstube-4.webp",
+        "bild": "/images/image.jpg",
         "alt": "Kind spielt mit Glassteinen in der SandStube"
       },
       {
@@ -121,15 +121,15 @@
         "alt": "Gemütlicher Raum der SandStube"
       },
       {
-        "bild": "/images/garten-sandbereich.webp",
+        "bild": "/images/PXL_20240125_080646836.jpg",
         "alt": "Außenbereich mit Sand"
       },
       {
-        "bild": "/images/sandstube-3.webp",
+        "bild": "/images/PXL_20250326_081100087~2.jpg",
         "alt": "Spielbereich in der SandStube"
       },
       {
-        "bild": "/images/sandstube-1.webp",
+        "bild": "/images/PXL_20240410_144031692.MP~3.jpg",
         "alt": "Spielfläche mit Material"
       }
     ]
