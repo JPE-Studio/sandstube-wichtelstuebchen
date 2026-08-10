@@ -5,8 +5,8 @@
   },
   "hero": {
     "kicker": "Herzlich willkommen in Siegen",
-    "ueberschrift": "Ein Haus.\nZwei Angebote, ein **Sandraum**.",
-    "text": "Im **Wichtelstübchen** wachsen neun kleine Wichtel jeden Tag ein Stückchen – liebevolle Kindertagespflege für 0–3 Jahre. Zu ihren Räumen gehört die **SandStube**: Hier rieselt jeden Tag feiner Sand durch kleine Hände. Nachmittags öffnet dieser Raum für alle Familien – stundenweise online buchbar. Zwei Angebote mit eigenen Zeiten, eigenen Preisen und eigenem Anmeldeweg.",
+    "ueberschrift": "Ein Haus.\n**Zwei Angebote**.",
+    "text": "Im **Wichtelstübchen** werden neun Kinder von 0–3 Jahren liebevoll betreut. Zur Kindertagespflege gehört die **SandStube. V**ormittags für die Wichtel, nachmittags für alle Familien online buchbar. Zwei Angebote, eigene Zeiten, Preise und Anmeldung.",
     "button_sandstube": "Zur SandStube",
     "button_wichtelstuebchen": "Zum Wichtelstübchen",
     "bild": "/images/raum-titelbild.jpg",
@@ -15,21 +15,29 @@
   "tueren": {
     "kicker": "Wo möchtet ihr hin?",
     "ueberschrift": "Sucht euch eure Tür aus",
-    "text": "Jedes Angebot hat seine eigene Farbe, seinen eigenen Rhythmus und seinen eigenen Weg der Anmeldung – auch wenn beide sich denselben Sandraum teilen.",
+    "text": "**Ein Angebot, zwei Möglichkeiten der Nutzung.**",
     "sandstube": {
       "chip": "Erlebnisraum · stundenweise",
       "titel": "Die SandStube",
-      "text": "Spüren, staunen, spielen: große Sandschüsseln, Töpfe, Kellen und Zeit ohne Eile. Vormittags spielen hier unsere Wichtel, nachmittags gehört der Raum euch – für Kinder von den ersten Schritten bis ca. 6 Jahre, gemeinsam mit euch. Ideal für Kindergeburtstage.",
-      "fakten": ["ab 25 €", "3-Stunden-Fenster", "online buchbar"],
+      "text": "Spüren, staunen, spielen: große Sandschüsseln, Töpfe, Kellen und vieles mehr. Vormittags spielen hier unsere Wichtel, nachmittags gehört der Raum euch – für Kinder von den ersten Schritten bis ca. 6 Jahre, gemeinsam mit euch. Auch für Kindergeburtstage.",
+      "fakten": [
+        "ab 25 €",
+        "3-Stunden-Fenster",
+        "online buchbar"
+      ],
       "button": "SandStube ansehen",
-      "bild": "/images/sandstube-4.webp",
-      "bild_alt": "Kind spielt konzentriert mit bunten Glassteinen in der SandStube"
+      "bild": "/images/sandstube-main.webp",
+      "bild_alt": "Bild der SandStube"
     },
     "wichtelstuebchen": {
       "chip": "Kindertagespflege · täglich",
       "titel": "Das Wichtelstübchen",
       "text": "Ein vertrauter Tagesrhythmus, ein festes Team und viel Geborgenheit für neun kleine Wichtel zwischen 0 und 3 Jahren – inklusive täglicher Spielzeit in der SandStube. Von der Stadt Siegen anerkannt nach §43 SGB VIII.",
-      "fakten": ["9 Kinder", "0–3 Jahre", "6.45–15.15 Uhr"],
+      "fakten": [
+        "9 Kinder",
+        "0–3 Jahre",
+        "6.45–15.15 Uhr"
+      ],
       "button": "Wichtelstübchen ansehen",
       "bild": "/images/raum-spielraum.jpg",
       "bild_alt": "Heller Spielraum im Wichtelstübchen"
@@ -43,11 +51,26 @@
       "titel": "SandStube",
       "untertitel": "Erlebnisraum",
       "zeilen": [
-        { "label": "Für wen", "wert": "Kinder **gemeinsam mit ihren Eltern**, erste Schritte bis ca. 6 Jahre" },
-        { "label": "Wann", "wert": "Einzelne Zeitfenster von 3 Stunden, unter der Woche **am Nachmittag**" },
-        { "label": "Der Raum", "wert": "Der Sandraum des Wichtelstübchens – nachmittags für euch geöffnet" },
-        { "label": "Kosten", "wert": "25 € / 50 € / 90 € pro Zeitfenster" },
-        { "label": "Anmeldung", "wert": "Direkt online über TidyCal – sofort buchbar" }
+        {
+          "label": "Für wen",
+          "wert": "Kinder **gemeinsam mit ihren Eltern**, erste Schritte bis ca. 6 Jahre"
+        },
+        {
+          "label": "Wann",
+          "wert": "**Mo - Fr 15.00 - 18.00**\n\n**Sa / So 9.00 - 12.00 + 15.00 - 18.00**"
+        },
+        {
+          "label": "Der Raum",
+          "wert": "Die Sandstube des Wichtelstübchens – für euch geöffnet"
+        },
+        {
+          "label": "Kosten",
+          "wert": "25 € / 50 € / 90 € pro Zeitfenster"
+        },
+        {
+          "label": "Anmeldung",
+          "wert": "Direkt online über TidyCal – sofort buchbar"
+        }
       ],
       "button": "Zeitfenster buchen"
     },
@@ -55,11 +78,26 @@
       "titel": "Wichtelstübchen",
       "untertitel": "Kindertagespflege",
       "zeilen": [
-        { "label": "Für wen", "wert": "Kinder von **0 bis 3 Jahren** – ohne Eltern, in fester Gruppe" },
-        { "label": "Wann", "wert": "Regelmäßig, Montag bis Freitag von 6.45 bis 15.15 Uhr" },
-        { "label": "Der Raum", "wert": "Alle Räume inklusive **SandStube** – dort spielen die Wichtel täglich" },
-        { "label": "Kosten", "wert": "95 € Verpflegung / Monat + Beitrag nach Einkommen" },
-        { "label": "Anmeldung", "wert": "Platzanfrage über das Wichtelkompass-Profil" }
+        {
+          "label": "Für wen",
+          "wert": "Kinder von **0 bis 3 Jahren** – ohne Eltern, in fester Gruppe"
+        },
+        {
+          "label": "Wann",
+          "wert": "Mo - Fr 6.45 bis 15.15 Uhr"
+        },
+        {
+          "label": "Der Raum",
+          "wert": "Alle Räume inklusive **SandStube** – dort spielen die Wichtel täglich"
+        },
+        {
+          "label": "Kosten",
+          "wert": "95 € Verpflegung / Monat + Beitrag wie Kita"
+        },
+        {
+          "label": "Anmeldung",
+          "wert": "Platzanfrage über das Wichtelkompass-Profil"
+        }
       ],
       "button": "Platz anfragen"
     }
@@ -69,11 +107,26 @@
     "ueberschrift": "Schaut einfach mal herein",
     "text": "Kleine Momentaufnahmen aus dem Wichtelstübchen und der SandStube.",
     "bilder": [
-      { "bild": "/images/sandstube-4.webp", "alt": "Spielen mit Sand und Glassteinen in der SandStube" },
-      { "bild": "/images/raum-leseecke.jpg", "alt": "Gemütliche Leseecke im Wichtelstübchen" },
-      { "bild": "/images/garten-sandbereich.webp", "alt": "Garten mit Sandbereich" },
-      { "bild": "/images/raum-kueche-kreativ.jpg", "alt": "Küche und kreative Zone" },
-      { "bild": "/images/sandstube-main.webp", "alt": "Blick in den Raum der SandStube" }
+      {
+        "bild": "/images/sandstube-4.webp",
+        "alt": "Spielen mit Sand und Glassteinen in der kreativen Zone"
+      },
+      {
+        "bild": "/images/raum-leseecke.jpg",
+        "alt": "Gemütliche Leseecke im Wichtelstübchen"
+      },
+      {
+        "bild": "/images/garten-sandbereich.webp",
+        "alt": "Garten mit Sandbereich"
+      },
+      {
+        "bild": "/images/raum-kueche-kreativ.jpg",
+        "alt": "Küche und kreative Zone"
+      },
+      {
+        "bild": "/images/sandstube-main.webp",
+        "alt": "Blick in den Raum der SandStube"
+      }
     ],
     "button": "Alle Räume ansehen"
   },
