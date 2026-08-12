@@ -59,7 +59,7 @@
     "bild_alt": "Spielfläche in der SandStube"
   },
   "tickets": {
-    "kicker": "Drei Ticket-Optionen",
+    "kicker": "Vier Ticket-Optionen",
     "ueberschrift": "Wählt euer Erlebnis",
     "text": "Jedes Ticket gilt für ein Zeitfenster von 3 Stunden. Entscheidet selbst, ob ihr den Raum teilt oder ganz für euch habt.",
     "einheit": "pro Zeitfenster · 3 Stunden",
@@ -90,6 +90,19 @@
           "Montag bis Donnerstag buchbar"
         ],
         "tidycal_path": "wichtelkompass/sandstubchen-mnlwxvx",
+        "hervorheben": false
+      },
+      {
+        "name": "Ganzer Raum · Entdecker",
+        "preis": "75 €",
+        "details": "inkl. Spiel-Station",
+        "text": "Mit einer Spielstation und ausgewählten Materialien. Beides schafft zusätzlich sensorischen Reize.",
+        "punkte": [
+          "Alle Inhalte von „Ganzer Raum“",
+          "+ Spiel-Station",
+          "Montag bis Sonntag buchbar"
+        ],
+        "tidycal_path": "https://tidycal.com/wichtelkompass/geschwisterticket-m87ep8q",
         "hervorheben": false
       },
       {
