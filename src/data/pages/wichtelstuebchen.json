@@ -24,7 +24,7 @@
   "raeume": {
     "kicker": "Unsere Räume",
     "ueberschrift": "Liebevoll eingerichtet",
-    "text": "Spielzimmer, Schlafzimmer, Küche, kreative Zone, Bad und Garten – und unsere SandStube, in der die Wichtel jeden Tag schütten, sieben und matschen dürfen. Vielfältige Orte zum Spielen, Entdecken und Ausruhen.",
+    "text": "Spielzimmer, Küche, Kreativzone, Bad und Garten – und unsere SandStube, in der die Wichtel jeden Tag ihrem Bedürfnis nach Entdecken nachgehen dürfen.",
     "bilder": [
       {
         "bild": "/images/raum-spielraum.jpg",
@@ -61,7 +61,7 @@
         "von": "6.45",
         "bis": "8.00",
         "titel": "Ankunft der Wichtel",
-        "text": "Sanftes Ankommen, in Ruhe verabschieden und freies Spielen."
+        "text": "Jeder kommt in seinem Tempo an - freies Spielen."
       },
       {
         "von": "8.00",
@@ -73,7 +73,7 @@
         "von": "11.00",
         "bis": "14.15",
         "titel": "Mittag",
-        "text": "Wir bereiten das Mittagessen gemeinsam zu und essen zusammen – danach Mittagsschlaf."
+        "text": "Wir bereiten das Mittagessen gemeinsam zu und essen zusammen. Einen gemeinsamen Mittagsschlaf streben wir an – die Wichtel dürfen jedoch jederzeit schlafen, wenn sie es brauchen."
       },
       {
         "von": "14.15",
@@ -82,7 +82,7 @@
         "text": "Gemeinsamer Snack, Freispiel und Abholung."
       }
     ],
-    "zitat": "„Kleine Wichtel schlafen immer dann, wenn sie müde sind.“"
+    "zitat": "„Rituale geben Sicherheit.“"
   },
   "eingewoehnung": {
     "kicker": "Sanftes Ankommen",
