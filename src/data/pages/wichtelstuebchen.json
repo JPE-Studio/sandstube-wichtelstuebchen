@@ -4,13 +4,13 @@
   },
   "topstrip": {
     "hinweis": "Übrigens:",
-    "text": "Unsere **SandStube** ist nachmittags auch für Familien von außerhalb stundenweise buchbar.",
+    "text": "Unsere **SandStube** ist nachmittags auch für Familien von außerhalb buchbar.",
     "link": "Hier geht es zur SandStube →"
   },
   "hero": {
     "kicker": "Kindertagespflege in Siegen",
     "ueberschrift": "Neun kleine Wichtel, ein großes **Zuhause**.",
-    "text": "Herzlich willkommen! Wir betreuen neun Kinder zwischen 0 und 3 Jahren in einer von der Stadt Siegen anerkannten Kindertagespflegestelle (§43 SGB VIII) – mit vertrautem Rhythmus, festen Bezugspersonen und viel Zeit zum Ankommen.",
+    "text": "Herzlich willkommen! \n\nWir betreuen neun Kinder zwischen 0 und 3 Jahren in einer von der Stadt Siegen anerkannten Kindertagespflegestelle (§43 SGB VIII). \n\nKleine Gruppe - feste Bezugspersonen - wiederkehrende Rituale",
     "button_anfrage": "Platz anfragen",
     "button_tag": "Unser Tag",
     "bild": "/images/raum-spielraum.jpg",
@@ -26,12 +26,30 @@
     "ueberschrift": "Liebevoll eingerichtet",
     "text": "Spielzimmer, Schlafzimmer, Küche, kreative Zone, Bad und Garten – und unsere SandStube, in der die Wichtel jeden Tag schütten, sieben und matschen dürfen. Vielfältige Orte zum Spielen, Entdecken und Ausruhen.",
     "bilder": [
-      { "bild": "/images/raum-spielraum.jpg", "alt": "Spielzimmer" },
-      { "bild": "/images/raum-leseecke.jpg", "alt": "Leseecke und Spielbereich" },
-      { "bild": "/images/raum-kueche-kreativ.jpg", "alt": "Küche und kreative Zone" },
-      { "bild": "/images/raum-titelbild.jpg", "alt": "Raum im Wichtelstübchen" },
-      { "bild": "/images/raum-foto2.jpg", "alt": "Spielbereich" },
-      { "bild": "/images/garten-sandbereich.webp", "alt": "Garten mit Sandbereich" }
+      {
+        "bild": "/images/raum-spielraum.jpg",
+        "alt": "Spielzimmer"
+      },
+      {
+        "bild": "/images/raum-leseecke.jpg",
+        "alt": "Leseecke und Spielbereich"
+      },
+      {
+        "bild": "/images/raum-kueche-kreativ.jpg",
+        "alt": "Küche und kreative Zone"
+      },
+      {
+        "bild": "/images/raum-titelbild.jpg",
+        "alt": "Raum im Wichtelstübchen"
+      },
+      {
+        "bild": "/images/raum-foto2.jpg",
+        "alt": "Spielbereich"
+      },
+      {
+        "bild": "/images/garten-sandbereich.webp",
+        "alt": "Garten mit Sandbereich"
+      }
     ]
   },
   "tagesablauf": {
