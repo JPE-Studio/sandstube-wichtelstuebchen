@@ -5,8 +5,6 @@ foto: /images/team-maria.jpg
 reihenfolge: 1
 ---
 
-**Maria gestaltet mit viel Erfahrung und Engagement Orte, an denen Kinder sich geborgen fühlen.**
-
 Mein Wunsch ist es, einen liebevollen Alltag zu gestalten, in dem jedes Kind seine Umwelt entdecken, begreifen und sich in seinem eigenen Tempo entwickeln darf.
 
 Als feste Bezugsperson möchte ich den Kindern einen sicheren Rahmen geben, in dem sie Vertrauen und ein gesundes Selbstgefühl entwickeln können.
