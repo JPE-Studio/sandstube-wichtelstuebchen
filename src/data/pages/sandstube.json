@@ -128,24 +128,28 @@
     "ueberschrift": "Schaut herein",
     "bilder": [
       {
-        "bild": "/images/PXL_20250326_081100087~2.jpg",
+        "bild": "/images/PXL_20250326_081014909.MP~3 (1).webp",
         "alt": "Kind spielt mit Glassteinen in der SandStube"
       },
       {
-        "bild": "/images/1000414580.png",
+        "bild": "/images/PXL_20250326_081100087~2.webp",
         "alt": "Gemütlicher Raum der SandStube"
       },
       {
-        "bild": "/images/1000414576.png",
+        "bild": "/images/image.webp",
         "alt": "Außenbereich mit Sand"
       },
       {
-        "bild": "/images/1000414582.jpg",
+        "bild": "/images/PXL_20240410_144031692.MP~3.webp",
         "alt": "Spielbereich in der SandStube"
       },
       {
-        "bild": "/images/1000414578.png",
+        "bild": "/images/PXL_20240125_080646836.webp",
         "alt": "Spielfläche mit Material"
+      },
+      {
+        "bild": "/images/1000414578.png",
+        "alt": "Teekanne"
       }
     ]
   },
