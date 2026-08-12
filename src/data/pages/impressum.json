@@ -12,19 +12,19 @@
   "abschnitte": [
     {
       "ueberschrift": "Angaben gemäß § 5 TMG / § 5 DDG",
-      "text": "{{inhaberin}}\n{{strasse}}\n{{plz_ort}}\nDeutschland"
+      "text": "Maria Bretthauer\n\nHambergstrasse 12\n\n57074 Siegen\nDeutschland"
     },
     {
       "ueberschrift": "Kontakt",
-      "text": "E-Mail: [{{email}}](mailto:{{email}})\nTelefon: [Telefonnummer ergänzen]"
+      "text": "E-Mail: wichtelkompass@gmail.com\nTelefon: 017696186003"
     },
     {
       "ueberschrift": "Umsatzsteuer-ID",
       "text": "Umsatzsteuer-Identifikationsnummer gemäß § 27a Umsatzsteuergesetz:\n[sofern vorhanden]"
     },
     {
-      "ueberschrift": "Berufsbezeichnung & berufsrechtliche Regelungen",
-      "text": "Berufsbezeichnung: Kindertagespflegeperson\nVerliehen in: Bundesrepublik Deutschland\nZuständige Erlaubnisbehörde: Stadt Siegen – Jugendamt ([Link/Kontakt ergänzen])\n\nDie Kindertagespflege ist gemäß § 43 SGB VIII von der Stadt Siegen anerkannt."
+      "ueberschrift": "Berufsbezeichnung",
+      "text": "Berufsbezeichnung: Kindertagespflegeperson\nVerliehen in: Bundesrepublik Deutschland\nZuständige Erlaubnisbehörde: Stadt Siegen – Jugendamt ([[https://www.siegen.de/rathaus-politik/stadtverwaltung/dienstleistungen-a-bis-z/detailseite/familienbuero-der-stadt-siegen](https://www.siegen.de/rathaus-politik/stadtverwaltung/dienstleistungen-a-bis-z/detailseite/familienbuero-der-stadt-siegen)])\n\nDie Kindertagespflege ist gemäß § 43 SGB VIII von der Stadt Siegen anerkannt."
     },
     {
       "ueberschrift": "Verbraucherstreitbeilegung / Universalschlichtungsstelle",
