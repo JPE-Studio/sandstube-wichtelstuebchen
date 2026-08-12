@@ -6,7 +6,7 @@
   "kicker": "Rechtliches",
   "ueberschrift": "Datenschutz­erklärung",
   "warnung": {
-    "anzeigen": true,
+    "anzeigen": false,
     "text": "**⚠️ Platzhalter:** Dies ist eine Vorlage und ersetzt keine individuelle, rechtssichere Datenschutzerklärung. Bitte vor Veröffentlichung durch eine an den tatsächlichen Einsatz (insb. TidyCal, Kontaktwege, ggf. Analyse-Tools) angepasste Version ersetzen."
   },
   "abschnitte": [
