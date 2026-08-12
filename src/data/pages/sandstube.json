@@ -72,7 +72,8 @@
         "punkte": [
           "1 Erwachsener",
           "max. 2 Kinder",
-          "Bis zu 3 Gruppen gleichzeitig im Raum"
+          "Bis zu 3 Gruppen gleichzeitig im Raum",
+          "Derzeit nur Montags buchbar"
         ],
         "tidycal_path": "wichtelkompass/sandstubchen-1jx0x68",
         "hervorheben": false
@@ -85,7 +86,8 @@
         "punkte": [
           "bis zu 4 Erwachsene",
           "max. 8 Kinder",
-          "Exklusive Nutzung"
+          "Exklusive Nutzung",
+          "Montag bis Donnerstag buchbar"
         ],
         "tidycal_path": "wichtelkompass/sandstubchen-mnlwxvx",
         "hervorheben": false
@@ -94,7 +96,7 @@
         "name": "Ganzer Raum · Entdecker",
         "preis": "90 €",
         "details": "inkl. Spiel-Station & Bastelmaterial · ideal für Geburtstage",
-        "text": "Das Erlebnis-Paket: zusätzlich eine Spiel-Station und Material für selbst gestaltete Schlüsselanhänger zum Mitnehmen.",
+        "text": "Zusätzlich zur Spiel-Station gibt es für jedes Kind Material, um einen eigenen Schlüsselanhänger zu gestalten und anschließend mit nach Hause zu nehmen.",
         "punkte": [
           "Alle Inhalte von „Ganzer Raum“",
           "+ Spiel-Station",
