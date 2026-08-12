@@ -96,7 +96,7 @@
         "name": "Ganzer Raum · Entdecker",
         "preis": "75 €",
         "details": "inkl. Spiel-Station",
-        "text": "Mit Entdecker Tisch von Kalalier und ausgewählten Materialien. Für zusätzlich sensorischen Reize.",
+        "text": "Mit Entdecker Tisch von Kalalier und ausgewählten Materialien, für zusätzlich sensorischen Reize.",
         "punkte": [
           "Alle Inhalte von „Ganzer Raum“",
           "+ Spiel-Station",
@@ -109,11 +109,12 @@
         "name": "Ganzer Raum · Entdecker",
         "preis": "90 €",
         "details": "inkl. Spiel-Station & Bastelmaterial · ideal für Geburtstage",
-        "text": "Zusätzlich zur Spiel-Station gibt es für jedes Kind Material, um einen eigenen Schlüsselanhänger zu gestalten und anschließend mit nach Hause zu nehmen.",
+        "text": "Zusätzlich zum Entdecker Tisch gibt es für jedes Kind Material, um einen eigenen Schlüsselanhänger zu gestalten und anschließend mit nach Hause zu nehmen.",
         "punkte": [
           "Alle Inhalte von „Ganzer Raum“",
           "+ Spiel-Station",
-          "+ Bastelmaterial für Schlüsselanhänger"
+          "+ Bastelmaterial für Schlüsselanhänger",
+          "Montag bis Sonntag buchbar"
         ],
         "tidycal_path": "wichtelkompass/geschwisterticket",
         "hervorheben": true
