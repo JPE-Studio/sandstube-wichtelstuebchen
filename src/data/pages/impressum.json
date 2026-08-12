@@ -6,7 +6,7 @@
   "kicker": "Rechtliches",
   "ueberschrift": "Impressum",
   "warnung": {
-    "anzeigen": true,
+    "anzeigen": false,
     "text": "**⚠️ Platzhalter:** Bitte füge hier die korrekten, vollständigen Angaben ein. Die folgenden Inhalte sind nur Beispiele und ersetzen keine rechtliche Beratung."
   },
   "abschnitte": [
