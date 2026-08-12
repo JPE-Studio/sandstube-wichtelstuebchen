@@ -32,7 +32,7 @@
     "wichtelstuebchen": {
       "chip": "Kindertagespflege · täglich",
       "titel": "Das Wichtelstübchen",
-      "text": "Ein vertrauter Tagesrhythmus, ein festes Team und viel Geborgenheit für neun kleine Wichtel zwischen 0 und 3 Jahren - inklusive täglicher Spielzeit in der SandStube. Von der Stadt Siegen anerkannt nach §43 SGB VIII.",
+      "text": "Betreuung in kleiner Gruppe mit festen Bezugspersonen. Geborgenheit und eine vertraute Umgebung für neun kleine Wichtel zwischen 0 und 3 Jahren - inklusive täglicher Spielzeit in der SandStube. Von der Stadt Siegen anerkannt nach §43 SGB VIII.",
       "fakten": [
         "9 Kinder",
         "0–3 Jahre",
@@ -53,7 +53,7 @@
       "zeilen": [
         {
           "label": "Für wen",
-          "wert": "Kinder **gemeinsam mit ihren Eltern**, erste den ersten Schritten bis ca. 6 Jahre"
+          "wert": "Kinder **gemeinsam mit ihren Eltern**, ab den ersten Schritten bis ca. 6 Jahre"
         },
         {
           "label": "Wann",
@@ -80,7 +80,7 @@
       "zeilen": [
         {
           "label": "Für wen",
-          "wert": "Kinder von **0 bis 3 Jahren** – ohne Eltern, in fester Gruppe"
+          "wert": "Betreuung für Kinder von **0 bis 3 Jahren** in kleiner Gruppe"
         },
         {
           "label": "Wann",
@@ -88,7 +88,7 @@
         },
         {
           "label": "Der Raum",
-          "wert": "Alle Räume inklusive **SandStube** – dort spielen die Wichtel täglich"
+          "wert": "Alle Räume inklusive **SandStube** und einem großen verträumten Garten"
         },
         {
           "label": "Kosten",
