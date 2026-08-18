@@ -135,7 +135,20 @@ const [zeit_von, zeit_bis] = wk.zeiten.replace(' Uhr', '').split('–');
     <div class="wrap">
       <div class="split">
         <div class="split-media frame frame--blob" data-reveal>
-          <img src={eingewoehnung.bild} alt={eingewoehnung.bild_alt} loading="lazy" />
+          {eingewoehnung.video ? (
+            <video
+              src={eingewoehnung.video}
+              poster={eingewoehnung.video_poster ?? eingewoehnung.bild}
+              aria-label={eingewoehnung.bild_alt}
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="metadata"
+            />
+          ) : (
+            <img src={eingewoehnung.bild} alt={eingewoehnung.bild_alt} loading="lazy" />
+          )}
         </div>
         <div class="split-text" data-reveal style="--d:120ms">
           <span class="kicker">{eingewoehnung.kicker}</span>

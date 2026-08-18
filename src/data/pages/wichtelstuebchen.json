@@ -95,7 +95,9 @@
       "Jeder Schritt mit euch abgestimmt"
     ],
     "bild": "/images/raum-leseecke.jpg",
-    "bild_alt": "Ruhiger Rückzugsort für die Eingewöhnung"
+    "bild_alt": "Ruhiger Rückzugsort für die Eingewöhnung",
+    "video": "/images/wichtelstuebchen-eingewoehnung.mp4",
+    "video_poster": "/images/raum-leseecke.jpg"
   },
   "kosten": {
     "kicker": "Transparente Kosten",
