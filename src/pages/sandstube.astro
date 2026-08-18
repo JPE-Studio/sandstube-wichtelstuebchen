@@ -7,6 +7,7 @@
  * beides über Decap CMS pflegbar.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Gallery from '../components/Gallery.astro';
 import { heading, rich } from '../lib/text';
 import site from '../data/site.json';
 import page from '../data/pages/sandstube.json';
@@ -166,11 +167,7 @@ const ticketKarten = tickets.liste.map((ticket, i) => ({
         <span class="kicker" data-reveal>{galerie.kicker}</span>
         <h2 data-reveal style="--d:60ms" set:html={heading(galerie.ueberschrift)} />
       </div>
-      <div class="gal">
-        {galerie.bilder.map((eintrag) => (
-          <figure data-reveal><img src={eintrag.bild} alt={eintrag.alt} loading="lazy" /></figure>
-        ))}
-      </div>
+      <Gallery bilder={galerie.bilder} label="Galerie" />
     </div>
   </section>
 

@@ -400,17 +400,22 @@ strong{font-weight:800}
   .split--flip .split-media{order:0}
 }
 
-/* ------------------------------------------------------------- 12. Galerie */
-/* Bildanzahl kommt aus dem CMS – das Raster passt sich automatisch an. */
-.gal{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:clamp(10px,1.5vw,16px)}
-.gal figure{overflow:hidden;border-radius:var(--r-lg);background:var(--b-100);box-shadow:var(--sh-s)}
-.gal img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/3;transition:transform .6s cubic-bezier(.3,1,.4,1)}
-.gal figure:hover img{transform:scale(1.06)}
-/* Gleichmäßiges 3er-Raster für Galerien, die auf drei Spalten bleiben sollen */
-.gal--even{grid-template-columns:repeat(3,1fr)}
-@media(max-width:760px){
-  .gal{grid-template-columns:1fr 1fr}
-}
+/* ------------------------------------------------------------- 12. Galerie (Slider) */
+/* Bildanzahl kommt aus dem CMS. Der Slider lädt lazy, hält feste
+   Seitenverhältnisse (kein CLS) und ist per Tastatur bedienbar. */
+.slider{position:relative}
+.slider__viewport{overflow:hidden;border-radius:var(--r-xl);box-shadow:var(--sh-m);background:var(--b-100)}
+.slider__track{display:flex;width:100%;transition:transform .55s cubic-bezier(.3,.8,.3,1)}
+.slider__slide{flex:0 0 100%;min-width:0;margin:0;aspect-ratio:4/3;background:var(--b-100)}
+.slider__slide img{display:block;width:100%;height:100%;object-fit:cover}
+.slider__controls{display:flex;align-items:center;justify-content:center;gap:clamp(12px,2vw,18px);margin-top:clamp(12px,1.6vw,18px)}
+.slider__btn{display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:50%;border:1px solid var(--b-200);background:var(--paper);color:var(--ink);box-shadow:var(--sh-s);cursor:pointer}
+.slider__btn:hover{background:var(--b-100)}
+.slider__btn:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.slider__dots{display:flex;align-items:center;gap:8px}
+.slider__dot{width:10px;height:10px;border-radius:50%;border:0;padding:0;background:var(--b-200);cursor:pointer}
+.slider__dot[aria-current='true']{background:var(--accent);transform:scale(1.25)}
+.slider__dot:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 
 /* --------------------------------------------------------- 13. Tagesablauf */
 .day{display:grid;gap:0;max-width:760px;margin-inline:auto;position:relative}
@@ -533,6 +538,8 @@ strong{font-weight:800}
 
 .skip{position:absolute;left:-9999px;top:0;z-index:999;background:var(--ink);color:#fff;padding:12px 20px;border-radius:0 0 12px 0;font-weight:800}
 .skip:focus{left:0}
+
+.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}

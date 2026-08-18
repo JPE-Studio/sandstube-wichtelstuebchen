@@ -33,6 +33,58 @@
     });
   }
 
+  /* ---------- Galerie-Slider (barrierefrei) ---------- */
+  var sliders = document.querySelectorAll('[data-slider]');
+  Array.prototype.forEach.call(sliders, function (slider) {
+    var track = slider.querySelector('[data-slider-track]');
+    var slides = slider.querySelectorAll('[data-slider-slide]');
+    var prev = slider.querySelector('[data-slider-prev]');
+    var next = slider.querySelector('[data-slider-next]');
+    var dots = slider.querySelectorAll('[data-slider-dot]');
+    var live = slider.querySelector('[data-slider-live]');
+    if (!track || !slides.length) return;
+
+    var count = slides.length;
+    var index = 0;
+    var startX = null;
+
+    var show = function (i) {
+      index = (i + count) % count;
+      track.style.transform = 'translateX(' + (-index * 100) + '%)';
+      Array.prototype.forEach.call(slides, function (s, n) {
+        s.setAttribute('aria-hidden', String(n !== index));
+      });
+      Array.prototype.forEach.call(dots, function (d, n) {
+        if (n === index) d.setAttribute('aria-current', 'true');
+        else d.removeAttribute('aria-current');
+      });
+      if (live) live.textContent = 'Bild ' + (index + 1) + ' von ' + count;
+    };
+
+    if (prev) prev.addEventListener('click', function () { show(index - 1); });
+    if (next) next.addEventListener('click', function () { show(index + 1); });
+    Array.prototype.forEach.call(dots, function (d, n) {
+      d.addEventListener('click', function () { show(n); });
+    });
+
+    slider.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft') { show(index - 1); e.preventDefault(); }
+      else if (e.key === 'ArrowRight') { show(index + 1); e.preventDefault(); }
+      else if (e.key === 'Home') { show(0); e.preventDefault(); }
+      else if (e.key === 'End') { show(count - 1); e.preventDefault(); }
+    });
+
+    track.addEventListener('touchstart', function (e) {
+      startX = e.touches[0].clientX;
+    }, { passive: true });
+    track.addEventListener('touchend', function (e) {
+      if (startX === null) return;
+      var dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 40) show(index + (dx < 0 ? 1 : -1));
+      startX = null;
+    });
+  });
+
   /* ---------- Sanftes Einblenden beim Scrollen ---------- */
   var targets = document.querySelectorAll('[data-reveal]');
   if (!targets.length) return;

@@ -4,6 +4,7 @@
  * Alle Texte und Bilder kommen aus src/data/pages/index.json (Decap CMS).
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Gallery from '../components/Gallery.astro';
 import { heading, rich } from '../lib/text';
 import page from '../data/pages/index.json';
 import ui from '../data/ui.json';
@@ -146,11 +147,7 @@ const tueren_liste = [
         <p class="lead" data-reveal style="--d:140ms" set:html={rich(einblicke.text)} />
       </div>
 
-      <div class="gal">
-        {einblicke.bilder.map((eintrag) => (
-          <figure data-reveal><img src={eintrag.bild} alt={eintrag.alt} loading="lazy" /></figure>
-        ))}
-      </div>
+      <Gallery bilder={einblicke.bilder} label="Einblicke" />
 
       <div class="center mt-l">
         <a href="/wichtelstuebchen#galerie" class="btn btn--ghost">{einblicke.button}</a>

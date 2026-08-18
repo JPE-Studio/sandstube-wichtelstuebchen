@@ -5,6 +5,7 @@
  * die Eckdaten (Kinderzahl, Alter, Zeiten) aus src/data/site.json.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Gallery from '../components/Gallery.astro';
 import { heading, rich } from '../lib/text';
 import site from '../data/site.json';
 import page from '../data/pages/wichtelstuebchen.json';
@@ -94,11 +95,7 @@ const [zeit_von, zeit_bis] = wk.zeiten.replace(' Uhr', '').split('–');
         <p class="lead" data-reveal style="--d:140ms" set:html={rich(raeume.text)} />
       </div>
 
-      <div class="gal gal--even">
-        {raeume.bilder.map((eintrag) => (
-          <figure data-reveal><img src={eintrag.bild} alt={eintrag.alt} loading="lazy" /></figure>
-        ))}
-      </div>
+      <Gallery bilder={raeume.bilder} label="Räume" />
     </div>
   </section>
 
