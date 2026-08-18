@@ -240,7 +240,7 @@ strong{font-weight:800}
 /* Foto im gerissenen Papierrahmen */
 .frame{position:relative;border-radius:var(--r-xl);overflow:hidden;box-shadow:var(--sh-m);background:var(--b-100)}
 .frame img,.frame video{display:block;width:100%;height:100%;object-fit:cover;aspect-ratio:4/3}
-.frame--tall img,.frame--tall video{aspect-ratio:3/4}
+.frame--portrait img,.frame--portrait video{aspect-ratio:9/16}
 .frame--wide img,.frame--wide video{aspect-ratio:16/9}
 .frame--blob{border-radius:var(--blob)}
 .frame::after{content:'';position:absolute;inset:0;box-shadow:inset 0 0 0 6px rgba(255,255,255,.55);border-radius:inherit;pointer-events:none}
