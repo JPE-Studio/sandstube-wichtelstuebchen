@@ -401,18 +401,15 @@ strong{font-weight:800}
 }
 
 /* ------------------------------------------------------------- 12. Galerie */
-.gal{display:grid;grid-template-columns:repeat(6,1fr);gap:clamp(10px,1.5vw,16px)}
-.gal figure{overflow:hidden;border-radius:var(--r-lg);background:var(--b-100);box-shadow:var(--sh-s);grid-column:span 2}
-.gal figure:nth-child(1){grid-column:span 3}
-.gal figure:nth-child(2){grid-column:span 3}
+/* Bildanzahl kommt aus dem CMS – das Raster passt sich automatisch an. */
+.gal{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:clamp(10px,1.5vw,16px)}
+.gal figure{overflow:hidden;border-radius:var(--r-lg);background:var(--b-100);box-shadow:var(--sh-s)}
 .gal img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/3;transition:transform .6s cubic-bezier(.3,1,.4,1)}
 .gal figure:hover img{transform:scale(1.06)}
-/* Gleichmäßiges 3er-Raster (für 6 Bilder) */
+/* Gleichmäßiges 3er-Raster für Galerien, die auf drei Spalten bleiben sollen */
 .gal--even{grid-template-columns:repeat(3,1fr)}
-.gal--even figure,.gal--even figure:nth-child(1),.gal--even figure:nth-child(2){grid-column:span 1}
 @media(max-width:760px){
   .gal{grid-template-columns:1fr 1fr}
-  .gal figure,.gal figure:nth-child(1),.gal figure:nth-child(2){grid-column:span 1}
 }
 
 /* --------------------------------------------------------- 13. Tagesablauf */
