@@ -56,7 +56,9 @@
     ],
     "zitat": "„Gib deinem Kind Zeit zum Spielen! Denn das Spiel ist die höchste Form des Forschens.“",
     "bild": "/images/sandstube-main.webp",
-    "bild_alt": "Spielfläche in der SandStube"
+    "bild_alt": "Spielfläche in der SandStube",
+    "video": "/images/sandstube-main.mp4",
+    "video_poster": "/images/sandstube-main-poster.webp"
   },
   "tickets": {
     "kicker": "Vier Ticket-Optionen",
