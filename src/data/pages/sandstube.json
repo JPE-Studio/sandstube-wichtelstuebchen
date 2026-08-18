@@ -56,7 +56,9 @@
     ],
     "zitat": "„Gib deinem Kind Zeit zum Spielen! Denn das Spiel ist die höchste Form des Forschens.“",
     "bild": "/images/sandstube-main.webp",
-    "bild_alt": "Spielfläche in der SandStube"
+    "bild_alt": "Spielfläche in der SandStube",
+    "video": "/images/sandstube-main.mp4",
+    "video_poster": "/images/sandstube-main-poster.webp"
   },
   "tickets": {
     "kicker": "Vier Ticket-Optionen",
@@ -129,24 +131,24 @@
     "ueberschrift": "Schaut herein",
     "bilder": [
       {
-        "bild": "/images/PXL_20250326_081014909.MP~3 (1).webp",
+        "bild": "/images/sandstube-4.webp",
         "alt": "Kind spielt mit Glassteinen in der SandStube"
       },
       {
         "bild": "/images/PXL_20250326_081100087~2.webp",
-        "alt": "Gemütlicher Raum der SandStube"
+        "alt": "Kind schöpft Sand mit einem Sieb"
       },
       {
-        "bild": "/images/image.webp",
+        "bild": "/images/garten-sandbereich.webp",
         "alt": "Außenbereich mit Sand"
       },
       {
-        "bild": "/images/PXL_20240410_144031692.MP~3.webp",
-        "alt": "Spielbereich in der SandStube"
+        "bild": "/images/1000414576.png",
+        "alt": "Kinder spielen am Tisch in der SandStube"
       },
       {
-        "bild": "/images/PXL_20240125_080646836.webp",
-        "alt": "Spielfläche mit Material"
+        "bild": "/images/sandstube-1.webp",
+        "alt": "Fahrzeuge auf der Spielfläche"
       },
       {
         "bild": "/images/1000414578.png",

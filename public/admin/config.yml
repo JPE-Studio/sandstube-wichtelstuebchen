@@ -259,6 +259,13 @@ collections:
               - { name: "zitat", label: "Zitat (Handschrift)", widget: "text" }
               - { name: "bild", label: "Bild", widget: "image" }
               - { name: "bild_alt", label: "Bildbeschreibung", widget: "string" }
+              - name: "video"
+                label: "Video (optional)"
+                widget: "file"
+                required: false
+                media_library: { config: { media_folder: "public/images" } }
+                hint: "MP4-Datei. Wenn gesetzt, wird das Video statt des Bildes gezeigt (stumm, in Schleife)."
+              - { name: "video_poster", label: "Vorschaubild des Videos (optional)", widget: "image", required: false }
 
           - label: "Tickets & Preise"
             name: "tickets"

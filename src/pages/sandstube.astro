@@ -96,8 +96,21 @@ const ticketKarten = tickets.liste.map((ticket, i) => ({
   <section class="band band--tint">
     <div class="wrap">
       <div class="split split--flip">
-        <div class="split-media frame" data-reveal>
-          <img src={erlebnis.bild} alt={erlebnis.bild_alt} loading="lazy" />
+        <div class="split-media frame frame--tall" data-reveal>
+          {erlebnis.video ? (
+            <video
+              src={erlebnis.video}
+              poster={erlebnis.video_poster ?? erlebnis.bild}
+              aria-label={erlebnis.bild_alt}
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="metadata"
+            />
+          ) : (
+            <img src={erlebnis.bild} alt={erlebnis.bild_alt} loading="lazy" />
+          )}
         </div>
         <div class="split-text" data-reveal style="--d:120ms">
           <span class="kicker">{erlebnis.kicker}</span>
