@@ -82,6 +82,8 @@
       "links": [
         { "label": "Team", "href": "/team", "extern": false },
         { "label": "{{email}}", "href": "mailto:{{email}}", "extern": false },
+        { "label": "Telefon: {{telefon}}", "href": "{{telefon_href}}", "extern": false },
+        { "label": "WhatsApp schreiben ↗", "href": "{{whatsapp_url}}", "extern": true },
         { "label": "Impressum", "href": "/impressum", "extern": false },
         { "label": "Datenschutz", "href": "/datenschutz", "extern": false },
         { "label": "Profil auf Wichtelkompass ↗", "href": "{{wichtelkompass_url}}", "extern": true }

@@ -9,6 +9,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Gallery from '../components/Gallery.astro';
 import { heading, rich } from '../lib/text';
+import { telefonVorhanden, telHref, waChat } from '../lib/kontakt';
 import site from '../data/site.json';
 import page from '../data/pages/sandstube.json';
 import ui from '../data/ui.json';
@@ -252,6 +253,12 @@ const ticketKarten = tickets.liste.map((ticket, i) => ({
           <h3>{kontakt.kontakt_titel}</h3>
           <p>{kontakt.kontakt_text}</p>
           <p class="mt-s"><a href={`mailto:${site.kontakt.email}`}>{site.kontakt.email}</a></p>
+          {telefonVorhanden && (
+            <p class="mt-s">
+              <a href={telHref}>📞 {site.kontakt.telefon}</a><br />
+              <a href={waChat('Hallo Maria! Ich habe eine Frage zur SandStube.')} target="_blank" rel="noopener">💬 Per WhatsApp schreiben ↗</a>
+            </p>
+          )}
         </div>
       </div>
     </div>

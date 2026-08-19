@@ -554,3 +554,26 @@ strong{font-weight:800}
 .stack>*+*{margin-top:1.1rem}
 @media(max-width:900px){.cards--4{grid-template-columns:1fr 1fr}.cards--3{grid-template-columns:1fr}}
 @media(max-width:700px){.cards--2,.cards--4{grid-template-columns:1fr}}
+
+/* ------------------------------------------------ 23. WhatsApp-Button (FAB) */
+.fab-wa{
+  position:fixed;
+  right:clamp(16px,3vw,28px);
+  bottom:calc(clamp(16px,3vw,28px) + env(safe-area-inset-bottom,0px));
+  z-index:100; /* bewusst unter Header (120), Menü-Vorhang (110) und Mobile-Menü (150) */
+  display:inline-flex;align-items:center;justify-content:center;gap:.55em;
+  height:58px;min-width:58px;padding:0 1.1em;
+  border-radius:999px;
+  background:#25D366;color:#fff;
+  font-family:var(--font-body);font-weight:800;font-size:.98rem;letter-spacing:.005em;
+  box-shadow:0 4px 0 #128C7E;
+  transition:transform .16s cubic-bezier(.3,1.4,.5,1),box-shadow .16s,filter .2s;
+}
+.fab-wa svg{width:26px;height:26px;fill:#fff;flex-shrink:0}
+.fab-wa:hover{transform:translateY(-3px);box-shadow:0 7px 0 #128C7E;filter:saturate(1.08)}
+.fab-wa:active{transform:translateY(2px);box-shadow:0 1px 0 #128C7E}
+.fab-wa:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+@media(max-width:899px){ /* mobil nur der Kreis, ohne Text-Label */
+  .fab-wa{padding:0}
+  .fab-wa__label{display:none}
+}

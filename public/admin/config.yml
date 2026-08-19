@@ -165,7 +165,6 @@ collections:
                 fields:
                   - { name: "bild", label: "Bild", widget: "image" }
                   - { name: "alt", label: "Bildbeschreibung", widget: "string" }
-              - { name: "button", label: "Button", widget: "string" }
 
           - label: "Abschnitt Maria"
             name: "maria"
@@ -940,6 +939,7 @@ collections:
             widget: "object"
             fields:
               - { name: "email", label: "E-Mail-Adresse", widget: "string" }
+              - { name: "telefon", label: "Telefon-/WhatsApp-Nummer", widget: "string", hint: "Wird für den WhatsApp-Button und die Telefon-Links verwendet, z. B. 0176 96186003" }
               - { name: "strasse", label: "Straße & Hausnummer", widget: "string" }
               - { name: "plz_ort", label: "PLZ & Ort", widget: "string" }
               - { name: "maps_url", label: "Google-Maps-Link", widget: "string" }

@@ -8,6 +8,7 @@
 import site from '../data/site.json';
 import ui from '../data/ui.json';
 import { rich, fill } from '../lib/text';
+import { telefonVorhanden, telHref, waHref } from '../lib/kontakt';
 
 interface Props {
   note?: string;
@@ -21,6 +22,9 @@ const p = {
   strasse: site.kontakt.strasse,
   plz_ort: site.kontakt.plz_ort,
   email: site.kontakt.email,
+  telefon: site.kontakt.telefon,
+  telefon_href: telefonVorhanden ? telHref : 'tel:',
+  whatsapp_url: telefonVorhanden ? waHref : '#',
   jahr: site.jahr,
   wichtelkompass_url: site.wichtelstuebchen.wichtelkompass_url,
 };

@@ -20,6 +20,7 @@
 import '../styles/paperworld.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
 import site from '../data/site.json';
 import ui from '../data/ui.json';
 
@@ -87,6 +88,8 @@ const footBottomNote = footerNote ?? site.wichtelstuebchen.anerkennung;
 <main id="main">
   <slot />
 </main>
+
+<WhatsAppButton context={theme} />
 
 <Footer note={footBottomNote} />
 
