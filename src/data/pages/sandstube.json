@@ -19,7 +19,7 @@
     "bild_alt": "SandStube"
   },
   "saison": {
-    "anzeigen": true,
+    "anzeigen": false,
     "text": "☀️&nbsp; Wir sind gerade in der **Sommerpause** – Anfragen für Kindergeburtstage nehmen wir trotzdem gerne entgegen."
   },
   "schritte": {
